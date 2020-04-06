@@ -477,11 +477,12 @@
 
                         function tutup(){
                             $('#inputRnd').modal('hide');
-                            $('.dropzone')[0].dropzone.files.forEach(function(file) { 
-                                file.previewElement.remove(); 
+                            dz = document.getElementsByClassName('dropzone');
+                            for (i = 0; i < dz.length; i++) {
+                                $('.dropzone')[i].dropzone.files.forEach(function(file) { 
+                                    file.previewElement.remove(); 
                                 });
-
-                            $('.dropzone').removeClass('dz-started');
+                            }
                         }
 
                         $('#simpanBrand').click(function(){
@@ -505,10 +506,12 @@
                                 foto_upload3.processQueue();
                                 foto_upload4.processQueue();
                                 foto_upload5.processQueue();
-                                $('.dropzone')[0].dropzone.files.forEach(function(file) { 
-                                    file.previewElement.remove(); 
-                                });
-
+                                dz = document.getElementsByClassName('dropzone');
+                                for (i = 0; i < dz.length; i++) {
+                                    $('.dropzone')[i].dropzone.files.forEach(function(file) { 
+                                        file.previewElement.remove(); 
+                                    });
+                                }
                                 $('.dropzone').removeClass('dz-started');
                                 $('#inputRnd').modal('hide');
                                 $('#dataRnDM').DataTable().ajax.reload();
@@ -938,6 +941,11 @@
                                     var url_web = $('#ed_web_brand').val();
                                     var url_gd = $('#ed_gd_brand').val();
                                     var med_iklan = $('#ed_iklan_brand').val();
+
+                                    var dataString = 'nm_brand='+nm_brand+'&pro_brand='+pro_brand+'&perkap_ket='+perkap_ket+'&bb_ket='+bb_ket+
+                                    '&url_ins='+url_ins+'&url_web='+url_web+'&url_gd='+url_gd+'&med_iklan='+med_iklan;
+
+                                    
                                 })
                             </script>
                         </div>
