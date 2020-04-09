@@ -238,7 +238,7 @@
                                 <div class="form-group">
                                     <label for="in_pro_medsos">Brand</label>
                                     <br>
-                                    <select class="select2-A produk" name="in_pro_medsos" id="in_pro_medsos" style="width: 80%;">
+                                    <select class="select2-A brand" name="in_pro_medsos" id="in_pro_medsos" style="width: 80%;">
                                         <?php 
                                             echo '<option></option>';
                                             foreach ($dt_pro as $row){
@@ -308,7 +308,7 @@
                         c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
                     });
 
-                    $(".produk").select2({
+                    $(".brand").select2({
                     dropdownParent: $('.modal-body', '#inputMedsos'),
                     placeholder: "Pilih Brand",
                     allowClear: true
@@ -355,7 +355,11 @@
                         })
                     })
                 </script>
-                <div class="modal fade" id="editMedsos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editMedsos" tabindex="-1" role="dialog" aria-labelledby="editMedsosLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -370,16 +374,16 @@
                                 <form id="input_medsos">
                                 <div class="form-group">
                                     <label for="ed_nm_medsos">Nama</label>
-                                    <input class="form-control" type="text" name="ed_nm_medsos" id="ed_nm_medsos" style="width: 80%;">
+                                    <input class="form-control" type="text" name="ed_nm_medsos" id="ed_nm_medsos" style="width: 80%;" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="ed_tgl_medsos">Tanggal</label>
-                                    <input class="form-control" type="text" name="ed_tgl_medsos" id="ed_tgl_medsos" placeholder="dd-mm-yyyy" style="width: 80%;">
+                                    <input class="form-control" type="text" name="ed_tgl_medsos" id="ed_tgl_medsos" placeholder="dd-mm-yyyy" style="width: 80%;" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="ed_pro_medsos">Brand</label>
                                     <br>
-                                    <select class="select2-A produk" name="ed_pro_medsos" id="ed_pro_medsos" style="width: 80%;">
+                                    <select class="select2-A produk" name="ed_pro_medsos" id="ed_pro_medsos" style="width: 80%;" readonly>
                                         <?php 
                                             echo '<option></option>';
                                             foreach ($dt_pro as $row){
@@ -423,7 +427,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success" id="editMedsos" style="color: white;">Simpan</button>
+                                <input type="hidden" id="ed_kd_medsos" name="ed_kd_medsos">
+                                <button type="submit" class="btn btn-success" id="ed_simpanMedsos" style="color: white;">Simpan</button>
                                 <button type="button" id="close" class="btn btn-danger" onclick="tup()">Batal</button>
                             </div>
                             <div class="modal-footer">
@@ -453,22 +458,74 @@
                             var modal = $(this)
                             var dataString = 'id='+recipient
                             $.get("<?php echo base_url();?>Desain/edit_medsos", dataString, function(data){
-                                $('#ed_nm_medsos').val(data[0].nm_medsos); 
-                                $('#ed_tgl_medsos').val(data[0].tgl);
-                                $('#ed_pro_medsos').val(data[0].pro_medsos);
-                                $('#ed_pro_medsos').trigger('change');
-                                var foko = 'id='+ data[0].kd_medsos;
-                                $.get("<?php echo base_url();?>Desain/get_ed_foto_konsep", foko, function(html){
-                                    $('#if_kon_fo').html(html);
-                                })
-                                var foha = 'id='+ data[0].kd_medsos;
-                                $.get("<?php echo base_url();?>Desain/get_ed_foto_hasil", foha, function(html){
-                                    $('#if_has_fo').html(html);
-                                })
-                            }, 'json')
+                            $('#ed_kd_medsos').val(data[0].kd_medsos);                                 
+                            $('#ed_nm_medsos').val(data[0].nm_medsos);                                 
+                            $('#ed_tgl_medsos').val(data[0].tgl);
+                            $('#ed_pro_medsos').val(data[0].pro_medsos);
+                            $('#ed_pro_medsos').trigger('change');
+                            var foko = 'id='+ data[0].kd_medsos;
+                            $.get("<?php echo base_url();?>Desain/get_ed_foto_konsep", foko, function(html){
+                                $('#if_kon_fo').html(html);
+                            })
+                            var foha = 'id='+ data[0].kd_medsos;
+                            $.get("<?php echo base_url();?>Desain/get_ed_foto_hasil", foha, function(html){
+                                $('#if_has_fo').html(html);
+                            })
+                        }, 'json')
+                    })
+                    
+                    Dropzone.autoDiscover = false;
+
+                    var foto_upload3= new Dropzone("#ed_konsep_fo",{
+                        url: "<?php echo base_url('Desain/proses_ed_upload') ?>",
+                        maxFilesize: 2,
+                        method:"post",
+                        acceptedFiles:"image/*",
+                        paramName:"userfile",
+                        dictInvalidFileType:"Type file ini tidak dizinkan",
+                        addRemoveLinks:true,
+                        autoProcessQueue: false
+                        });
+
+                    var foto_upload4= new Dropzone("#ed_hasil_fo",{
+                        url: "<?php echo base_url('Desain/proses_ed_upload') ?>",
+                        maxFilesize: 2,
+                        method:"post",
+                        acceptedFiles:"image/*",
+                        paramName:"userfile",
+                        dictInvalidFileType:"Type file ini tidak dizinkan",
+                        addRemoveLinks:true,
+                        autoProcessQueue: false
+                        });
+
+
+                    $('#ed_simpanMedsos').click(function(event){
+                        var kd_medsos = $('#ed_kd_medsos').val();
+                        var dataString = 'kd_medsos='+kd_medsos;
+                        foto_upload3.on("sending",function(a,b,c){
+                            a.token='konsep,'+kd_medsos;
+                            c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
+                        });
+                        foto_upload4.on("sending",function(a,b,c){
+                            a.token='hasil,'+kd_medsos;
+                            c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
+                        });
+
+                        $.post("<?php echo base_url();?>Desain/update_action", dataString, function(data){
+                            
+                            foto_upload3.processQueue();
+                            foto_upload4.processQueue();
+                            dz = document.getElementsByClassName('dropzone');
+                            for (i = 0; i < dz.length; i++) {
+                                $('.dropzone')[i].dropzone.files.forEach(function(file) { 
+                                    file.previewElement.remove(); 
+                                });
+                            }
+                            $('.dropzone').removeClass('dz-started');
+                            // $("#input_medsos").trigger("reset");
+                            document.getElementById('in_pro_medsos').value = '0';
+                            $('#editMedsos').modal('hide');
                         })
+                    })
                 </script>
-            </div>
-        </div>
-    </div>
 </div>

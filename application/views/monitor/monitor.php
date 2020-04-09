@@ -1896,18 +1896,6 @@
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Order</a></li>
                             <li class="nav-item"><a id="tab3" class="nav-link" href="#tab_3" >Pengiriman</a></li>
                             <li class="nav-item"><a id="tab4" class="nav-link" href="#tab_4" >Jenis Pembayaran</a></li>
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                                Dropdown <span class="caret"></span>
-                                </a>
-                                <div class="dropdown-menu">
-                                <a class="dropdown-item" tabindex="-1" href="#">Action</a>
-                                <a class="dropdown-item" tabindex="-1" href="#">Another action</a>
-                                <a class="dropdown-item" tabindex="-1" href="#">Something else here</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" tabindex="-1" href="#">Separated link</a>
-                                </div>
-                            </li> -->
                             </ul>
                         </div><!-- /.card-header -->
                     <div class="card-body">

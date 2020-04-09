@@ -147,17 +147,58 @@
                 <?php endif;?>
                 <?php if($this->session->userdata('level')=='4'):?>
                 <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('Rnd')?>">
+                  <a class="nav-link" data-toggle="collapse" href="#sample-pages" aria-expanded="false" aria-controls="sample-pages">
                     <img src="<?php echo base_url('assets/images/icons/9.png')?>" alt="">
-                    <span class="menu-title">RnD</span>
-                </a>
+                    <span class="menu-title">R&D<i class="fa fa-sort-down"></i></span>
+                  </a>
+                  <div class="collapse" id="sample-pages">
+                    <ul class="nav flex-column sub-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('Rnd')?>">
+                          Data R&D
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          Anggaran
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <?php endif;?>
                 <?php if($this->session->userdata('level')=='4'):?>
                 <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('Desain')?>">
+                  <a class="nav-link" data-toggle="collapse" href="#sample-pagess" aria-expanded="false" aria-controls="sample-pages">
                     <img src="<?php echo base_url('assets/images/icons/011-gallery.png')?>" alt="">
-                    <span class="menu-title">Desain</span>
+                    <span class="menu-title">Desain<i class="fa fa-sort-down"></i></span>
+                  </a>
+                  <div class="collapse" id="sample-pagess">
+                    <ul class="nav flex-column sub-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('Desain')?>">
+                          Data Sosmed
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('Desain/tim_sosmed')?>">
+                          Tim Sosmed
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          Anggaran
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <?php endif;?>
+                <?php if($this->session->userdata('level')=='5'):?>
+                  <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('Order')?>">
+                    <img src="<?php echo base_url('assets/images/icons/006-form.png')?>" alt="">
+                    <span class="menu-title">Data Mitra</span>
                 </a>
                 </li>
                 <?php endif;?>

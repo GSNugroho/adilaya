@@ -119,64 +119,64 @@
                     </div>
                     <script>
                         $(document).ready(function(){
-                                    var table=$('#dataRnDM').DataTable({
-                                    language: {
-                                    "sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
-                                    "sProcessing":   "Sedang memproses...",
-                                    "sLengthMenu":   "Tampilkan _MENU_ entri",
-                                    "sZeroRecords":  "Tidak ditemukan data yang sesuai",
-                                    "sInfo":         "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
-                                    "sInfoEmpty":    "Menampilkan 0 sampai 0 dari 0 entri",
-                                    "sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
-                                    "sInfoPostFix":  "",
-                                    "sSearch":       "Cari:",
-                                    "sUrl":          "",
-                                    "oPaginate": {
-                                        "sFirst":    "Pertama",
-                                        "sPrevious": "Sebelumnya",
-                                        "sNext":     "Selanjutnya",
-                                        "sLast":     "Terakhir"
-                                    }
-                                    },
-                                    'order': [[ 0, "desc" ]],
-                                    'processing': true,
-                                    'serverSide': true,
-                                    'serverMethod': 'post',
-                                    'ajax': {
-                                        'url':'<?php echo base_url().'RnD/dt_tbl'?>',
-                                        'data': function(data){
-                                            var awal = $('#tgl1').val();
-                                            var akhir = $('#tgl2').val();
+                            var table=$('#dataRnDM').DataTable({
+                            language: {
+                            "sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
+                            "sProcessing":   "Sedang memproses...",
+                            "sLengthMenu":   "Tampilkan _MENU_ entri",
+                            "sZeroRecords":  "Tidak ditemukan data yang sesuai",
+                            "sInfo":         "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+                            "sInfoEmpty":    "Menampilkan 0 sampai 0 dari 0 entri",
+                            "sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+                            "sInfoPostFix":  "",
+                            "sSearch":       "Cari:",
+                            "sUrl":          "",
+                            "oPaginate": {
+                                "sFirst":    "Pertama",
+                                "sPrevious": "Sebelumnya",
+                                "sNext":     "Selanjutnya",
+                                "sLast":     "Terakhir"
+                            }
+                            },
+                            'order': [[ 0, "desc" ]],
+                            'processing': true,
+                            'serverSide': true,
+                            'serverMethod': 'post',
+                            'ajax': {
+                                'url':'<?php echo base_url().'RnD/dt_tbl'?>',
+                                'data': function(data){
+                                    var awal = $('#tgl1').val();
+                                    var akhir = $('#tgl2').val();
 
-                                            data.searchByAwal = awal;
-                                            data.searchByAkhir = akhir;
-                                        }
-                                    },
-                                    "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-                                            if (aData['last'] === "Di atas 3 bulan") {
-                                                $('td', nRow).css('background-color', 'LightCoral');
-                                            } else {
-                                                $('td', nRow).css('background-color', '');
-                                            }
-                                        },
-                                    'columns': [
-                                        //{ data: 'no' },
-                                        //  { data: 'kd_inv' },
-                                        { data: 'nm_brand' },
-                                        // { data: 'pro_brand' },
-                                        // { data: 'perkap_ket' },
-                                        // { data: 'bb_ket' },
-                                        { data: 'booth' },
-                                        // { data: 'url_ins' },
-                                        { data: 'stiker' },
-                                        { data: 'kemasan' },
-                                        { data: 'action'}
-                                    ]
-                                    });
-                                    $('#tgl2').on('dp.change', function(){
-                                        table.draw(true);
-                                    });
-                                });
+                                    data.searchByAwal = awal;
+                                    data.searchByAkhir = akhir;
+                                }
+                            },
+                            "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                                    if (aData['last'] === "Di atas 3 bulan") {
+                                        $('td', nRow).css('background-color', 'LightCoral');
+                                    } else {
+                                        $('td', nRow).css('background-color', '');
+                                    }
+                                },
+                            'columns': [
+                                //{ data: 'no' },
+                                //  { data: 'kd_inv' },
+                                { data: 'nm_brand' },
+                                // { data: 'pro_brand' },
+                                // { data: 'perkap_ket' },
+                                // { data: 'bb_ket' },
+                                { data: 'booth' },
+                                // { data: 'url_ins' },
+                                { data: 'stiker' },
+                                { data: 'kemasan' },
+                                { data: 'action'}
+                            ]
+                            });
+                            $('#tgl2').on('dp.change', function(){
+                                table.draw(true);
+                            });
+                        });
                     </script>
                     <div class="modal fade" id="inputRnd" tabindex="-1" role="dialog" aria-labelledby="inputRndLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">

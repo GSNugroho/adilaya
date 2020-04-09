@@ -15,6 +15,10 @@
              $this->load->view('desain/desain', $data);
          }
 
+         public function tim_sosmed(){
+            $this->load->view('desain/tim_sosmed');
+         }
+
          function dt_tgl(){
             $list=array();
             $month = date('m');
@@ -80,6 +84,36 @@
                         "hasil_medsos" => $this->upload->data('file_name')
                     );
                     $id = $this->kd_desain_fo();
+                    $this->M_desain->up_foto($id, $data);
+                }
+            }
+        }
+
+         function proses_ed_upload(){
+            $kd = $this->input->post('token_foto', TRUE);
+            $pecah = explode(",", $kd);
+            if($pecah[0] == 'konsep'){
+                $config['upload_path'] = FCPATH.'/upload/Konsep_medsos';
+                $config['allowed_types'] = 'gif|jpg|png|ico';
+                $this->load->library('upload', $config);
+
+                if($this->upload->do_upload('userfile')){
+                    $data = array(
+                        "konsep_medsos" => $this->upload->data('file_name')
+                    );
+                    $id = $pecah[1];
+                    $this->M_desain->up_foto($id, $data);
+                }
+            }else if($pecah[0] == 'hasil'){
+                $config['upload_path'] = FCPATH.'/upload/Hasil_medsos';
+                $config['allowed_types'] = 'gif|jpg|png|ico';
+                $this->load->library('upload', $config);
+
+                if($this->upload->do_upload('userfile')){
+                    $data = array(
+                        "hasil_medsos" => $this->upload->data('file_name')
+                    );
+                    $id = $pecah[1];
                     $this->M_desain->up_foto($id, $data);
                 }
             }
@@ -198,6 +232,82 @@
                 "konsep_medsos"=>$konsep,
                 "hasil_medsos"=>$hasil,
                 "action"=>$edit
+            );
+            }
+
+            ## Response
+            $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordwithFilter,
+            "aaData" => $data
+            );
+
+            echo json_encode($response);
+        }
+
+        function dt_tim(){
+            ## Read value
+            $draw = $_POST['draw'];
+            $baris = $_POST['start'];
+            $rowperpage = $_POST['length']; // Rows display per page
+            $columnIndex = $_POST['order'][0]['column']; // Column index
+            $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
+            $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+            $searchValue = $_POST['search']['value']; // Search value
+
+            ## Search 
+            $searchQuery = " ";
+            $nm_tim = $this->input->post('nm_tim', TRUE);
+            $tgl_tim = $this->input->post('tgl_tim', TRUE);
+            $month = substr($tgl_tim, 0, 2);
+            $year = substr($tgl_tim, 3, 4);
+            if($nm_tim != ''){
+                $searchQuery .= "AND nm_medsos = '$nm_tim' AND MONTH(tgl_medsos) = '$month'  AND YEAR(tgl_medsos) = '$year' ";
+            }else{
+                $searchQuery .= "AND nm_medsos = '' AND MONTH(tgl_medsos) = ''  AND YEAR(tgl_medsos) = '' ";
+            }
+            
+
+            // if($searchValue != ''){
+            // $searchQuery .= " and (
+            // nm_mitra like '%".$searchValue."%' or  
+            // ats_nm_rekening like '%".$searchValue."%' ) ";
+            // }
+
+            ## Total number of records without filtering
+            $sel = $this->M_desain->get_total_dt();
+            // $records = sqlsrv_fetch_array($sel);
+            foreach($sel as $row){
+                $totalRecords = $row->allcount;
+            }
+            
+
+            ## Total number of record with filtering
+            $sel = $this->M_desain->get_total_fl($searchQuery);
+            // $records = sqlsrv_fetch_assoc($sel);
+            foreach($sel as $row){
+                $totalRecordwithFilter = $row->allcount;
+            }
+            
+
+            ## Fetch records
+            $empQuery = $this->M_desain->get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage);
+            $empRecords = $empQuery;
+            $data = array();
+
+            foreach($empRecords as $row){
+            
+            $konsep = '<img src="'.sprintf("../upload/Konsep_medsos/%s", $row->konsep_medsos).'" alt="'.$row->konsep_medsos.'" width="100" height="100">';
+            $hasil = '<img src="'.sprintf("../upload/Hasil_medsos/%s", $row->hasil_medsos).'" alt="'.$row->hasil_medsos.'" width="100" height="100">';
+            $edit = '<button value="'.$row->kd_medsos.'" type="button" class="btn btn-white" data-toggle="modal" data-target="#editMedsos" data-whatever="'.$row->kd_medsos.'" data-keyboard="false" data-backdrop="static">Edit</button>';
+
+            $data[] = array( 
+                "pro_medsos"=>$row->nm_produk,
+                "tgl_medsos"=>date('d-m-Y', strtotime($row->tgl_medsos)),
+                "konsep_medsos"=>$konsep,
+                "hasil_medsos"=>$hasil,
+                // "action"=>$edit
             );
             }
 

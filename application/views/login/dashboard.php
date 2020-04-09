@@ -147,6 +147,28 @@
     </div>
   </div>
 <?php endif;?>
+<?php if($this->session->userdata('level')=='5'):?>
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <h4 class="text-warning">
+            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1"><a href="<?php echo base_url().'AVBooth'?>" style="color: black">Admin Vendor Booth</a></div>
+            </h4>
+          </div>
+          <div class="float-right">
+            <!-- <p class="card-text text-dark">Orders</p> -->
+            <!-- <h4 class="bold-text">656</h4> -->
+          </div>
+        </div>
+        <p class="text-muted">
+          <!-- <i class="fa fa-bookmark-o mr-1" aria-hidden="true"></i> Product-wise sales -->
+        </p>
+      </div>
+    </div>
+  </div>
+<?php endif;?>
 </div>
 <!--<footer class="sticky-footer bg-white">
         <div class="container my-auto">

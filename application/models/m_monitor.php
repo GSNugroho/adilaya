@@ -268,11 +268,19 @@ class M_monitor extends CI_Model{
 		return $query->result();
 	}
 	function get_total_dt(){
-		$query = $this->db->query("SELECT count(*) as allcount FROM adilaya_dt_mitra WHERE 1=1 AND dt_aktif = '1'");
+		$query = $this->db->query("SELECT count(*) as allcount FROM adilaya_dt_mitra JOIN tb_kota on almt_kt_rmh = tb_kota.id
+		LEFT JOIN adilaya_paket on paket = kd_paket
+		LEFT JOIN a_ekspedisi on ekspedisi = kd_ekspedisi
+		LEFT JOIN adilaya_produk on adilaya_dt_mitra.nm_produk = adilaya_produk.kd_produk
+		WHERE 1=1 AND dt_aktif = '1'");
 		return $query->result();
 	}
 	function get_total_fl($searchQuery){
-		$query = $this->db->query("SELECT count(*) as allcount FROM adilaya_dt_mitra WHERE 1=1 AND dt_aktif = '1' ".$searchQuery);
+		$query = $this->db->query("SELECT count(*) as allcount FROM adilaya_dt_mitra JOIN tb_kota on almt_kt_rmh = tb_kota.id
+		LEFT JOIN adilaya_paket on paket = kd_paket
+		LEFT JOIN a_ekspedisi on ekspedisi = kd_ekspedisi
+		LEFT JOIN adilaya_produk on adilaya_dt_mitra.nm_produk = adilaya_produk.kd_produk
+		WHERE 1=1 AND dt_aktif = '1' ".$searchQuery);
 		return $query->result();
 	}
 	function get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
@@ -281,6 +289,7 @@ class M_monitor extends CI_Model{
 		nm_mitra, 
 		tgl_lahir, 
 		almt_rmh, 
+		tambahan,
 		name as nama_kota, 
 		almt_outlet, 
 		almt_kirim, 

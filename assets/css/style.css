@@ -13705,7 +13705,7 @@ pre {
             display: none; }
             .sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-title.show {
               position: absolute;
-              left: 70px;
+              left: 40px;
               top: 0;
               background: #ffffff;
               display: inline-block;
@@ -13727,7 +13727,7 @@ pre {
           background: #ffffff;
           z-index: 1;
           position: absolute;
-          left: 70px;
+          left: 40px;
           box-shadow: 9px 3px 10px rgba(0, 0, 0, 0.08);
           color: #3f4549; }
       .sidebar-icon-only .sidebar .nav.sub-menu {
