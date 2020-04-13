@@ -170,6 +170,8 @@
                                             <label for="jns_eks">Ekspedisi</label>
                                             <input class="form-control" type="text" name="jns_eks" id="jns_eks" style="width: 80%;" readonly>
                                         </div>
+                                        <input type="hidden" id="kd_mitra" name="kd_mitra">
+                                        <input type="hidden" id="kd_produk" name="kd_produk">
                                         <button type="submit" class="btn btn-success" id="simpanRincian" style="color: white;">Kirim</button>
                                         <button type="button" id="close" class="btn btn-danger" onclick="tutup()">Batal</button>
                                     </div>
@@ -202,6 +204,31 @@
                         $('#rinciVendor').modal('hide');
                         console.log('asdf')
                     }
+                    $('#simpanRincian').click(function(){
+                        var kd_mitra = $('#kd_mitra').val();
+                        var kd_produk = $('#kd_produk').val();
+                        dataString += '&kd_mitra='+kd_mitra+'&kd_produk='+kd_produk;
+                        $.post("<?php echo base_url();?>Avbooth/simpanrincian", dataString,function(data){
+                            $('#rinciantahugila').hide();
+                            $('#rincianchickenpopop').hide();
+                            $('#rincianpopchick').hide();
+                            $('#rincianchiclin').hide();
+                            $('#rincianboboochicken').hide();
+                            $('#rinciancutchicken').hide();
+                            $('#rinciancandycrepes').hide();
+                            $('#rincianpisangnugget').hide();
+                            $('#rincianolivgeprek').hide();
+                            $('#rinciantahuhotking').hide();
+                            $('#rincianohana').hide();
+                            $('#rincianchipfinger').hide();
+                            $('#rincianxiaolin').hide();
+                            $('#rincianmartabakmini').hide();
+                            $('#rincianbanananugget').hide();
+                            $('#rincianeattoast').hide();
+                            $('#rincianlianling').hide();
+                            $('#rinciVendor').modal('hide');
+                        })
+                    })
 
                     $('#rinciVendor').on('show.bs.modal', function(event){
                             var button = $(event.relatedTarget)
@@ -215,6 +242,8 @@
                                 $('#pro_mitra').val(data[0].nm_produk);
                                 $('#paket_mitra').val(data[0].nm_paket);
                                 $('#jns_eks').val(data[0].nama_ekspedisi);
+                                $('#kd_mitra').val(data[0].kd_mitra);
+                                $('#kd_produk').val(data[0].kd_produk);
                                 if(data[0].nm_produk == 'Tahu Gila'){
                                     $('#rinciantahugila').show();
                                     if(data[0].nm_paket == 'Paket Tenda'){

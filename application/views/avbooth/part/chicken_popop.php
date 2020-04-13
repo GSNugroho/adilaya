@@ -1,3 +1,4 @@
+<form id="rincicek">
 <table class="table table-bordered">
     <tr>
         <th>PERLENGKAPAN</th>
@@ -192,3 +193,231 @@
         <td><input type="checkbox" name="chipo_lampu" id="chipo_lampu"></td>
     </tr>
 </table>
+</form>
+<script>
+if(document.getElementById('rincianchickenpopop').style.display != 'none'){
+    if($('#chipo_booth_putih').is(':checked')){
+        var booth_putih = 1
+    }else{
+        var booth_putih = 0
+    }
+    if($('#chipo_booth_pallet').is(':checked')){
+        var booth_pallet = 1
+    }else{
+        var booth_pallet = 0
+    }
+    if($('#chipo_mmt_atap').is(':checked')){
+        var mmt_ban_atap = 1
+    }else{
+        var mmt_ban_atap = 0
+    }
+    if($('#chipo_sticker').is(':checked')){
+        var stiker = 1
+    }else{
+        var stiker = 0
+    }
+    if($('#chipo_rol_banner').is(':checked')){
+        var roll_banner = 1
+    }else{
+        var roll_banner = 0
+    }
+    if($('#chipo_deep_fry_gas').is(':checked')){
+        var deep_gas = 1
+    }else{
+        var deep_gas = 0
+    }
+    if($('#chipo_deep_fry_lis').is(':checked')){
+        var deep_lis = 1
+    }else{
+        var deep_lis = 0
+    }
+    if($('#chipo_kom_gas').is(':checked')){
+        var kom_gas = 1
+    }else{
+        var kom_gas = 0
+    }
+    if($('#chipo_rafla').is(':checked')){
+        var rafia_lakban = 1
+    }else{
+        var rafia_lakban = 0
+    }
+    if($('#chipo_lakban').is(':checked')){
+        var lakban = 1
+    }else{
+        var lakban = 0
+    }
+    if($('#chipo_kardus').is(':checked')){
+        var kardus = 1
+    }else{
+        var kardus = 0
+    }
+    if($('#chipo_sel_reg').is(':checked')){
+        var selreg = 1
+    }else{
+        var selreg = 0
+    }
+    if($('#chipo_wajan').is(':checked')){
+        var wajan = 1
+    }else{
+        var wajan = 0
+    }
+    if($('#chipo_irus').is(':checked')){
+        var irus = 1
+    }else{
+        var irus = 0
+    }
+    if($('#chipo_sotil').is(':checked')){
+        var sotil = 1
+    }else{
+        var sotil = 0
+    }
+    if($('#chipo_saringan').is(':checked')){
+        var saringan = 1
+    }else{
+        var saringan = 0
+    }
+    if($('#chipo_toptep').is(':checked')){
+        var top_tep = 1
+    }else{
+        var top_tep = 0
+    }
+    if($('#chipo_baskom').is(':checked')){
+        var bas_stain = 1
+    }else{
+        var bas_stain = 0
+    }
+    if($('#chipo_timbangan').is(':checked')){
+        var timbangan = 1
+    }else{
+        var timbangan = 0
+    }
+    if($('#chipo_btol').is(':checked')){
+        var bot_kaca = 1
+    }else{
+        var bot_kaca = 0
+    }
+    if($('#chipo_wdah').is(':checked')){
+        var wad_bum = 1
+    }else{
+        var wad_bum = 0
+    }
+    if($('#chipo_sndok').is(':checked')){
+        var sendok = 1
+    }else{
+        var sendok = 0
+    }
+    if($('#chipo_glas_t').is(':checked')){
+        var gelas_takar = 1
+    }else{
+        var gelas_takar = 0
+    }
+    if($('#chipo_capit').is(':checked')){
+        var pencapit = 1
+    }else{
+        var pencapit = 0
+    }
+    if($('#chipo_telenan').is(':checked')){
+        var telenan = 1
+    }else{
+        var telenan = 0
+    }
+    if($('#chipo_pisf').is(':checked')){
+        var pisauf = 1
+    }else{
+        var pisauf = 0
+    }
+    if($('#kanebo').is(':checked')){
+        var kanebo = 1
+    }else{
+        var kanebo = 0
+    }
+    if($('#chipo_ha_glo').is(':checked')){
+        var hand_glo = 1
+    }else{
+        var hand_glo = 0
+    }
+    if($('#chipo_serbet').is(':checked')){
+        var serbet = 1
+    }else{
+        var serbet = 0
+    }
+    if($('#chipo_tusuc').is(':checked')){
+        var tusuk_chic = 1
+    }else{
+        var tusuk_chic = 0
+    }
+    if($('#chipo_sermer').is(':checked')){
+        var ser_mer = 1
+    }else{
+        var ser_mer = 0
+    }
+    if($('#chipo_boxes').is(':checked')){
+        var ice_box = 1
+    }else{
+        var ice_box = 0
+    }
+    if($('#chipo_sukon').is(':checked')){
+        var sur_kon = 1
+    }else{
+        var sur_kon = 0
+    }
+    if($('#chipo_id_card').is(':checked')){
+        var idcard = 1
+    }else{
+        var idcard = 0
+    }
+    if($('#chipo_cel_mer').is(':checked')){
+        var cel_mer = 1
+    }else{
+        var cel_mer = 0
+    }
+    if($('#chipo_cel').is(':checked')){
+        var celmek = 1
+    }else{
+        var celmek = 0
+    }
+    if($('#chipo_lampu').is(':checked')){
+        var lam_set = 1
+    }else{
+        var lam_set = 0
+    }
+    
+    dataString = 'booth_putih='+booth_putih
+        +'&booth_pallet='+booth_pallet
+        +'&mmt_ban_atap='+mmt_ban_atap
+        +'&stiker='+stiker
+        +'&roll_banner='+roll_banner
+        +'&deep_gas='+deep_gas
+        +'&deep_lis='+deep_lis
+        +'&kom_gas='+kom_gas
+        +'&rafia_lakban='+rafia_lakban
+        +'&lakban='+lakban
+        +'&kardus='+kardus
+        +'&selreg='+selreg
+        +'&wajan='+wajan
+        +'&irus='+irus
+        +'&sotil='+sotil
+        +'&saringan='+saringan
+        +'&top_tep='+top_tep
+        +'&bas_stain='+bas_stain
+        +'&timbangan='+timbangan
+        +'&bot_kaca='+bot_kaca
+        +'&wad_bum='+wad_bum
+        +'&sendok='+sendok
+        +'&gelas_takar='+gelas_takar
+        +'&pencapit='+pencapit
+        +'&telenan='+telenan
+        +'&pisauf='+pisauf
+        +'&kanebo='+kanebo
+        +'&hand_glo='+hand_glo
+        +'&serbet='+serbet
+        +'&tusuk_chic='+tusuk_chic
+        +'&ser_mer='+ser_mer
+        +'&ice_box='+ice_box
+        +'&sur_kon='+sur_kon
+        +'&idcard='+idcard
+        +'&cel_mer='+cel_mer
+        +'&celmek='+celmek
+        +'&lam_set='+lam_set
+}
+</script>

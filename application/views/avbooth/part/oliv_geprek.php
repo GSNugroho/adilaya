@@ -1,3 +1,4 @@
+<form id="rincicek">
 <table class="table table-bordered">
     <tr>    
         <th>PERLENGKAPAN</th>
@@ -176,3 +177,213 @@
         <td><input type="checkbox" name="oligep_lampu" id="oligep_lampu"></td>
     </tr>
 </table>
+</form>
+<script>
+if(document.getElementById('rincianolivgeprek').style.display != 'none'){
+    if($('#oligep_booth_putih').is(':checked')){
+        var booth_putih = 1
+    }else{
+        var booth_putih = 0
+    }
+    if($('#oligep_sticker').is(':checked')){
+        var stiker_set = 1
+    }else{
+        var stiker_set = 0
+    }
+    if($('#oligep_rol_banner').is(':checked')){
+        var roll_banner = 1
+    }else{
+        var roll_banner = 0
+    }
+    if($('#oligep_mmt_atap').is(':checked')){
+        var mmt = 1
+    }else{
+        var mmt = 0
+    }
+    if($('#oligep_cobex').is(':checked')){
+        var cobex = 1
+    }else{
+        var cobex = 0
+    }
+    if($('#oligep_deep_gas').is(':checked')){
+        var deep_gas = 1
+    }else{
+        var deep_gas = 0
+    }
+    if($('#oligep_se_reg').is(':checked')){
+        var sel_reg = 1
+    }else{
+        var sel_reg = 0
+    }
+    if($('#oligep_ricecok').is(':checked')){
+        var rice_cook = 1
+    }else{
+        var rice_cook = 0
+    }
+    if($('#oligep_gastor').is(':checked')){
+        var win_gas = 1
+    }else{
+        var win_gas = 0
+    }
+    if($('#oligep_termosnasi').is(':checked')){
+        var termos_nas = 1
+    }else{
+        var termos_nas = 0
+    }
+    if($('#oligep_boxs').is(':checked')){
+        var icebox = 1
+    }else{
+        var icebox = 0
+    }
+    if($('#oligep_basteps').is(':checked')){
+        var bas_tep = 1
+    }else{
+        var bas_tep = 0
+    }
+    if($('#oligep_topsay').is(':checked')){
+        var top_say = 1
+    }else{
+        var top_say = 0
+    }
+    if($('#oligep_bassam').is(':checked')){
+        var bas_sam = 1
+    }else{
+        var bas_sam = 0
+    }
+    if($('#oligep_watamke').is(':checked')){
+        var wad_tam = 1
+    }else{
+        var wad_tam = 0
+    }
+    if($('#oligep_namst').is(':checked')){
+        var nampan_stain = 1
+    }else{
+        var nampan_stain = 0
+    }
+    if($('#oligep_parkej').is(':checked')){
+        var parutan = 1
+    }else{
+        var parutan = 0
+    }
+    if($('#oligep_sopla').is(':checked')){
+        var sol_plas = 1
+    }else{
+        var sol_plas = 0
+    }
+    if($('#oligep_telenan').is(':checked')){
+        var talenan = 1
+    }else{
+        var talenan = 0
+    }
+    if($('#oligep_pisaub').is(':checked')){
+        var pisau_b = 1
+    }else{
+        var pisau_b = 0
+    }
+    if($('#oligep_getak').is(':checked')){
+        var gel_tak = 1
+    }else{
+        var gel_tak = 0
+    }
+    if($('#oligep_sendok').is(':checked')){
+        var sendok = 1
+    }else{
+        var sendok = 0
+    }
+    if($('#oligep_capitan').is(':checked')){
+        var capitan = 1
+    }else{
+        var capitan = 0
+    }
+    if($('#oligep_serbet').is(':checked')){
+        var serbet = 1
+    }else{
+        var serbet = 0
+    }
+    if($('#oligep_kanebo').is(':checked')){
+        var kanebo = 1
+    }else{
+        var kanebo = 0
+    }
+    if($('#oligep_hand_glo').is(':checked')){
+        var hand_glo = 1
+    }else{
+        var hand_glo = 0
+    }
+    if($('#oligep_cel_mer').is(':checked')){
+        var celmek = 1
+    }else{
+        var celmek = 0
+    }
+    if($('#oligep_sermer').is(':checked')){
+        var seragam = 1
+    }else{
+        var seragam = 0
+    }
+    if($('#oligep_sukon').is(':checked')){
+        var sur_kon = 1
+    }else{
+        var sur_kon = 0
+    }
+    if($('#oligep_id_card').is(':checked')){
+        var idcard = 1
+    }else{
+        var idcard = 0
+    }
+    if($('#oligep_rafla').is(':checked')){
+        var rafia_lak = 1
+    }else{
+        var rafia_lak = 0
+    }
+    if($('#oligep_lakban').is(':checked')){
+        var lakban = 1
+    }else{
+        var lakban = 0
+    }
+    if($('#oligep_kardus').is(':checked')){
+        var kardus = 1
+    }else{
+        var kardus = 0
+    }
+    if($('#oligep_lampu').is(':checked')){
+        var lamp_set = 1
+    }else{
+        var lamp_set = 0
+    }
+
+    dataString = 'booth_putih='+booth_putih
+    +'&stiker_set='+stiker_set
+    +'&roll_banner='+roll_banner
+    +'&mmt='+mmt
+    +'&cobex='+cobex
+    +'&deep_gas='+deep_gas
+    +'&sel_reg='+sel_reg
+    +'&rice_cook='+rice_cook
+    +'&win_gas='+win_gas
+    +'&termos_nas='+termos_nas
+    +'&icebox='+icebox
+    +'&bas_tep='+bas_tep
+    +'&top_say='+top_say
+    +'&bas_sam='+bas_sam
+    +'&wad_tam='+wad_tam
+    +'&nampan_stain='+nampan_stain
+    +'&parutan='+parutan
+    +'&sol_plas='+sol_plas
+    +'&talenan='+talenan
+    +'&pisau_b='+pisau_b
+    +'&gel_tak='+gel_tak
+    +'&sendok='+sendok
+    +'&capitan='+capitan
+    +'&serbet='+serbet
+    +'&kanebo='+kanebo
+    +'&hand_glo='+hand_glo
+    +'&celmek='+celmek
+    +'&seragam='+seragam
+    +'&sur_kon='+sur_kon
+    +'&idcard='+idcard
+    +'&rafia_lak='+rafia_lak
+    +'&lakban='+lakban
+    +'&kardus='+kardus
+    +'&lamp_set='+lamp_set
+}
+</script>

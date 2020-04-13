@@ -1,3 +1,4 @@
+<form id="rincicek">
 <table class="table table-boredered">
     <tr>
         <th>PERLENGKAPAN</th>
@@ -200,3 +201,203 @@
         <td><input type="checkbox" name="eattoa_scke" id="eattoa_scke"></td>
     </tr>
 </table>
+</form>
+<script>
+if(document.getElementById('rincianeattoast').style.display != 'none'){
+    if($('#eattoa_booth_putih').is(':checked')){
+        var booth_put = 1
+    }else{
+        var booth_put = 0
+    }
+    if($('#eattoa_sticker').is(':checked')){
+        var stiker = 1
+    }else{
+        var stiker = 0
+    }
+    if($('#eattoa_neon').is(':checked')){
+        var neon_box = 1
+    }else{
+        var neon_box = 0
+    }
+    if($('#eattoa_roll_ban').is(':checked')){
+        var roll_banner = 1
+    }else{
+        var roll_banner = 0
+    }
+    if($('#eattoa_neonbaut').is(':checked')){
+        var baut_neon = 1
+    }else{
+        var baut_neon = 0
+    }
+    if($('#eattoa_neonled').is(':checked')){
+        var neon_led = 1
+    }else{
+        var neon_led = 0
+    }
+    if($('#eattoa_pan').is(':checked')){
+        var pan = 1
+    }else{
+        var pan = 0
+    }
+    if($('#eattoa_kom_gas').is(':checked')){
+        var kom_gas = 1
+    }else{
+        var kom_gas = 0
+    }
+    if($('#eattoa_bosaus').is(':checked')){
+        var bot_saus = 1
+    }else{
+        var bot_saus = 0
+    }
+    if($('#eattoa_boxtop').is(':checked')){
+        var box_top = 1
+    }else{
+        var box_top = 0
+    }
+    if($('#eattoa_clemek').is(':checked')){
+        var celmek = 1
+    }else{
+        var celmek = 0
+    }
+    if($('#eattoa_seragam').is(':checked')){
+        var seragam = 1
+    }else{
+        var seragam = 0
+    }
+    if($('#eattoa_telenan').is(':checked')){
+        var talenan = 1
+    }else{
+        var talenan = 0
+    }
+    if($('#eattoa_sopla').is(':checked')){
+        var sol_plas = 1
+    }else{
+        var sol_plas = 0
+    }
+    if($('#eattoa_pisaub').is(':checked')){
+        var pisau_b = 1
+    }else{
+        var pisau_b = 0
+    }
+    if($('#eattoa_scrapsand').is(':checked')){
+        var scrap = 1
+    }else{
+        var scrap = 0
+    }
+    if($('#eattoa_parkej').is(':checked')){
+        var par_keju = 1
+    }else{
+        var par_keju = 0
+    }
+    if($('#eattoa_kanebo').is(':checked')){
+        var kanebo = 1
+    }else{
+        var kanebo = 0
+    }
+    if($('#eattoa_serbet').is(':checked')){
+        var serbet = 1
+    }else{
+        var serbet = 0
+    }
+    if($('#eattoa_masker').is(':checked')){
+        var masker = 1
+    }else{
+        var masker = 0
+    }
+    if($('#eattoa_hand_glo').is(':checked')){
+        var hand_glo = 1
+    }else{
+        var hand_glo = 0
+    }
+    if($('#eattoa_nmst').is(':checked')){
+        var nampan_stain = 1
+    }else{
+        var nampan_stain = 0
+    }
+    if($('#eattoa_nmst').is(':checked')){
+        var colling = 1
+    }else{
+        var colling = 0
+    }
+    if($('#eattoa_capitan').is(':checked')){
+        var capitan = 1
+    }else{
+        var capitan = 0
+    }
+    if($('#eattoa_kuas').is(':checked')){
+        var kuas = 1
+    }else{
+        var kuas = 0
+    }
+    if($('#eattoa_se_reg').is(':checked')){
+        var sel_reg = 1
+    }else{
+        var sel_reg = 0
+    }
+    if($('#eattoa_boxes').is(':checked')){
+        var icebox = 1
+    }else{
+        var icebox = 0
+    }
+    if($('#eattoa_kontainer').is(':checked')){
+        var kontainer = 1
+    }else{
+        var kontainer = 0
+    }
+    if($('#eattoa_top_telur').is(':checked')){
+        var top_tel = 1
+    }else{
+        var top_tel = 0
+    }
+    if($('#eattoa_cet_telur').is(':checked')){
+        var cet_tel = 1
+    }else{
+        var cet_tel = 0
+    }
+    if($('#eattoa_ra_la').is(':checked')){
+        var rafia_lak = 1
+    }else{
+        var rafia_lak = 0
+    }
+    if($('#eattoa_kardus').is(':checked')){
+        var kardus = 1
+    }else{
+        var kardus = 0
+    }
+    if($('#eattoa_sukon').is(':checked')){
+        var sur_kon = 1
+    }else{
+        var sur_kon = 0
+    }
+    if($('#eattoa_id_ca').is(':checked')){
+        var idcard = 1
+    }else{
+        var idcard = 0
+    }
+    if($('#eattoa_top_mar').is(':checked')){
+        var top_mar = 1
+    }else{
+        var top_mar = 0
+    }
+    if($('#eattoa_sendok').is(':checked')){
+        var sendok = 1
+    }else{
+        var sendok = 0
+    }
+    if($('#eattoa_tsendok').is(':checked')){
+        var tempt_sen = 1
+    }else{
+        var tempt_sen = 0
+    }
+    if($('#eattoa_pisausay').is(':checked')){
+        var pisau_say = 1
+    }else{
+        var pisau_say = 0
+    }
+    if($('#eattoa_scke').is(':checked')){
+        var scrap_kecil = 1
+    }else{
+        var scrap_kecil = 0
+    }
+}
+</script>
