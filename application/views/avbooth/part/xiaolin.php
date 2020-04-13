@@ -19,7 +19,7 @@
         <td align="center">1</td>
         <td><input type="checkbox" name="cek_roll_ban" id="cek_roll_ban"></td>
     </tr>
-    <tr id="tenda" style="display: none;">
+    <tr id="xia_tenda" style="display: none;">
         <td>TENDA</td>
         <td align="center">1</td>
         <td><input type="checkbox" name="cek_tenda" id="cek_tenda"></td>

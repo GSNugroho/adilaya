@@ -4,180 +4,175 @@
         <th>QTY</th>
         <th>CEKLIST</th>
     </tr>
-    <tr id="bo_put" style="display: none;">
+    <tr id="candy_bo_put" style="display: none;">
         <td>BOOTH PUTIH</td>
-        <td>1</td>
-        <input type="checkbox" name="cek_booth_putih" id="cek_booth_putih">
+        <td align="center">1</td>
+        <td><input type="checkbox" name="cancre_booth_putih" id="cancre_booth_putih"></td>
     </tr>
-    <tr id="bo_pall" style="display: none;">
+    <tr id="candy_bo_pall" style="display: none;">
         <td>BOOTH PALLET</td>
-        <td>1</td>
-        <input type="checkbox" name="cek_booth_pallet" id="cek_booth_pallet">
+        <td align="center">1</td>
+        <td><input type="checkbox" name="cancre_booth_pallet" id="cancre_booth_pallet"></td>
     </tr>
     <tr>
         <td>ROLL BANNER</td>
-        <td>1</td>
-        <input type="checkbox" name="cek_rol_banner" id="cek_rol_banner">
+        <td align="center">1</td>
+        <td><input type="checkbox" name="cancre_rol_banner" id="cancre_rol_banner"></td>
     </tr>
-    <tr id="tenda" style="display: none;">
+    <tr id="candy_tenda" style="display: none;">
         <td>TENDA</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_tenda" id="cek_tenda"></td>
+        <td><input type="checkbox" name="cancre_tenda" id="cancre_tenda"></td>
     </tr>
     <tr>
         <td>STICKER</td>
-        <td>1</td>
-        <input type="checkbox" name="cek_sticker" id="cek_sticker">
+        <td align="center">1</td>
+        <td><input type="checkbox" name="cancre_sticker" id="cancre_sticker"></td>
     </tr>
     <tr>
         <td>STICKER TOPLES</td>
-        <td>1</td>
-        <input type="checkbox" name="cek_stickert" id="cek_stickert">
+        <td align="center">1</td>
+        <td><input type="checkbox" name="cancre_stickert" id="cancre_stickert"></td>
     </tr>
     <tr>
         <td>PAN CREPES</td>
-        <td>1</td>
-        <input type="checkbox" name="cek_pan" id="cek_pan">
+        <td align="center">1</td>
+        <td><input type="checkbox" name="cancre_pan" id="cancre_pan"></td>
     </tr>
     <tr>
         <td>SEGITIGA CREPES</td>
-        <td>1</td>
-        <input type="checkbox" name="cek_segitiga" id="cek_segitiga">
+        <td align="center">1</td>
+        <td><input type="checkbox" name="cancre_segitiga" id="cancre_segitiga"></td>
     </tr>
     <tr>
         <td>KOMPOR GAS</td>
-        <td>1</td>
-        <input type="checkbox" name="cek_kom_gas" id="cek_kom_gas">
+        <td align="center">1</td>
+        <td><input type="checkbox" name="cancre_kom_gas" id="cancre_kom_gas"></td>
     </tr>
     <tr>
         <td>SELANG + REGULATOR</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_se_reg" id="cek_se_reg"></td>
+        <td><input type="checkbox" name="cancre_se_reg" id="cancre_se_reg"></td>
     </tr>
     <tr>
         <td>MIXER SET</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_mixset" id="cek_mixset"></td>
+        <td><input type="checkbox" name="cancre_mixset" id="cancre_mixset"></td>
     </tr>
     <tr>
         <td>TOPLES ADONAN</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_topad" id="cek_topad"></td>
+        <td><input type="checkbox" name="cancre_topad" id="cancre_topad"></td>
     </tr>
     <tr>
         <td>TOPLES TOPPING</td>
         <td align="center">7</td>
-        <td><input type="checkbox" name="cek_toptop" id="cek_toptop"></td>
+        <td><input type="checkbox" name="cancre_toptop" id="cancre_toptop"></td>
     </tr>
     <tr>
         <td>TOPLES SELAI</td>
         <td align="center">3</td>
-        <td><input type="checkbox" name="cek_topsel" id="cek_topsel"></td>
+        <td><input type="checkbox" name="cancre_topsel" id="cancre_topsel"></td>
     </tr>
     <tr>
         <td>GELAS TAKAR</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_getak" id="cek_getak"></td>
+        <td><input type="checkbox" name="cancre_getak" id="cancre_getak"></td>
     </tr>
     <tr>
         <td>SENDOK ADONAN</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_senad" id="cek_senad"></td>
+        <td><input type="checkbox" name="cancre_senad" id="cancre_senad"></td>
     </tr>
     <tr>
         <td>KUAS</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_kuas" id="cek_kuas"></td>
-    </tr>
-    <tr>
-        <td>KUAS</td>
-        <td align="center">1</td>
-        <td><input type="checkbox" name="cek_kuas" id="cek_kuas"></td>
+        <td><input type="checkbox" name="cancre_kuas" id="cancre_kuas"></td>
     </tr>
     <tr>
         <td>PARUTAN KEJU</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_parkej" id="cek_parkej"></td>
+        <td><input type="checkbox" name="cancre_parkej" id="cancre_parkej"></td>
     </tr>
     <tr>
         <td>NAMPAN STAINLESS</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_namst" id="cek_namst"></td>
+        <td><input type="checkbox" name="cancre_namst" id="cancre_namst"></td>
     </tr>
     <tr>
         <td>SOLET PLASTIK</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="cek_sopla" id="cek_sopla"></td>
+        <td><input type="checkbox" name="cancre_sopla" id="cancre_sopla"></td>
     </tr>
     <tr>
         <td>SENDOK TOPPING</td>
         <td align="center">7</td>
-        <td><input type="checkbox" name="cek_setop" id="cek_setop"></td>
+        <td><input type="checkbox" name="cancre_setop" id="cancre_setop"></td>
     </tr>
     <tr>
         <td>SCRAP CREPES</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_scre" id="cek_scre"></td>
+        <td><input type="checkbox" name="cancre_scre" id="cancre_scre"></td>
     </tr>
     <tr>
         <td>SENDOK</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_sendok" id="cek_sendok"></td>
+        <td><input type="checkbox" name="cancre_sendok" id="cancre_sendok"></td>
     </tr>
     <tr>
         <td>HANDGLOVES</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_hand_glo" id="cek_hand_glo"></td>
+        <td><input type="checkbox" name="cancre_hand_glo" id="cancre_hand_glo"></td>
     </tr>
     <tr>
         <td>LAP SERBET</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_serbet" id="cek_serbet"></td>
+        <td><input type="checkbox" name="cancre_serbet" id="cancre_serbet"></td>
     </tr>
     <tr>
         <td>KANEBO</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_kanebo" id="cek_kanebo"></td>
+        <td><input type="checkbox" name="cancre_kanebo" id="cancre_kanebo"></td>
     </tr>
     <tr>
         <td>SERAGAM *MERAH</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="cek_semer" id="cek_semer"></td>
+        <td><input type="checkbox" name="cancre_semer" id="cancre_semer"></td>
     </tr>
     <tr>
         <td>SURAT KONTRAK</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_sukon" id="cek_sukon"></td>
+        <td><input type="checkbox" name="cancre_sukon" id="cancre_sukon"></td>
     </tr>
     <tr>
         <td>ID CARD</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="cek_id_ca" id="cek_id_ca"></td>
+        <td><input type="checkbox" name="cancre_id_ca" id="cancre_id_ca"></td>
     </tr>
-    <tr id="rafia" style="display: none;">
+    <tr id="candy_rafia" style="display: none;">
         <td>RAFIA LAKBAN</td>
         <td>1</td>
-        <input type="checkbox" name="cek_rafla" id="cek_rafla">
+        <td><input type="checkbox" name="cancre_rafla" id="cancre_rafla"></td>
     </tr>
-    <tr id="lakban" style="display: none;">
+    <tr id="candy_lakban" style="display: none;">
         <td>LAKBAN</td>
         <td>1</td>
-        <input type="checkbox" name="cek_lakban" id="cek_lakban">
+        <td><input type="checkbox" name="cancre_lakban" id="cancre_lakban"></td>
     </tr>
     <tr>
         <td>KARDUS</td>
-        <td id="5" style="display: none;">5</td>
-        <td id="1" style="display: none;">1</td>
-        <input type="checkbox" name="cek_kardus" id="cek_kardus">
+        <td id="candy_5" style="display: none;">5</td>
+        <td id="candy_1" style="display: none;">1</td>
+        <td><input type="checkbox" name="cancre_kardus" id="cancre_kardus"></td>
     </tr>
     <tr>
         <td>CELEMEK MERAH</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_cel_mer" id="cek_cel_mer"></td>
+        <td><input type="checkbox" name="cancre_cel_mer" id="cancre_cel_mer"></td>
     </tr>
-    <tr id="lampu" style="display: none;">
+    <tr id="candy_lampu" style="display: none;">
         <td>LAMPU SET</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="cek_lampu" id="cek_lampu"></td>
+        <td><input type="checkbox" name="cancre_lampu" id="cancre_lampu"></td>
     </tr>
 </table>

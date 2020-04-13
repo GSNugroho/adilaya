@@ -196,7 +196,7 @@
                 <?php endif;?>
                 <?php if($this->session->userdata('level')=='5'):?>
                   <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('Order')?>">
+                <a class="nav-link" href="<?php echo base_url('Avbooth')?>">
                     <img src="<?php echo base_url('assets/images/icons/006-form.png')?>" alt="">
                     <span class="menu-title">Data Mitra</span>
                 </a>

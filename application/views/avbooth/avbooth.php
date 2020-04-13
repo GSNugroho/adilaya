@@ -53,6 +53,7 @@
                                 <tr>
                                     <th>Nama Mitra</th>
                                     <th>Alamat Kirim</th>
+                                    <th>Kota</th>
                                     <th>Brand</th>
                                     <th>Paket</th>
                                     <th>Keterangan</th>
@@ -92,6 +93,7 @@
                             'columns': [
                                 { data: 'nm_mitra' },
                                 { data: 'almt_kirim' },
+                                { data: 'kota' },
                                 { data: 'nm_produk' },
                                 { data: 'paket' },
                                 { data: 'tambahan' },
@@ -132,6 +134,10 @@
                                             <input class="form-control" type="text" name="almt_kirim" id="almt_kirim" style="width: 80%;" readonly>
                                         </div>
                                         <div class="form-group">
+                                            <label for="nm_kota">Kota</label>
+                                            <input class="form-control" type="text" name="almt_kt_kirim" id="almt_kt_kirim" style="width: 80%;" readonly>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="pro_mitra">Brand</label>
                                             <input class="form-control" type="text" name="pro_mitra" id="pro_mitra" style="width: 80%;" readonly>
                                         </div>
@@ -152,11 +158,20 @@
                                         <div id="rincianolivgeprek" style="display: none;"><?php $this->load->view('avbooth/part/oliv_geprek')?></div>
                                         <div id="rinciantahuhotking" style="display: none;"><?php $this->load->view('avbooth/part/tahu_hot_king')?></div>
                                         <div id="rincianohana" style="display: none;"><?php $this->load->view('avbooth/part/ohana')?></div>
-                                        <div id="rincianchipfinger" style="display: none;"><?php $this->load->view('avbooth/part/chipfinger')?></div>
+                                        <div id="rincianchipfinger" style="display: none;"><?php $this->load->view('avbooth/part/chip_finger')?></div>
                                         <div id="rincianxiaolin" style="display: none;"><?php $this->load->view('avbooth/part/xiaolin')?></div>
+                                        <div id="rincianmartabakmini" style="display: none;"><?php $this->load->view('avbooth/part/martabak_mini')?></div>
+                                        <div id="rincianbanananugget" style="display: none;"><?php $this->load->view('avbooth/part/banana_nugget')?></div>
+                                        <div id="rincianeattoast" style="display: none;"><?php $this->load->view('avbooth/part/eat_toast')?></div>
+                                        <div id="rincianlianling" style="display: none;"><?php $this->load->view('avbooth/part/lianling')?></div>
                                     </div>
                                     <div class="tab-pane" id="tab_3">
-                                        
+                                        <div class="form-group">
+                                            <label for="jns_eks">Ekspedisi</label>
+                                            <input class="form-control" type="text" name="jns_eks" id="jns_eks" style="width: 80%;" readonly>
+                                        </div>
+                                        <button type="submit" class="btn btn-success" id="simpanRincian" style="color: white;">Kirim</button>
+                                        <button type="button" id="close" class="btn btn-danger" onclick="tutup()">Batal</button>
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +182,25 @@
                 </div>
                 <script>
                     function tutup(){
+                        $('#rinciantahugila').hide();
+                        $('#rincianchickenpopop').hide();
+                        $('#rincianpopchick').hide();
+                        $('#rincianchiclin').hide();
+                        $('#rincianboboochicken').hide();
+                        $('#rinciancutchicken').hide();
+                        $('#rinciancandycrepes').hide();
+                        $('#rincianpisangnugget').hide();
+                        $('#rincianolivgeprek').hide();
+                        $('#rinciantahuhotking').hide();
+                        $('#rincianohana').hide();
+                        $('#rincianchipfinger').hide();
+                        $('#rincianxiaolin').hide();
+                        $('#rincianmartabakmini').hide();
+                        $('#rincianbanananugget').hide();
+                        $('#rincianeattoast').hide();
+                        $('#rincianlianling').hide();
                         $('#rinciVendor').modal('hide');
+                        console.log('asdf')
                     }
 
                     $('#rinciVendor').on('show.bs.modal', function(event){
@@ -178,246 +211,278 @@
                             $.get("<?php echo base_url();?>AVBooth/get_data_mitra", dataString, function(data){
                                 $('#nm_mitra').val(data[0].nm_mitra);
                                 $('#almt_kirim').val(data[0].almt_kirim);
+                                $('#almt_kt_kirim').val(data[0].nama_kota);
                                 $('#pro_mitra').val(data[0].nm_produk);
                                 $('#paket_mitra').val(data[0].nm_paket);
+                                $('#jns_eks').val(data[0].nama_ekspedisi);
                                 if(data[0].nm_produk == 'Tahu Gila'){
                                     $('#rinciantahugila').show();
                                     if(data[0].nm_paket == 'Paket Tenda'){
-                                        $('#tenpre').show();
-                                        $('#tenda').show();
-                                        $('#komgas').show();
-                                        $('#wajan').show();
-                                        $('#irus').show();
-                                        $('#sotil').show();
-                                        $('#saringan').show();
-                                        $('#lampu').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
+                                        $('#tahu_tenpre').show();
+                                        $('#tahu_tenda').show();
+                                        $('#tahu_komgas').show();
+                                        $('#tahu_wajan').show();
+                                        $('#tahu_irus').show();
+                                        $('#tahu_sotil').show();
+                                        $('#tahu_saringan').show();
+                                        $('#tahu_lampu').show();
+                                        $('#tahu_rafia').show();
+                                        $('#tahu_5').show();
                                     }else if(data[0].nm_paket == 'Paket Premium'){
-                                        $('#tenpre').show();
-                                        $('#deepgas').show();
-                                        $('#deeplis').show();
-                                        $('#lampu').show();
-                                        $('#rafia').show();
-                                        $('#4').show();
+                                        $('#tahu_tenpre').show();
+                                        $('#tahu_deepgas').show();
+                                        $('#tahu_deeplis').show();
+                                        $('#tahu_lampu').show();
+                                        $('#tahu_rafia').show();
+                                        $('#tahu_4').show();
                                     }else if(data[0].nm_paket == 'Paket Indoor'){
-                                        $('#indoor').show();
-                                        $('#komgas').show();
-                                        $('#wajan').show();
-                                        $('#irus').show();
-                                        $('#sotil').show();
-                                        $('#saringan').show();
-                                        $('#lampu').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
+                                        $('#tahu_indoor').show();
+                                        $('#tahu_komgas').show();
+                                        $('#tahu_wajan').show();
+                                        $('#tahu_irus').show();
+                                        $('#tahu_sotil').show();
+                                        $('#tahu_saringan').show();
+                                        $('#tahu_lampu').show();
+                                        $('#tahu_rafia').show();
+                                        $('#tahu_5').show();
                                     }else if(data[0].nm_paket == 'Paket Tanpa Booth'){
-                                        $('#komgas').show();
-                                        $('#wajan').show();
-                                        $('#irus').show();
-                                        $('#sotil').show();
-                                        $('#saringan').show();
-                                        $('#lakban').show();
-                                        $('#1').show();
+                                        $('#tahu_komgas').show();
+                                        $('#tahu_wajan').show();
+                                        $('#tahu_irus').show();
+                                        $('#tahu_sotil').show();
+                                        $('#tahu_saringan').show();
+                                        $('#tahu_lakban').show();
+                                        $('#tahu_1').show();
                                     }
                                 }else if(data[0].nm_produk == 'Chicken Popop'){
                                     $('#rincianchickenpopop').show();
                                     if(data[0].nm_paket == 'Paket A'){
-                                        $('#bo_put').show();
-                                        $('#deep_gas').show();
-                                        $('#selang').show();
-                                        $('#rafia').show();
-                                        $('#4').show();
-                                        $('#botol_kaca').show();
-                                        $('#celmer').show();
-                                        $('#lampu').show();
+                                        $('#chicken_bo_put').show();
+                                        $('#chicken_deep_gas').show();
+                                        $('#chicken_selang').show();
+                                        $('#chicken_rafia').show();
+                                        $('#chicken_4').show();
+                                        $('#chicken_botol_kaca').show();
+                                        $('#chicken_celmer').show();
+                                        $('#chicken_lampu').show();
                                     }else if(data[0].nm_paket == 'Paket B'){
-                                        $('#bo_put').show();
-                                        $('#deep_lis').show();
-                                        $('#rafia').show();
-                                        $('#4').show();
-                                        $('#botol_kaca').show();
-                                        $('#celmer').show();
-                                        $('#lampu').show();
+                                        $('#chicken_bo_put').show();
+                                        $('#chicken_deep_lis').show();
+                                        $('#chicken_rafia').show();
+                                        $('#chicken_4').show();
+                                        $('#chicken_botol_kaca').show();
+                                        $('#chicken_celmer').show();
+                                        $('#chicken_lampu').show();
                                     }else if(data[0].nm_paket == 'Paket C'){
-                                        $('#bo_put').show();
-                                        $('#kom_gas').show();
-                                        $('#selang').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#wajan').show();
-                                        $('#irus').show();
-                                        $('#sotil').show();
-                                        $('#saringan').show();
-                                        $('#botol_kaca').show();
-                                        $('#celmer').show();
-                                        $('#lampu').show();
+                                        $('#chicken_bo_put').show();
+                                        $('#chicken_kom_gas').show();
+                                        $('#chicken_selang').show();
+                                        $('#chicken_rafia').show();
+                                        $('#chicken_5').show();
+                                        $('#chicken_wajan').show();
+                                        $('#chicken_irus').show();
+                                        $('#chicken_sotil').show();
+                                        $('#chicken_saringan').show();
+                                        $('#chicken_botol_kaca').show();
+                                        $('#chicken_celmer').show();
+                                        $('#chicken_lampu').show();
                                     }else if(data[0].nm_paket == 'Paket D'){
-                                        $('#bo_pall').show();
-                                        $('#kom_gas').show();
-                                        $('#selang').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#wajan').show();
-                                        $('#irus').show();
-                                        $('#sotil').show();
-                                        $('#saringan').show();
-                                        $('#botol_kaca').show();
-                                        $('#celmer').show();
-                                        $('#lampu').show();
+                                        $('#chicken_bo_pall').show();
+                                        $('#chicken_kom_gas').show();
+                                        $('#chicken_selang').show();
+                                        $('#chicken_rafia').show();
+                                        $('#chicken_5').show();
+                                        $('#chicken_wajan').show();
+                                        $('#chicken_irus').show();
+                                        $('#chicken_sotil').show();
+                                        $('#chicken_saringan').show();
+                                        $('#chicken_botol_kaca').show();
+                                        $('#chicken_celmer').show();
+                                        $('#chicken_lampu').show();
                                     }else if(data[0].nm_paket == 'Paket E'){
-                                        $('#bo_pall').show();
                                         $('#kom_gas').show();
                                         $('#selang').show();
-                                        $('#lakban').show();
-                                        $('#1').show();
-                                        $('#wajan').show();
-                                        $('#irus').show();
-                                        $('#sotil').show();
-                                        $('#saringan').show();
-                                        $('#wadah_bumbu').show();
-                                        $('#polos').show();
+                                        $('#chicken_lakban').show();
+                                        $('#chicken_1').show();
+                                        $('#chicken_wajan').show();
+                                        $('#chicken_irus').show();
+                                        $('#chicken_sotil').show();
+                                        $('#chicken_saringan').show();
+                                        $('#chicken_wadah_bumbu').show();
+                                        $('#chicken_polos').show();
                                     }
                                 }else if(data[0].nm_produk == 'Popchick Chicken'){
                                     $('#rincianpopchick').show();
                                     if(data[0].nm_paket == 'Tenda Premium'){
-                                        $('#boput').show();
-                                        $('#tenda').show();
-                                        $('#rafia').show();
-                                        $('#4').show();
-                                        $('#deepgas').show();
-                                        $('#btol_bkaca').show();
-                                        $('#lampu').show();
+                                        $('#pop_boput').show();
+                                        $('#pop_tenda').show();
+                                        $('#pop_rafia').show();
+                                        $('#pop_4').show();
+                                        $('#pop_deepgas').show();
+                                        $('#pop_btol_bkaca').show();
+                                        $('#pop_lampu').show();
                                     }else if(data[0].nm_paket == 'Booth 1'){
-                                        $('#boput').show();
-                                        $('#rafia').show();
-                                        $('#4').show();
-                                        $('#deepgas').show();
-                                        $('#btol_bkaca').show();
-                                        $('#lampu').show();
+                                        $('#pop_boput').show();
+                                        $('#pop_rafia').show();
+                                        $('#pop_4').show();
+                                        $('#pop_deepgas').show();
+                                        $('#pop_btol_bkaca').show();
+                                        $('#pop_lampu').show();
                                     }else if(data[0].nm_paket == 'Booth 2'){
-                                        $('#boput').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#komgas').show();
-                                        $('#wajan').show();
-                                        $('#irus').show();
-                                        $('#sotil').show();
-                                        $('#saringan').show();
-                                        $('#btol_b').show();
-                                        $('#lampu').show();
+                                        $('#pop_boput').show();
+                                        $('#pop_rafia').show();
+                                        $('#pop_5').show();
+                                        $('#pop_komgas').show();
+                                        $('#pop_wajan').show();
+                                        $('#pop_irus').show();
+                                        $('#pop_sotil').show();
+                                        $('#pop_saringan').show();
+                                        $('#pop_btol_b').show();
+                                        $('#pop_lampu').show();
                                     }else if(data[0].nm_paket == 'Tanpa Booth'){
-                                        $('#lakban').show();
-                                        $('#1').show();
-                                        $('#komgas').show();
-                                        $('#wajan').show();
-                                        $('#irus').show();
-                                        $('#sotil').show();
-                                        $('#saringan').show();
-                                        $('#btol_b').show();
+                                        $('#pop_lakban').show();
+                                        $('#pop_1').show();
+                                        $('#pop_komgas').show();
+                                        $('#pop_wajan').show();
+                                        $('#pop_irus').show();
+                                        $('#pop_sotil').show();
+                                        $('#pop_saringan').show();
+                                        $('#pop_btol_b').show();
                                     }
                                 }else if(data[0].nm_produk == 'Chiclin'){
                                     $('#rincianchiclin').show();
                                     if(data[0].nm_paket == 'Paket Gold'){
-                                        $('#tenda').show();
+                                        $('#chi_tenda').show();
                                     }else if(data[0].nm_paket == 'Paket Silver'){
-                                        $('#lampu').show();
-                                        $('#banat').show();
+                                        $('#chi_lampu').show();
+                                        $('#chi_banat').show();
                                     }
                                 }else if(data[0].nm_produk == 'Boboo Chicken'){
                                     $('#rincianboboochicken').show();
                                     if(data[0].nm_paket == 'Paket Eksklusif'){
-                                        $('#tenda').show();
+                                        $('#boboo_tenda').show();
                                     }
                                 }else if(data[0].nm_produk == 'Cut Chicken'){
                                     $('#rinciancutchicken').show();
                                     if(data[0].nm_paket == 'Portable'){
-                                        $('#portable').show();
-                                        $('#neon').show();
-                                        $('#3').show();
+                                        $('#cut_portable').show();
+                                        $('#cut_neon').show();
+                                        $('#cut_3').show();
                                     }else if(data[0].nm_paket == 'Booth'){
-                                        $('#booth').show();
-                                        $('#4').show();
+                                        $('#cut_booth').show();
+                                        $('#cut_4').show();
                                     }
                                 }else if(data[0].nm_produk == 'Candy Crepes'){
                                     $('#rinciancandycrepes').show();
                                     if(data[0].nm_paket == 'Outdoor'){
-                                        $('#bo_put').show();
-                                        $('#tenda').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#lampu').show();
+                                        $('#candy_bo_put').show();
+                                        $('#candy_tenda').show();
+                                        $('#candy_rafia').show();
+                                        $('#candy_5').show();
+                                        $('#candy_lampu').show();
                                     }else if(data[0].nm_paket == 'Indoor'){
-                                        $('#bo_put').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#lampu').show();
+                                        $('#candy_bo_put').show();
+                                        $('#candy_rafia').show();
+                                        $('#candy_5').show();
+                                        $('#candy_lampu').show();
                                     }else if(data[0].nm_paket == 'Pallet'){
-                                        $('#bo_pall').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#lampu').show();
+                                        $('#candy_bo_pall').show();
+                                        $('#candy_rafia').show();
+                                        $('#candy_5').show();
+                                        $('#candy_lampu').show();
                                     }else if(data[0].nm_paket == 'Tanpa Booth'){
-                                        $('#lakban').show();
-                                        $('#1').show();
+                                        $('#candy_lakban').show();
+                                        $('#candy_1').show();
                                     }
                                 }else if(data[0].nm_produk == 'Pisang Nugget Kece'){
                                     $('#rincianpisangnugget').show();
                                     if(data[0].nm_paket == 'Premium'){
-                                        $('#bo_put').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#lampu').show();
+                                        $('#psangke_bo_put').show();
+                                        $('#psangke_rafia').show();
+                                        $('#psangke_5').show();
+                                        $('#psangke_lampu').show();
                                     }else if(data[0].nm_paket == 'Indoor'){
-                                        $('#bo_pall').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#lampu').show();
+                                        $('#psangke_bo_pall').show();
+                                        $('#psangke_rafia').show();
+                                        $('#psangke_5').show();
+                                        $('#psangke_lampu').show();
                                     }else if(data[0].nm_paket == 'Tanpa Booth'){
-                                        $('#lakban').show();
-                                        $('#1').show();
+                                        $('#psangke_lakban').show();
+                                        $('#psangke_1').show();
                                     }
                                 }else if(data[0].nm_produk == 'Oliv Geprek Ekspress'){
                                     $('#rincianolivgeprek').show();
                                     if(data[0].nm_paket == 'Paket 1 (Booth Jumbo)'){
-                                        $('#bo_put').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#lampu').show();
+                                        $('#oliv_bo_put').show();
+                                        $('#oliv_rafia').show();
+                                        $('#oliv_5').show();
+                                        $('#oliv_lampu').show();
                                     }else if(data[0].nm_paket == 'Paket 2 (FTB)'){
-                                        $('#lakban').show();
-                                        $('#1').show();
+                                        $('#oliv_lakban').show();
+                                        $('#oliv_1').show();
                                     }
                                 }else if(data[0].nm_produk == 'Tahu Hot King'){
                                     $('#rinciantahuhotking').show();
                                     if(data[0].nm_paket == 'Paket A (Putih)'){
-                                        $('#bo_put').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#lampu').show();
+                                        $('#hot_bo_put').show();
+                                        $('#hot_rafia').show();
+                                        $('#hot_5').show();
+                                        $('#hot_lampu').show();
                                     }else if(data[0].nm_paket == 'Paket B (Palet)'){
-                                        $('#bo_pal').show();
-                                        $('#rafia').show();
-                                        $('#5').show();
-                                        $('#lampu').show();
+                                        $('#hot_bo_pal').show();
+                                        $('#hot_rafia').show();
+                                        $('#hot_5').show();
+                                        $('#hot_lampu').show();
                                     }else if(data[0].nm_paket == 'Paket C (FTB)'){
-                                        $('#lakban').show();
-                                        $('#1').show();
+                                        $('#hot_lakban').show();
+                                        $('#hot_1').show();
                                     }
                                 }else if(data[0].nm_produk == 'Ohana Fried Chicken'){
                                     $('#rincianohana').show();
                                     if(data[0].nm_paket == 'Paket Combo'){
-                                        $('#tenda').show();
-                                        $('#5').show();
+                                        $('#oh_tenda').show();
+                                        $('#oh_5').show();
                                     }else if(data[0].nm_paket == 'Paket Single'){
-                                        $('#5').show();
+                                        $('#oh_5').show();
                                     }
                                 }else if(data[0].nm_produk == 'Chip Finger'){
-                                    $('#rinciachipfinger').show();
+                                    $('#rincianchipfinger').show();
                                 }else if(data[0].nm_produk == 'Xiaolin'){
-                                    $('#rinciaxiaolin').show();
+                                    $('#rincianxiaolin').show();
                                     if(data[0].nm_paket == 'Paket Gold'){
-                                        $('#tenda').show();
+                                        $('#xia_tenda').show();
                                     }
+                                }else if(data[0].nm_produk == 'Martabak Mini Rainbow'){
+                                    $('#rincianmartabakmini').show();
+                                    if(data[0].nm_paket == 'Outdoor'){
+                                        $('#martabak_bo_put').show();
+                                        $('#martabak_tenda').show();
+                                        $('#martabak_kanopi').show();
+                                        $('#martabak_lampu').show();
+                                    }else if(data[0].nm_produk == 'Indoor Putih'){
+                                        $('#martabak_bo_put').show();
+                                        $('#martabak_lampu').show();
+                                    }else if(data[0].nm_produk == 'Pallet'){
+                                        $('#martabak_bo_pall').show();
+                                        $('#martabak_lampu').show();
+                                    }else if(data[0].nm_produk == 'Tanpa Booth'){
+
+                                    }
+                                }else if(data[0].nm_produk == 'Banana Nugget Juara'){
+                                    $('#rincianbanananugget').show();
+                                    if(data[0].nm_paket == 'Juara 1 (Putih)'){
+                                        $('#banug_put').show();
+                                        $('#banu_lampu').show();
+                                    }else if(data[0].nm_produk == 'Juara 2 (Palet)'){
+                                        $('#banug_pall').show();
+                                        $('#banu_lampu').show();
+                                    }else if(data[0].nm_produk == 'Juara 3 (FTP)'){
+
+                                    }
+                                }else if(data[0].nm_produk == 'Eat Toast'){
+                                    $('#rincianeattoast').show();
+                                }else if(data[0].nm_produk == 'Lianglin'){
+                                    $('#rincianlianling').show();
                                 }
                             },'json')
                         })

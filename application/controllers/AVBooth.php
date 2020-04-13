@@ -1,5 +1,5 @@
 <?php
-    class AVBooth extends CI_Controller{
+    class Avbooth extends CI_Controller{
         public function __construct()
         {
             parent::__construct();
@@ -65,6 +65,7 @@
                 
                 "nm_mitra"=>$row->nm_mitra,
                 "almt_kirim"=>$row->almt_kirim,
+                "kota"=>$row->nama_kota,
                 "nm_produk"=>$row->nm_produk,
                 "paket"=>$row->nm_paket,
                 "tambahan"=>$row->tambahan,

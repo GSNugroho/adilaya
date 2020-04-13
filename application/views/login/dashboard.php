@@ -154,7 +154,7 @@
         <div class="clearfix">
           <div class="float-left">
             <h4 class="text-warning">
-            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1"><a href="<?php echo base_url().'AVBooth'?>" style="color: black">Admin Vendor Booth</a></div>
+            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1"><a href="<?php echo base_url().'Avbooth'?>" style="color: black">Admin Vendor Booth</a></div>
             </h4>
           </div>
           <div class="float-right">
