@@ -202,6 +202,14 @@
                 </a>
                 </li>
                 <?php endif;?>
+                <?php if($this->session->userdata('level')=='6'):?>
+                  <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('Mapping')?>">
+                    <img src="<?php echo base_url('assets/images/icons/001-map.png')?>" alt="">
+                    <span class="menu-title">Data Mitra</span>
+                </a>
+                </li>
+                <?php endif;?>
                 <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('Login/logout')?>">
                     <img src="<?php echo base_url('assets/images/icons/020-locked.png')?>" alt="">

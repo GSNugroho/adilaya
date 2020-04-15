@@ -925,14 +925,21 @@
                             var almt_rmh = $('#in_almt_rmh').val();
                             var almt_prov_rmh =$('#in_provinsi option:selected').val();
                             var almt_kt_rmh =$('#in_almt_kt_rmh option:selected').val();
+                            var almt_kec_rmh =$('#in_almt_kec_rmh option:selected').val();
+                            var almt_kel_rmh =$('#in_almt_kel_rmh option:selected').val();
                             var no_hp1 = $('#in_no_hp1').val();
                             var no_hp2 = $('#in_no_hp2').val();
                             var almt_outlet = $('#in_almt_outlet').val();
                             var almt_prov_outlet = $('#in_provinsi2 option:selected').val();
                             var almt_kt_outlet = $('#in_almt_kt_outlet option:selected').val();
+                            var almt_kec_outlet = $('#in_almt_kec_outlet option:selected').val();
+                            var almt_kel_outlet = $('#in_almt_kel_outlet option:selected').val();
+                            var ats_nm_penerima = $('#in_ats_nm_penerima').val();
                             var almt_kirim = $('#in_almt_kirim').val();
                             var almt_prov_kirim = $('#in_provinsi3 option:selected').val();
                             var almt_kt_kirim = $('#in_almt_kt_kirim option:selected').val();
+                            var almt_kec_kirim = $('#in_almt_kec_kirim option:selected').val();
+                            var almt_kel_kirim = $('#in_almt_kel_kirim option:selected').val();
                             var nm_marketing = $('#in_nm_marketing').val();
                             var sts_pmby = $('#in_sts_pmby option:selected').val();
                             var nm_produk = $('#in_nm_produk option:selected').val();
@@ -950,9 +957,9 @@
                             
 
                             var dataString = 'nm_mitra='+nm_mitra+'&kt_lahir='+kt_lahir+'&tgl_lahir='+tgl_lahir+'&almt_rmh='+almt_rmh+
-                            '&almt_prov_rmh='+almt_prov_rmh+'&almt_kt_rmh='+almt_kt_rmh+'&no_hp1='+no_hp1+'&no_hp2='+no_hp2+'&almt_outlet='+almt_outlet+
-                            '&almt_prov_outlet='+almt_prov_outlet+'&almt_kt_outlet='+almt_kt_outlet+'&almt_kirim='+almt_kirim+'&almt_prov_kirim='+almt_prov_kirim+
-                            '&almt_kt_kirim='+almt_kt_kirim+
+                            '&almt_prov_rmh='+almt_prov_rmh+'&almt_kt_rmh='+almt_kt_rmh+'&almt_kec_rmh='+almt_kec_rmh+'&almt_kel_rmh='+almt_kel_rmh+'&no_hp1='+no_hp1+'&no_hp2='+no_hp2+'&almt_outlet='+almt_outlet+
+                            '&almt_prov_outlet='+almt_prov_outlet+'&almt_kt_outlet='+almt_kt_outlet+'&almt_kec_outlet='+almt_kec_outlet+'&almt_kel_outlet='+almt_kel_outlet+'&ats_nm_penerima='+ats_nm_penerima+'&almt_kirim='+almt_kirim+'&almt_prov_kirim='+almt_prov_kirim+
+                            '&almt_kt_kirim='+almt_kt_kirim+'&almt_kec_kirim='+almt_kec_kirim+'&almt_kel_kirim='+almt_kel_kirim+
                             '&nm_marketing='+nm_marketing+'&sts_pmby='+sts_pmby+'&nm_produk='+nm_produk+'&paket='+paket+'&ekspedisi='+ekspedisi+'&biaya_kirim='+biaya_kirim+
                             '&jml_tarif='+jml_tarif+'&nm_bank='+nm_bank+'&rekening='+rekening+'&ats_nm_rekening='+ats_nm_rekening+'&tambahan='+tambahan;
                             
@@ -960,8 +967,10 @@
                                 var almt_terusan = $('#in_almt_terusan').val();
                                 var almt_prov_terusan = $('#in_prov_terusan option:selected').val();
                                 var almt_kt_terusan = $('#in_kt_terusan option:selected').val();
+                                var almt_kec_terusan = $('#in_kec_terusan option:selected').val();
+                                var almt_kel_terusan = $('#in_kel_terusan option:selected').val();
                                 var ats_nm_penerusan = $('#in_ats_nm_penerusan').val();
-                                dataString += '&almt_terusan='+almt_terusan+'&almt_prov_terusan='+almt_prov_terusan+'&almt_kt_terusan='+almt_kt_terusan+'&ats_nm_penerusan='+ats_nm_penerusan;
+                                dataString += '&almt_terusan='+almt_terusan+'&almt_prov_terusan='+almt_prov_terusan+'&almt_kt_terusan='+almt_kt_terusan+'&almt_kec_terusan='+almt_kec_terusan+'&almt_kel_terusan='+almt_kel_terusan+'&ats_nm_penerusan='+ats_nm_penerusan;
                             }
 
                             if($('#tmbb').is(':checked')){

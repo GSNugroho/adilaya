@@ -54,15 +54,28 @@ class Monitor extends CI_Controller {
 			'kt_lahir' => $this->input->post('kt_lahir', TRUE),
 			'tgl_lahir' => date('Y-m-d', strtotime($this->input->post('tgl_lahir'))),
 			'almt_rmh' => $this->input->post('almt_rmh', TRUE),
+			'almt_prov_rmh' => $this->input->post('almt_prov_rmh', TRUE),
 			'almt_kt_rmh' => $this->input->post('almt_kt_rmh', TRUE),
+			'almt_kec_rmh' => $this->input->post('almt_kec_rmh', TRUE),
+			'almt_kel_rmh' => $this->input->post('almt_kel_rmh', TRUE),
 			'no_hp1' => $this->input->post('no_hp1', TRUE),
 			'no_hp2' => $this->input->post('no_hp2', TRUE),
 			'almt_outlet' => $this->input->post('almt_outlet', TRUE),
+			'almt_prov_outlet' => $this->input->post('almt_prov_outlet', TRUE),
 			'almt_kt_outlet' => $this->input->post('almt_kt_outlet', TRUE),
+			'almt_kec_outlet' => $this->input->post('almt_kec_outlet', TRUE),
+			'almt_kel_outlet' => $this->input->post('almt_kel_outlet', TRUE),
+			'ats_nm_kirim' => $this->input->post('ats_nm_penerima', TRUE),
 			'almt_kirim' => $this->input->post('almt_kirim', TRUE),
+			'almt_prov_kirim' => $this->input->post('almt_prov_kirim', TRUE),
 			'almt_kt_kirim' => $this->input->post('almt_kt_kirim', TRUE),
+			'almt_kec_kirim' => $this->input->post('almt_kec_kirim', TRUE),
+			'almt_kel_kirim' => $this->input->post('almt_kel_kirim', TRUE),
 			'almt_terusan' => $this->input->post('almt_terusan', TRUE),
+			'almt_prov_terusan' => $this->input->post('almt_prov_terusan', TRUE),
 			'almt_kt_terusan' => $this->input->post('almt_kt_terusan', TRUE),
+			'almt_kec_terusan' => $this->input->post('almt_kec_terusan', TRUE),
+			'almt_kel_terusan' => $this->input->post('almt_kel_terusan', TRUE),
 			'nm_marketing' => $this->input->post('nm_marketing', TRUE),
 			'sts_pmby' => $this->input->post('sts_pmby', TRUE),
 			'nm_produk' => $this->input->post('nm_produk', TRUE),
@@ -635,36 +648,18 @@ class Monitor extends CI_Controller {
 				</a>
 				';
 			}elseif($this->session->userdata('level')=='2'){
-				// <a href="monitor/update/'.$row->kd_mitra.'" class="btn btn-warning btn-circle" color: white">
-				// 	<i class="fas fa-edit"></i>
-				// 	</a>
-				if($row->sts_pmby == 1 || $row->sts_pmby == 3){
+				
 					$button = '
-					<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info btn-circle" color: white">
-					<i class="fas fa-info-circle"></i>
-					</a>
-					<a href="monitor/delete/'.$row->kd_mitra.'" class="btn btn-danger btn-circle" color: white">
-					<i class="fas fa-trash"></i>
-					</a>
-					<button value="'.$row->kd_mitra.'" class="btn btn-success btn-circle" data-toggle="modal" data-target="#modalPelunasan" data-backdrop="static" data-keyboard="false" data-whatever="'.$row->kd_mitra.'">
-					<i class="fas fa-wallet"></i>
-					</button>
-					';
-				}else{
-					$button = '
-					<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info btn-circle" color: white">
-					<i class="fas fa-info-circle"></i>
-					</a>
-					<a href="monitor/delete/'.$row->kd_mitra.'" class="btn btn-danger btn-circle" color: white">
-					<i class="fas fa-trash"></i>
+					<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+					<i class="fa fa-info-circle"></i>
 					</a>
 					';
-				}
+				
 				
 			}elseif($this->session->userdata('level')=='3'){
 				$button = '
-				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info" style="width: 100%;">
-				Info
+				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+				<i class="fa fa-info-circle" title="Info"></i>
 				</a>
 				<button value="'.$row->kd_mitra.'" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"  data-keyboard="false" data-whatever="'.$row->kd_mitra.'" >Order</button>
 				';
@@ -770,21 +765,14 @@ class Monitor extends CI_Controller {
 				';
 			}elseif($this->session->userdata('level')=='2'){
 				$button = '
-				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info btn-circle" color: white">
-				<i class="fas fa-info-circle"></i>
+				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+				<i class="fa fa-info-circle" title="Info"></i>
 				</a>
-				
-				<a href="monitor/delete/'.$row->kd_mitra.'" class="btn btn-danger btn-circle" color: white">
-				<i class="fas fa-trash"></i>
-				</a>
-				<button value="'.$row->kd_mitra.'" class="btn btn-success btn-circle" data-toggle="modal" data-target="#modalPelunasan" data-keyboard="false" data-whatever="'.$row->kd_mitra.'">
-				<i class="fas fa-wallet"></i>
-				</button>
 				';
 			}elseif($this->session->userdata('level')=='3'){
 				$button = '
-				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info" style="width: 100%;">
-				Info
+				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+				<i class="fa fa-info-circle" title="Info"></i>
 				</a>
 				<button value="'.$row->kd_mitra.'" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"  data-keyboard="false" data-whatever="'.$row->kd_mitra.'" >Order</button>
 				';
@@ -880,21 +868,14 @@ class Monitor extends CI_Controller {
 				';
 			}elseif($this->session->userdata('level')=='2'){
 				$button = '
-				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info btn-circle" color: white">
-				<i class="fas fa-info-circle"></i>
+				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+				<i class="fa fa-info-circle" title="Info"></i>
 				</a>
-				
-				<a href="monitor/delete/'.$row->kd_mitra.'" class="btn btn-danger btn-circle" color: white">
-				<i class="fas fa-trash"></i>
-				</a>
-				<button value="'.$row->kd_mitra.'" class="btn btn-success btn-circle" data-toggle="modal" data-target="#modalPelunasan" data-keyboard="false" data-whatever="'.$row->kd_mitra.'" >
-				<i class="fas fa-wallet"></i>
-				</button>
 				';
 			}elseif($this->session->userdata('level')=='3'){
 				$button = '
-				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info" style="width: 100%;">
-				Info
+				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+				<i class="fa fa-info-circle" title="Info"></i>
 				</a>
 				<button value="'.$row->kd_mitra.'" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"  data-keyboard="false" data-whatever="'.$row->kd_mitra.'" >Order</button>
 				';
@@ -991,18 +972,14 @@ class Monitor extends CI_Controller {
 				';
 			}elseif($this->session->userdata('level')=='2'){
 				$button = '
-				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info btn-circle">
-				<i class="fas fa-info-circle"></i>
-				</a>
-				
-				<a href="monitor/delete/'.$row->kd_mitra.'" class="btn btn-danger btn-circle">
-				<i class="fas fa-trash"></i>
+				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+				<i class="fa fa-info-circle" title="Info"></i>
 				</a>
 				';
 			}elseif($this->session->userdata('level')=='3'){
 				$button = '
-				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info" style="width: 100%;">
-				Info
+				<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+				<i class="fa fa-info-circle" title="Info"></i>
 				</a>
 				<button value="'.$row->kd_mitra.'" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"  data-keyboard="false" data-backdrop="static" data-whatever="'.$row->kd_mitra.'" >Order</button>
 				';
@@ -1122,17 +1099,6 @@ class Monitor extends CI_Controller {
 
 		## Search 
 		$searchQuery = " ";
-		// if($this->input->post('searchByAwal') != '' && $this->input->post('searchByAkhir') != ''){
-		// 	$searchByAwal = date('Y-m-d', strtotime($this->input->post('searchByAwal')));
-        //     $searchByAkhir = date('Y-m-d', strtotime($this->input->post('searchByAkhir')));
-		// 	$searchQuery .= " and (dt_create BETWEEN '".$searchByAwal."' AND '".$searchByAkhir."' ) ";
-		//  }
-		// //  $searchQuery .= " and sts_pmby = '2'";
-		// if($searchValue != ''){
-		// $searchQuery .= " and (
-		// nm_mitra like '%".$searchValue."%' or  
-		// ats_nm_rekening like '%".$searchValue."%' ) ";
-		// }
 
 		## Total number of records without filtering
 		$sel = $this->M_monitor->get_total_dt_bn();

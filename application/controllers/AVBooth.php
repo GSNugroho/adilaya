@@ -93,6 +93,43 @@
         function simpanrincian(){
             switch($this->input->post('kd_produk')){
                 case "PR000001":
+                    $data = array(
+                        'booth_putih' => $this->input->post('booth_putih', TRUE),
+                        'booth_pallet' => $this->input->post('booth_pallet', TRUE),
+                        'roll_banner' => $this->input->post('roll_banner', TRUE),
+                        'tenda' => $this->input->post('tenda', TRUE),
+                        'sticker' => $this->input->post('sticker', TRUE),
+                        'komgas' => $this->input->post('komgas', TRUE),
+                        'deepgas' => $this->input->post('deepgas', TRUE),
+                        'deeplis' => $this->input->post('deeplis', TRUE),
+                        'sereg' => $this->input->post('sereg', TRUE),
+                        'wajan' => $this->input->post('wajan', TRUE),
+                        'irus' => $this->input->post('irus', TRUE),
+                        'sotil' => $this->input->post('sotil', TRUE),
+                        'saringan' => $this->input->post('saringan', TRUE),
+                        'top_tepung' => $this->input->post('top_tepung', TRUE),
+                        'top_kocok' => $this->input->post('top_kocok', TRUE),
+                        'top_bumbu' => $this->input->post('top_bumbu', TRUE),
+                        'bas_stain' => $this->input->post('bas_stain', TRUE),
+                        'talenan' => $this->input->post('talenan', TRUE),
+                        'sendok' => $this->input->post('sendok', TRUE),
+                        'pencapit' => $this->input->post('pencapit', TRUE),
+                        'pisau' => $this->input->post('pisau', TRUE),
+                        'kanebo' => $this->input->post('kanebo', TRUE),
+                        'kain_serbet' => $this->input->post('kain_serbet', TRUE),
+                        'tusuk_tahu' => $this->input->post('tusuk_tahu', TRUE),
+                        'sergam_kun' => $this->input->post('sergam_kun', TRUE),
+                        'hand_glo' => $this->input->post('hand_glo', TRUE),
+                        'surkon' => $this->input->post('surkon', TRUE),
+                        'idcard' => $this->input->post('idcard', TRUE),
+                        'cel_kun' => $this->input->post('cel_kun', TRUE),
+                        'lampu_set' => $this->input->post('lampu_set', TRUE),
+                        'rafia_lakban' => $this->input->post('rafia_lakban', TRUE),
+                        'lakban' => $this->input->post('lakban', TRUE),
+                        'kardus' => $this->input->post('kardus', TRUE),
+                        'kd_mitra' => $this->input->post('kd_mitra', TRUE)
+                    );
+                    $this->M_avbooth->insert_gila($data);
                     break;
                 case "PR000002":
                     $data = array(
@@ -363,6 +400,42 @@
                     $this->M_avbooth->insert_candy($data);
                     break;
                 case "PR000009":
+                    $data = array(
+                        'booth_putih' => $this->input->post('booth_putih', TRUE),
+                        'booth_pallet' => $this->input->post('booth_pallet', TRUE),
+                        'roll_baner' => $this->input->post('roll_baner', TRUE),
+                        'stiker_set' => $this->input->post('stiker_set', TRUE),
+                        'kom_gas' => $this->input->post('kom_gas', TRUE),
+                        'sel_reg' => $this->input->post('sel_reg', TRUE),
+                        'wajan' => $this->input->post('wajan', TRUE),
+                        'irus' => $this->input->post('irus', TRUE),
+                        'sotl' => $this->input->post('sotl', TRUE),
+                        'saringan' => $this->input->post('saringan', TRUE),
+                        'top_tep' => $this->input->post('top_tep', TRUE),
+                        'top_tahu' => $this->input->post('top_tahu', TRUE),
+                        'bas_stain' => $this->input->post('bas_stain', TRUE),
+                        'top_saus' => $this->input->post('top_saus', TRUE),
+                        'bot_saus' => $this->input->post('bot_saus', TRUE),
+                        'bot_bum' => $this->input->post('bot_bum', TRUE),
+                        'talenan' => $this->input->post('talenan', TRUE),
+                        'sendok' => $this->input->post('sendok', TRUE),
+                        'capitan' => $this->input->post('capitan', TRUE),
+                        'pisau' => $this->input->post('pisau', TRUE),
+                        'kanebo' => $this->input->post('kanebo', TRUE),
+                        'serbet' => $this->input->post('serbet', TRUE),
+                        'tusuk_tahu' => $this->input->post('tusuk_tahu', TRUE),
+                        'seragam' => $this->input->post('seragam', TRUE),
+                        'celmek' => $this->input->post('celmek', TRUE),
+                        'hand_glo' => $this->input->post('hand_glo', TRUE),
+                        'sur_kon' => $this->input->post('sur_kon', TRUE),
+                        'idcard' => $this->input->post('idcard', TRUE),
+                        'rafia_lak' => $this->input->post('rafia_lak', TRUE),
+                        'lakban' => $this->input->post('lakban', TRUE),
+                        'kardus' => $this->input->post('kardus', TRUE),
+                        'lamp_set' => $this->input->post('lamp_set', TRUE),
+                        'kd_mitra' => $this->input->post('kd_mitra', TRUE)
+                    );
+                    $this->M_avbooth->insert_king($data);
                     break;
                 case "PR000010":
                     $data = array(
@@ -444,6 +517,46 @@
                     $this->M_avbooth->insert_ohana($data);
                     break;
                 case "PR000012":
+                    $data = array(
+                        'booth_putih' => $this->input->post('booth_putih', TRUE),
+                        'roll_banner' => $this->input->post('roll_banner', TRUE),
+                        'tenda' => $this->input->post('tenda', TRUE),
+                        'stiker' => $this->input->post('stiker', TRUE),
+                        'rafia_lak' => $this->input->post('rafia_lak', TRUE),
+                        'lakban' => $this->input->post('lakban', TRUE),
+                        'kardus' => $this->input->post('kardus', TRUE),
+                        'deep_gas' => $this->input->post('deep_gas', TRUE),
+                        'kom_gas' => $this->input->post('kom_gas', TRUE),
+                        'sel_reg' => $this->input->post('sel_reg', TRUE),
+                        'wajan' => $this->input->post('wajan', TRUE),
+                        'irus' => $this->input->post('irus', TRUE),
+                        'sotil' => $this->input->post('sotil', TRUE),
+                        'saringan' => $this->input->post('saringan', TRUE),
+                        'bot_saus' => $this->input->post('bot_saus', TRUE),
+                        'bot_kac' => $this->input->post('bot_kac', TRUE),
+                        'bot_bum' => $this->input->post('bot_bum', TRUE),
+                        'icebox' => $this->input->post('icebox', TRUE),
+                        'telenan' => $this->input->post('telenan', TRUE),
+                        'capitan' => $this->input->post('capitan', TRUE),
+                        'wad_tep_ker' => $this->input->post('wad_tep_ker', TRUE),
+                        'wad_tep_bas' => $this->input->post('wad_tep_bas', TRUE),
+                        'baskom' => $this->input->post('baskom', TRUE),
+                        'timbangan' => $this->input->post('timbangan', TRUE),
+                        'gel_tak' => $this->input->post('gel_tak', TRUE),
+                        'seragam' => $this->input->post('seragam', TRUE),
+                        'kanebo' => $this->input->post('kanebo', TRUE),
+                        'serbet' => $this->input->post('serbet', TRUE),
+                        'pisauf' => $this->input->post('pisauf', TRUE),
+                        'sendok' => $this->input->post('sendok', TRUE),
+                        'hand_glo' => $this->input->post('hand_glo', TRUE),
+                        'tusuk_sat' => $this->input->post('tusuk_sat', TRUE),
+                        'sur_kon' => $this->input->post('sur_kon', TRUE),
+                        'idcard' => $this->input->post('idcard', TRUE),
+                        'celmek' => $this->input->post('celmek', TRUE),
+                        'lamp_set' => $this->input->post('lamp_set', TRUE),
+                        'kd_mitra' => $this->input->post('kd_mitra', TRUE)
+                    );
+                    $this->M_avbooth->insert_popchick($data);
                     break;
                 case "PR000013":
                     $data = array(
@@ -568,6 +681,48 @@
                     $this->M_avbooth->insert_eat($data);
                     break;
                 case "PR000016":
+                    $data = array(
+                        'booth_putih' => $this->input->post('booth_putih', TRUE),
+                        'stiker_set' => $this->input->post('stiker_set', TRUE),
+                        'roll_banner' => $this->input->post('roll_banner', TRUE),
+                        'tenda' => $this->input->post('tenda', TRUE),
+                        'rumbai' => $this->input->post('rumbai', TRUE),
+                        'neon_box' => $this->input->post('neon_box', TRUE),
+                        'lamp_spot' => $this->input->post('lamp_spot', TRUE),
+                        'deep_gas' => $this->input->post('deep_gas', TRUE),
+                        'deep_lis' => $this->input->post('deep_lis', TRUE),
+                        'sel_reg' => $this->input->post('sel_reg', TRUE),
+                        'sekop_ay' => $this->input->post('sekop_ay', TRUE),
+                        'nampan_stain' => $this->input->post('nampan_stain', TRUE),
+                        'tirisan' => $this->input->post('tirisan', TRUE),
+                        'gas_torch' => $this->input->post('gas_torch', TRUE),
+                        'icebox' => $this->input->post('icebox', TRUE),
+                        'bas_tep' => $this->input->post('bas_tep', TRUE),
+                        'telenan' => $this->input->post('telenan', TRUE),
+                        'pisauf' => $this->input->post('pisauf', TRUE),
+                        'gunting' => $this->input->post('gunting', TRUE),
+                        'pemukul_dag' => $this->input->post('pemukul_dag', TRUE),
+                        'timbangan' => $this->input->post('timbangan', TRUE),
+                        'bot_saus' => $this->input->post('bot_saus', TRUE),
+                        'gel_tak' => $this->input->post('gel_tak', TRUE),
+                        'sendok' => $this->input->post('sendok', TRUE),
+                        'tempt_sendok' => $this->input->post('tempt_sendok', TRUE),
+                        'capitan' => $this->input->post('capitan', TRUE),
+                        'bot_bum' => $this->input->post('bot_bum', TRUE),
+                        'serbet' => $this->input->post('serbet', TRUE),
+                        'kanebo' => $this->input->post('kanebo', TRUE),
+                        'hand_glo' => $this->input->post('hand_glo', TRUE),
+                        'masker' => $this->input->post('masker', TRUE),
+                        'seragam' => $this->input->post('seragam', TRUE),
+                        'celmek' => $this->input->post('celmek', TRUE),
+                        'tusuk_sate' => $this->input->post('tusuk_sate', TRUE),
+                        'sur_kon' => $this->input->post('sur_kon', TRUE),
+                        'idcard' => $this->input->post('idcard', TRUE),
+                        'rafia_lak' => $this->input->post('rafia_lak', TRUE),
+                        'kardus' => $this->input->post('kardus', TRUE),
+                        'kd_mitra' => $this->input->post('kd_mitra', TRUE)
+                    );
+                    $this->M_avbooth->insert_xiao($data);
                     break;
                 case "PR000017":
                     $data = array(

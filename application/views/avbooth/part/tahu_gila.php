@@ -1,3 +1,4 @@
+<form id="rincicek">
 <table class="table table-bordered">
     <tr>
         <th>PERLENGKAPAN</th>
@@ -172,3 +173,207 @@
         <td><input type="checkbox" name="cek_kardus" id="cek_kardus"></td>
     </tr>
 </table>
+</form>
+<script>
+if(document.getElementById('rinciantahugila').style.display != 'none'){        
+    if($('#cek_booth_put').is(':checked')){
+        var booth_putih = 1
+    }else{
+        var booth_putih = 0
+    }
+    if($('#cek_booth_pal').is(':checked')){
+        var booth_pallet = 1
+    }else{
+        var booth_pallet = 0
+    }
+    if($('#cek_roll_ban').is(':checked')){
+        var roll_banner = 1
+    }else{
+        var roll_banner = 0
+    }
+    if($('#cek_tenda').is(':checked')){
+        var tenda = 1
+    }else{
+        var tenda = 0
+    }
+    if($('#cek_sticker').is(':checked')){
+        var sticker = 1
+    }else{
+        var sticker = 0
+    }
+    if($('#cek_kom_gas').is(':checked')){
+        var komgas = 1
+    }else{
+        var komgas = 0
+    }
+    if($('#cek_deep_gas').is(':checked')){
+        var deepgas = 1
+    }else{
+        var deepgas = 0
+    }
+    if($('#cek_deep_lis').is(':checked')){
+        var deeplis = 1
+    }else{
+        var deeplis = 0
+    }
+    if($('#cek_se_reg').is(':checked')){
+        var sereg = 1
+    }else{
+        var sereg = 0
+    }
+    if($('#cek_wajan').is(':checked')){
+        var wajan = 1
+    }else{
+        var wajan = 0
+    }
+    if($('#cek_irus').is(':checked')){
+        var irus = 1
+    }else{
+        var irus = 0
+    }
+    if($('#cek_sotil').is(':checked')){
+        var sotil = 1
+    }else{
+        var sotil = 0
+    }
+    if($('#cek_saringan').is(':checked')){
+        var saringan = 1
+    }else{
+        var saringan = 0
+    }
+    if($('#cek_to_te').is(':checked')){
+        var top_tepung = 1
+    }else{
+        var top_tepung = 0
+    }
+    if($('#cek_to_pe').is(':checked')){
+        var top_kocok = 1
+    }else{
+        var top_kocok = 0
+    }
+    if($('#cek_to_bu').is(':checked')){
+        var top_bumbu = 1
+    }else{
+        var top_bumbu = 0
+    }
+    if($('#cek_bas_st').is(':checked')){
+        var bas_stain = 1
+    }else{
+        var bas_stain = 0
+    }
+    if($('#cek_telen').is(':checked')){
+        var talenan = 1
+    }else{
+        var talenan = 0
+    }
+    if($('#cek_sendok').is(':checked')){
+        var sendok = 1
+    }else{
+        var sendok = 0
+    }
+    if($('#cek_capit').is(':checked')){
+        var pencapit = 1
+    }else{
+        var pencapit = 0
+    }
+    if($('#cek_pisau').is(':checked')){
+        var pisau = 1
+    }else{
+        var pisau = 0
+    }
+    if($('#cek_kanebo').is(':checked')){
+        var kanebo = 1
+    }else{
+        var kanebo = 0
+    }
+    if($('#cek_ka_ser').is(':checked')){
+        var kain_serbet = 1
+    }else{
+        var kain_serbet = 0
+    }
+    if($('#cek_tu_ta').is(':checked')){
+        var tusuk_tahu = 1
+    }else{
+        var tusuk_tahu = 0
+    }
+    if($('#cek_ser_kun').is(':checked')){
+        var sergam_kun = 1
+    }else{
+        var sergam_kun = 0
+    }
+    if($('#cek_ha_glo').is(':checked')){
+        var hand_glo = 1
+    }else{
+        var hand_glo = 0
+    }
+    if($('#cek_su_ko').is(':checked')){
+        var surkon = 1
+    }else{
+        var surkon = 0
+    }
+    if($('#cek_id_ca').is(':checked')){
+        var idcard = 1
+    }else{
+        var idcard = 0
+    }
+    if($('#cek_ce_ku').is(':checked')){
+        var cel_kun = 1
+    }else{
+        var cel_kun = 0
+    }
+    if($('#cek_la_set').is(':checked')){
+        var lampu_set = 1
+    }else{
+        var lampu_set = 0
+    }
+    if($('#cek_ra_la').is(':checked')){
+        var rafia_lakban = 1
+    }else{
+        var rafia_lakban = 0
+    }
+    if($('#cek_lakban').is(':checked')){
+        var lakban = 1
+    }else{
+        var lakban = 0
+    }
+    if($('#cek_kardus').is(':checked')){
+        var kardus = 1
+    }else{
+        var kardus = 0
+    }
+
+    dataString = 'booth_putih='+booth_putih
+    +'&booth_pallet='+booth_pallet
+    +'&roll_banner='+roll_banner
+    +'&tenda='+tenda
+    +'&sticker='+sticker
+    +'&komgas='+komgas
+    +'&deepgas='+deepgas
+    +'&deeplis='+deeplis
+    +'&sereg='+sereg
+    +'&wajan='+wajan
+    +'&irus='+irus
+    +'&sotil='+sotil
+    +'&saringan='+saringan
+    +'&top_tepung='+top_tepung
+    +'&top_kocok='+top_kocok
+    +'&top_bumbu='+top_bumbu
+    +'&bas_stain='+bas_stain
+    +'&talenan='+talenan
+    +'&sendok='+sendok
+    +'&pencapit='+pencapit
+    +'&pisau='+pisau
+    +'&kanebo='+kanebo
+    +'&kain_serbet='+kain_serbet
+    +'&tusuk_tahu='+tusuk_tahu
+    +'&sergam_kun='+sergam_kun
+    +'&hand_glo='+hand_glo
+    +'&surkon='+surkon
+    +'&idcard='+idcard
+    +'&cel_kun='+cel_kun
+    +'&lampu_set='+lampu_set
+    +'&rafia_lakban='+rafia_lakban
+    +'&lakban='+lakban
+    +'&kardus='+kardus
+}
+</script>
