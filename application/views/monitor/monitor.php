@@ -586,7 +586,7 @@
                                                     </tr>
                                                 </table>
                                                 <div class="form-group">
-                                                <input type="checkbox" name="in_cek" id="in_cek1" value="1"><label for="in_cek1">&nbsp Seperti Alamat Rumah</label>
+                                                    <input type="checkbox" name="in_cek" id="in_cek1" value="1"><label for="in_cek1">&nbsp Seperti Alamat Rumah</label>
                                                     &nbsp&nbsp
                                                     <input type="checkbox" name="in_cek" id="in_cek2" value="2"><label for="in_cek2">&nbsp Seperti Alamat Outlet</label>
                                                 </div>
@@ -1919,15 +1919,14 @@
                                 <input class="form-control" type="text" name="almt_rmh" id="almt_rmh" style="width: 80%;" disabled>
                             </div>
                             <table width='80%'>
-                                <tr>
+                                <tr style="display: none;">
                                     <td width='50%'>
                                         <div class="form-group">
-                                            
-                                            <select class="form-control" name="provinsi" id="provinsi3" style="width: 100%; display: none;">
-                                                <option value="0">Pilih</option>
+                                            <select class="select2-A provinsi" name="provinsi" id="provinsi3" style="width: 100%; display: none;">
                                             <?php
+                                            echo "<option></option>";
                                             foreach ($dd_pr as $row) {  
-                                                echo "<option value='".$row->id_provinsi."' >".$row->nama_provinsi."</option>";
+                                                echo "<option value='".$row->id."' >".$row->name."</option>";
                                                 }
                                                 echo"
                                             </select>"
@@ -1936,10 +1935,27 @@
                                     </td>
                                     <td width='50%'>
                                         <div class="form-group">
-                                            
-                                                <select class="form-control" name="almt_kt_rmh" id="almt_kt_rmh" style="width: 100%; display: none;">
-                                                    <option value="0">Pilih</option>
+                                                <select class="select2-A kota" name="almt_kt_rmh" id="almt_kt_rmh" style="width: 100%; display: none;">
+
                                                 </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td width='50%'>
+                                        <div class="form-group">
+                                            <label for="almt_kec_rmh">Kecamatan</label>
+                                            <select class="select2-A kecamatan" name="almt_kec_rmh" id="almt_kec_rmh" style="width:100%; display: none;">
+                                                
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td width='50%'>
+                                        <div class="form-group">
+                                            <label for="almt_kel_rmh">Kelurahan</label>
+                                            <select class="select2-A kelurahan" name="almt_kel_rmh" id="almt_kel_rmh" style="width:100%; display: none;">
+                                                
+                                            </select>
                                         </div>
                                     </td>
                                 </tr>
@@ -2842,16 +2858,16 @@
                                 
                                 <input class="form-control" type="text" name="almt_outlet" id="almt_outlet" style="width: 80%; display: none;" disabled>
                             </div>
-                            <table width='80%'>
+                            <table width='80%' style='display:none'>
                                 <tr>
                                     <td width='50%'>
                                         <div class="form-group">
                                             
-                                            <select class="form-control" name="provinsi" id="provinsi2" style="width: 100%; display: none;">
-                                                <option value="0">Pilih</option>
+                                            <select class="select2-A provinsi" name="provinsi" id="provinsi2" style="width: 100%; display: none;">
                                             <?php
+                                            echo "<option></option>";
                                             foreach ($dd_pr as $row) {  
-                                                echo "<option value='".$row->id_provinsi."' >".$row->nama_provinsi."</option>";
+                                                echo "<option value='".$row->id."' >".$row->name."</option>";
                                                 }
                                                 echo"
                                             </select>"
@@ -2861,8 +2877,23 @@
                                     <td width='50%'>
                                         <div class="form-group">
                                             
-                                            <select class="form-control" name="almt_kt_outlet" id="almt_kt_outlet" style="width: 100%; display: none;">
-                                                <option value="0">Pilih</option>
+                                            <select class="select2-A kota" name="almt_kt_outlet" id="almt_kt_outlet" style="width: 100%; display: none;">
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width='50%'>
+                                        <div class="form-group">
+                                            <select class="select2-A kecamatan" name="almt_kec_outlet" id="almt_kec_outlet" style="width:100%; display: none;">
+                                                
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td width='50%'>
+                                        <div class="form-group">
+                                            <select class="select2-A kelurahan" name="almt_kel_outlet" id="almt_kel_outlet" style="width:100%; display: none;">
+                                                
                                             </select>
                                         </div>
                                     </td>
@@ -2872,6 +2903,10 @@
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_3">
                             <div class="form-group">
+                                <label for="ats_nm_penerima">Atas Nama</label>
+                                <input class="form-control" type="text" name="ats_nm_penerima" id="ats_nm_penerima" style="width: 80%">
+                            </div>
+                            <div class="form-group">
                                     <label for="almt_kirim">Alamat Kirim</label> 
                                     <input class="form-control" type="text" name="almt_kirim" id="almt_kirim" style="width: 80%;">
                             </div>
@@ -2880,11 +2915,11 @@
                                     <td width='50%'>
                                         <div class="form-group">
                                             <label for="provinsi">Provinsi</label>
-                                            <select class="form-control" name="provinsi" id="provinsi" style="width: 100%;">
-                                                <option value="0">Pilih</option>
+                                            <select class="select2-A provinsi" name="provinsi" id="provinsi" style="width: 100%;">
                                             <?php
+                                            echo "<option></option>";
                                             foreach ($dd_pr as $row) {  
-                                                echo "<option value='".$row->id_provinsi."' >".$row->nama_provinsi."</option>";
+                                                echo "<option value='".$row->id."' >".$row->name."</option>";
                                                 }
                                                 echo" 
                                             </select>
@@ -2895,17 +2930,35 @@
                                     <td width='50%'>                               
                                         <div class="form-group">
                                             <label for="almt_kt_rmh">Kota</label>
-                                            <select class="form-control" name="almt_kt_kirim" id="almt_kt_kirim">
-                                                <option value="0">Pilih</option>
+                                            <select class="select2-A kota" name="almt_kt_kirim" id="almt_kt_kirim" style="width:100%">
+                                                
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width='50%'>
+                                        <div class="form-group">
+                                            <label for="almt_kec_rmh">Kecamatan</label>
+                                            <select class="select2-A kecamatan" name="almt_kec_kirim" id="almt_kec_kirim" style="width:100%">
+                                                
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td width='50%'>
+                                        <div class="form-group">
+                                            <label for="almt_kel_rmh">Kelurahan</label>
+                                            <select class="select2-A kelurahan" name="almt_kel_kirim" id="almt_kel_kirim" style="width:100%">
+                                                
                                             </select>
                                         </div>
                                     </td>
                                 </tr>
                             </table>
                             <div class="form-group">
-                                <input type="radio" name="cek" id="cek1" value="1"> Seperti Alamat Rumah
+                                <input type="checkbox" name="cek" id="cek1" value="1"><label for="in_cek1">&nbsp Seperti Alamat Rumah</label>
                                 &nbsp&nbsp
-                                <input type="radio" name="cek" id="cek2" value="2"> Seperti Alamat Outlet
+                                <input type="checkbox" name="cek" id="cek2" value="2"><label for="in_cek2">&nbsp Seperti Alamat Outlet</label>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="in_penerusan" id="penerusan">&nbsp&nbsp Penerusan Alamat
@@ -2923,11 +2976,11 @@
                                     <td width='50%'>
                                         <div class="form-group">
                                             <label for="prov_terusan">Provinsi</label>
-                                            <select class="form-control" name="prov_terusan" id="prov_terusan" style="width: 100%;" disabled>
-                                                <option value="0">Pilih</option>
+                                            <select class="select2-A provinsi" name="prov_terusan" id="prov_terusan" style="width: 100%;" disabled>
                                                 <?php
+                                                echo '<option></option>';
                                                 foreach ($dd_pr as $row) {  
-                                                    echo "<option value='".$row->id_provinsi."' >".$row->nama_provinsi."</option>";
+                                                    echo "<option value='".$row->id."' >".$row->name."</option>";
                                                     }
                                                     echo"
                                                 </select>"
@@ -2937,9 +2990,25 @@
                                     <td width='50%'>
                                     <div class="form-group">
                                         <label for="kt_terusan">Kota</label> 
-                                        <select class="form-control" name="kt_terusan" id="kt_terusan" disabled>
-                                            <option value="0">Pilih</option>
+                                        <select class="select2-A kota" name="kt_terusan" id="kt_terusan" style="width:100%" disabled>
+                                            
                                         </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width='50%'>
+                                        <div class="form-group">
+                                            <label for="kec_terusan">Kecamatan</label>
+                                            <select class="select2-A kecamatan" name="kec_terusan" id="kec_terusan" style="width:100%" disabled>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td width='50%'>
+                                        <div class="form-group">
+                                            <label for="kel_terusan">Kelurahan</label>
+                                            <select class="select2-A kelurahan" name="kel_terusan" id="kel_terusan" style="width:100%" disabled>
+                                            </select>
                                         </div>
                                     </td>
                                 </tr>
@@ -2951,6 +3020,8 @@
                                             $('#almt_terusan').prop('disabled', false);
                                             $('#prov_terusan').prop('disabled', false);
                                             $('#kt_terusan').prop('disabled', false);
+                                            $('#kec_terusan').prop('disabled', false);
+                                            $('#kel_terusan').prop('disabled', false);
                                             $('#ats_nm_penerusan').prop('disabled', false);
                                             console.log('a');
                                         }else{
@@ -2959,8 +3030,10 @@
                                             $('#kt_terusan').prop('disabled', true);
                                             $('#ats_nm_penerusan').prop('disabled', true);
                                             $('#almt_terusan').val('');
-                                            $('#prov_terusan').val('0');
-                                            $('#kt_terusan').val('0');
+                                            $('#prov_terusan').val(null).trigger('change');
+                                            $('#kt_terusan').val(null).trigger('change');
+                                            $('#kec_terusan').val(null).trigger('change');
+                                            $('#kel_terusan').val(null).trigger('change');
                                             console.log('b');
                                         }
                                     })
@@ -2978,10 +3051,49 @@
                                                 var html = '';
                                                 var i;
                                                 for(i=0; i<data.length; i++){
-                                                    html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
+                                                    html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
                                                 }
                                                 $('#kt_terusan').html(html);
-                                                
+                                            }
+                                        });
+                                    });
+                                });
+                                $(document).ready(function(){
+                                    $('#kt_terusan').change(function(){
+                                        var id=$(this).val();
+                                        $.ajax({
+                                            url : "<?php echo base_url();?>monitor/get_kec",
+                                            method : "POST",
+                                            data : {id: id},
+                                            async : false,
+                                            dataType : 'json',
+                                            success: function(data){
+                                                var html = '';
+                                                var i;
+                                                for(i=0; i<data.length; i++){
+                                                    html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                }
+                                                $('#kec_terusan').html(html);
+                                            }
+                                        });
+                                    });
+                                });
+                                $(document).ready(function(){
+                                    $('#kec_terusan').change(function(){
+                                        var id=$(this).val();
+                                        $.ajax({
+                                            url : "<?php echo base_url();?>monitor/get_kel",
+                                            method : "POST",
+                                            data : {id: id},
+                                            async : false,
+                                            dataType : 'json',
+                                            success: function(data){
+                                                var html = '';
+                                                var i;
+                                                for(i=0; i<data.length; i++){
+                                                    html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                }
+                                                $('#kel_terusan').html(html);
                                             }
                                         });
                                     });
@@ -3133,6 +3245,26 @@
                             <button id="submit" type="submit" class="btn btn-success" >Simpan</button>
                             <button type="button" class="btn btn-secondary" onclick="tutup()">Batal</button>
                         <script>
+                            $(".provinsi").select2({
+                                dropdownParent: $('.modal-body', '#exampleModal'),
+                                placeholder: "Pilih Provinsi",
+                                allowClear: true
+                                });
+                                $(".kota").select2({
+                                dropdownParent: $('.modal-body', '#exampleModal'),
+                                placeholder: "Pilih Kota",
+                                allowClear: true
+                                });
+                                $(".kecamatan").select2({
+                                dropdownParent: $('.modal-body', '#exampleModal'),
+                                placeholder: "Pilih Kecamatan",
+                                allowClear: true
+                                });
+                                $(".kelurahan").select2({
+                                dropdownParent: $('.modal-body', '#exampleModal'),
+                                placeholder: "Pilih Kelurahan",
+                                allowClear: true
+                                });
                             var kirim2 = document.getElementById('biaya_kirim');
                             kirim2.addEventListener('keyup', function(e){
                                 kirim2.value = formatRupiahKirim2(this.value, 'Rp ');
@@ -3209,9 +3341,12 @@
                                 var almt_rmh = $('#almt_rmh').val();
                                 var no_hp1 = $('#no_hp1').val();
                                 var no_hp2 = $('#no_hp2').val();
+                                var ats_nm_kirim = $('#ats_nm_penerima').val();
                                 var almt_kirim = $('#almt_kirim').val();
-                                var provinsi = $('#provinsi option:selected').val();
+                                var almt_prov_kirim = $('#provinsi option:selected').val();
                                 var almt_kt_kirim = $('#almt_kt_kirim option:selected').val();
+                                var almt_kec_kirim = $('#almt_kec_kirim option:selected').val();
+                                var almt_kel_kirim = $('#almt_kel_kirim option:selected').val();
                                 var jml_transfer = $('#jml_transfer').val();
                                 var nm_bank = $('#nm_bank option:selected').val();
                                 var rekening = $('#rekening').val();
@@ -3220,18 +3355,24 @@
                                 var b_barang = $('#b_barang').val();
                                 var biaya_kirim = $('#biaya_kirim').val();
                                 var keterangan = $('#keterangan').val();
-                                var almt_terusan = $('#almt_terusan').val();
-                                var prov_terusan = $('#prov_terusan option:selected').val();
-                                var almt_kt_terusan = $('#kt_terusan option:selected').val();
                                 var nm_produk = $('#daftarProduk option:selected').val();
                                 // var 
                                 var dataString = 'kd_mitra='+kd_mitra+'&nm_mitra='+nm_mitra+'&almt_rmh='+almt_rmh+
-                                '&no_hp1='+no_hp1+'&no_hp2='+no_hp2+'&almt_kirim='+almt_kirim+'&provinsi='+provinsi+
-                                '&almt_kt_kirim='+almt_kt_kirim+'&jml_transfer='+jml_transfer+'&nm_bank='+nm_bank+
+                                '&no_hp1='+no_hp1+'&no_hp2='+no_hp2+'&ats_nm_kirim='+ats_nm_kirim+'&almt_kirim='+almt_kirim+'&almt_prov_kirim='+almt_prov_kirim+
+                                '&almt_kt_kirim='+almt_kt_kirim+'&almt_kec_kirim='+almt_kec_kirim+'&almt_kel_kirim='+almt_kel_kirim+'&jml_transfer='+jml_transfer+'&nm_bank='+nm_bank+
                                 '&rekening='+rekening+'&ats_nm_rekening='+ats_nm_rekening+'&ekspedisi='+ekspedisi+
                                 '&b_barang='+b_barang+'&biaya_kirim='+biaya_kirim+'&keterangan='+keterangan+
-                                '&almt_terusan='+almt_terusan+'&prov_terusan='+prov_terusan+'&almt_kt_terusan='+almt_kt_terusan+
                                 '&nm_produk='+nm_produk;
+
+                                if($('#penerusan').is(':checked')){
+                                    var ats_nm_penerusan = $('#ats_nm_penerusan').val();
+                                    var almt_terusan = $('#almt_terusan').val();
+                                    var prov_terusan = $('#prov_terusan option:selected').val();
+                                    var almt_kt_terusan = $('#kt_terusan option:selected').val();
+                                    var almt_kec_terusan = $('#kec_terusan option:selected').val();
+                                    var almt_kel_terusan = $('#kel_terusan option:selected').val();
+                                    dataString += '&ats_nm_penerusan='+ats_nm_penerusan+'&almt_terusan='+almt_terusan+'&almt_kt_terusan='+almt_kt_terusan;+'&almt_kec_terusan='+almt_kec_terusan;+'&almt_kel_terusan='+almt_kel_terusan;
+                                }
 
                                 if(($('#daftarProduk option:selected').val()) === 'PR000001'){
                                     if($('#paketItem2').is(':checked')){
@@ -3624,11 +3765,13 @@
                                     success: function(data) {
                                         $('#nm_mitra').val(data[0]['nm_mitra']);
                                         $('#almt_rmh').val(data[0]['almt_rmh']);
-                                        $('#provinsi3').val(data[0]['provinsi1']);
+                                        $('#provinsi3').val(data[0]['almt_prov_rmh']);
+                                        $('#provinsi3').trigger('change');
+                                        var idkota = data[0]['almt_kt_rmh'];
                                         if($('#provinsi3').val() !== 0){
-                                            var id = $('#provinsi3').val();
+                                            var id = $('#provinsi3 option:selected').val();
                                             $.ajax({
-                                                    url : "<?php echo base_url();?>monitor/get_kota",
+                                                    url : "<?php echo base_url();?>Monitor/get_kota",
                                                     method : "POST",
                                                     data : {id: id},
                                                     async : false,
@@ -3637,19 +3780,19 @@
                                                         var html = '<option value="0">Pilih</option>';
                                                         var i;
                                                         for(i=0; i<data.length; i++){
-                                                            html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
+                                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
                                                         }
                                                         $('#almt_kt_rmh').html(html);
+                                                        $('#almt_kt_rmh').val(idkota);
+                                                        $('#almt_kt_rmh').trigger('change');
                                                     }
                                                 });
                                         }
-                                        $('#almt_kt_rmh').val(data[0]['kota1']);
-                                        $('#almt_outlet').val(data[0]['almt_outlet']);
-                                        $('#provinsi2').val(data[0]['provinsi2']);
-                                        if($('#provinsi2').val() !== 0){
-                                            var id = $('#provinsi2').val();
+                                        var idkec = data[0]['almt_kec_rmh'];
+                                        if($('#almt_kt_rmh').val() !== 0){
+                                            var id = $('#almt_kt_rmh option:selected').val();
                                             $.ajax({
-                                                    url : "<?php echo base_url();?>monitor/get_kota",
+                                                    url : "<?php echo base_url();?>Monitor/get_kec",
                                                     method : "POST",
                                                     data : {id: id},
                                                     async : false,
@@ -3658,13 +3801,101 @@
                                                         var html = '<option value="0">Pilih</option>';
                                                         var i;
                                                         for(i=0; i<data.length; i++){
-                                                            html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
+                                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
                                                         }
-                                                        $('#almt_kt_outlet').html(html);
+                                                        $('#almt_kec_rmh').html(html);
+                                                        $('#almt_kec_rmh').val(idkec);
+                                                        $('#almt_kec_rmh').trigger('change');
                                                     }
                                                 });
                                         }
-                                        $('#almt_kt_outlet').val(data[0]['kota2']);
+                                        var idkel = data[0]['almt_kel_rmh'];
+                                        if($('#almt_kec_rmh').val() !== 0){
+                                            var id = $('#almt_kec_rmh option:selected').val();
+                                            $.ajax({
+                                                    url : "<?php echo base_url();?>Monitor/get_kel",
+                                                    method : "POST",
+                                                    data : {id: id},
+                                                    async : false,
+                                                    dataType : 'json',
+                                                    success: function(data){
+                                                        var html = '<option value="0">Pilih</option>';
+                                                        var i;
+                                                        for(i=0; i<data.length; i++){
+                                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                        }
+                                                        $('#almt_kel_rmh').html(html);
+                                                        $('#almt_kel_rmh').val(idkel);
+                                                        $('#almt_kel_rmh').trigger('change');
+                                                    }
+                                                });
+                                        }
+                                        $('#almt_outlet').val(data[0]['almt_outlet']);
+                                        $('#provinsi2').val(data[0]['almt_prov_outlet']);
+                                        $('#provinsi2').trigger('change');
+                                        var ktout = data[0]['almt_kt_outlet'];
+                                        if($('#provinsi2').val() !== 0){
+                                            var id = $('#provinsi2 option:selected').val();
+                                            $.ajax({
+                                                    url : "<?php echo base_url();?>Monitor/get_kota",
+                                                    method : "POST",
+                                                    data : {id: id},
+                                                    async : false,
+                                                    dataType : 'json',
+                                                    success: function(data){
+                                                        var html = '<option value="0">Pilih</option>';
+                                                        var i;
+                                                        for(i=0; i<data.length; i++){
+                                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                        }
+                                                        $('#almt_kt_outlet').html(html);
+                                                        $('#almt_kt_outlet').val(ktout);
+                                                        $('#almt_kt_outlet').trigger('change');
+                                                    }
+                                                });
+                                        }
+                                        var kecout = data[0]['almt_kec_outlet'];
+                                        if($('#almt_kt_outlet').val() !== 0){
+                                            var id = $('#almt_kt_outlet option:selected').val();
+                                            $.ajax({
+                                                    url : "<?php echo base_url();?>Monitor/get_kec",
+                                                    method : "POST",
+                                                    data : {id: id},
+                                                    async : false,
+                                                    dataType : 'json',
+                                                    success: function(data){
+                                                        var html = '<option value="0">Pilih</option>';
+                                                        var i;
+                                                        for(i=0; i<data.length; i++){
+                                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                        }
+                                                        $('#almt_kec_outlet').html(html);
+                                                        $('#almt_kec_outlet').val(kecout);
+                                                        $('#almt_kec_outlet').trigger('change');
+                                                    }
+                                                });
+                                        }
+                                        var kelout = data[0]['almt_kel_outlet'];
+                                        if($('#almt_kec_outlet').val() !== 0){
+                                            var id = $('#almt_kec_outlet option:selected').val();
+                                            $.ajax({
+                                                    url : "<?php echo base_url();?>Monitor/get_kel",
+                                                    method : "POST",
+                                                    data : {id: id},
+                                                    async : false,
+                                                    dataType : 'json',
+                                                    success: function(data){
+                                                        var html = '<option value="0">Pilih</option>';
+                                                        var i;
+                                                        for(i=0; i<data.length; i++){
+                                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                        }
+                                                        $('#almt_kel_outlet').html(html);
+                                                        $('#almt_kel_outlet').val(kelout);
+                                                        $('#almt_kel_outlet').trigger('change');
+                                                    }
+                                                });
+                                        }
                                         $('#no_hp1').val(data[0]['no_hp1']);
                                         $('#no_hp2').val(data[0]['no_hp2']);
                                         $('#kd_mitra').val(data[0]['kd_mitra']);
@@ -4596,13 +4827,16 @@
                         });
                     });
                     $(document).ready(function(){
-                            $('#cek1').change(
-                                function(){
+                            $('#cek1').on('click',function(){
+                                if($('#cek2').is(':checked')){
+                                    document.getElementById('cek2').checked = false;
+                                }
                                     if($(this).is(':checked')){
                                         var almt = document.getElementById('almt_rmh').value;
                                         document.getElementById('almt_kirim').value = almt;
                                         document.getElementById('almt_kirim').disabled  = true;
                                         $('#provinsi').val($('#provinsi3 option:selected').val());
+                                        $('#provinsi').trigger('change');
                                         $('#provinsi').prop('disabled', 'disabled');
                                         if($('#provinsi option:selected').val() !== 0){
                                             var id=$('#provinsi option:selected').val();
@@ -4616,31 +4850,87 @@
                                                     var html = '';
                                                     var i;
                                                     for(i=0; i<data.length; i++){
-                                                        html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
+                                                        html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
                                                     }
                                                     $('#almt_kt_kirim').html(html);
                                                     $('#almt_kt_kirim').val($('#almt_kt_rmh option:selected').val());
+                                                    $('#almt_kt_kirim').trigger('change');
                                                     $('#almt_kt_kirim').prop('disabled', 'disabled');
                                                 }
                                             });
                                         }
-                                        
+                                        if($('#almt_kt_kirim option:selected').val() !== 0){
+                                            var id=$('#almt_kt_kirim option:selected').val();
+                                            $.ajax({
+                                                url : "<?php echo base_url();?>monitor/get_kec",
+                                                method : "POST",
+                                                data : {id: id},
+                                                async : false,
+                                                dataType : 'json',
+                                                success: function(data){
+                                                    var html = '';
+                                                    var i;
+                                                    for(i=0; i<data.length; i++){
+                                                        html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                    }
+                                                    $('#almt_kec_kirim').html(html);
+                                                    $('#almt_kec_kirim').val($('#almt_kec_rmh option:selected').val());
+                                                    $('#almt_kec_kirim').trigger('change');
+                                                    $('#almt_kec_kirim').prop('disabled', 'disabled');
+                                                }
+                                            });
+                                        }
+                                        if($('#almt_kec_kirim option:selected').val() !== 0){
+                                            var id=$('#almt_kec_kirim option:selected').val();
+                                            $.ajax({
+                                                url : "<?php echo base_url();?>monitor/get_kel",
+                                                method : "POST",
+                                                data : {id: id},
+                                                async : false,
+                                                dataType : 'json',
+                                                success: function(data){
+                                                    var html = '';
+                                                    var i;
+                                                    for(i=0; i<data.length; i++){
+                                                        html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                    }
+                                                    $('#almt_kel_kirim').html(html);
+                                                    $('#almt_kel_kirim').val($('#almt_kel_rmh option:selected').val());
+                                                    $('#almt_kel_kirim').trigger('change');
+                                                    $('#almt_kel_kirim').prop('disabled', 'disabled');
+                                                }
+                                            });
+                                        }
+                                    }else{
+                                        document.getElementById('almt_kirim').value = '';
+                                        document.getElementById('almt_kirim').disabled = false;
+                                        $('#provinsi').val(null).trigger('change');
+                                        document.getElementById('provinsi').disabled = false;
+                                        $('#almt_kt_kirim').val(null).trigger('change');
+                                        document.getElementById('almt_kt_kirim').disabled = false;
+                                        $('#almt_kec_kirim').val(null).trigger('change');
+                                        document.getElementById('almt_kec_kirim').disabled = false;
+                                        $('#almt_kel_kirim').val(null).trigger('change');
+                                        document.getElementById('almt_kel_kirim').disabled = false;
                                     }
                                 }
                             )
                         })
                     //kirim
                         $(document).ready(function(){
-                            $('#cek2').change(
-                                function(){
+                            $('#cek2').on('click', function(){
+                                if($('#cek1').is(':checked')){
+                                    document.getElementById('cek1').checked = false;
+                                }
                                     if($(this).is(':checked')){
                                         var almt = document.getElementById('almt_outlet').value;
                                         document.getElementById('almt_kirim').value = almt;
                                         document.getElementById('almt_kirim').disabled  = true;
-                                        $('#provinsi3').val($('#provinsi2 option:selected').val());
-                                        $('#provinsi3').prop('disabled', 'disabled');
-                                        if($('#provinsi3 option:selected').val() !== 0){
-                                            var id=$('#provinsi2 option:selected').val();
+                                        $('#provinsi').val($('#provinsi2 option:selected').val());
+                                        $('#provinsi').trigger('change');
+                                        $('#provinsi').prop('disabled', 'disabled');
+                                        if($('#provinsi option:selected').val() !== 0){
+                                            var id=$('#provinsi option:selected').val();
                                             $.ajax({
                                                 url : "<?php echo base_url();?>monitor/get_kota",
                                                 method : "POST",
@@ -4651,14 +4941,68 @@
                                                     var html = '';
                                                     var i;
                                                     for(i=0; i<data.length; i++){
-                                                        html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
+                                                        html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
                                                     }
                                                     $('#almt_kt_kirim').html(html);
                                                     $('#almt_kt_kirim').val($('#almt_kt_outlet option:selected').val());
+                                                    $('#almt_kt_kirim').trigger('change');
                                                     $('#almt_kt_kirim').prop('disabled', 'disabled');
                                                 }
                                             });
                                         }
+                                        if($('#almt_kt_kirim option:selected').val() !== 0){
+                                            var id=$('#almt_kt_kirim option:selected').val();
+                                            $.ajax({
+                                                url : "<?php echo base_url();?>monitor/get_kec",
+                                                method : "POST",
+                                                data : {id: id},
+                                                async : false,
+                                                dataType : 'json',
+                                                success: function(data){
+                                                    var html = '';
+                                                    var i;
+                                                    for(i=0; i<data.length; i++){
+                                                        html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                    }
+                                                    $('#almt_kec_kirim').html(html);
+                                                    $('#almt_kec_kirim').val($('#almt_kec_outlet option:selected').val());
+                                                    $('#almt_kec_kirim').trigger('change');
+                                                    $('#almt_kec_kirim').prop('disabled', 'disabled');
+                                                }
+                                            });
+                                        }
+                                        if($('#almt_kec_kirim option:selected').val() !== 0){
+                                            var id=$('#almt_kec_kirim option:selected').val();
+                                            $.ajax({
+                                                url : "<?php echo base_url();?>monitor/get_kel",
+                                                method : "POST",
+                                                data : {id: id},
+                                                async : false,
+                                                dataType : 'json',
+                                                success: function(data){
+                                                    var html = '';
+                                                    var i;
+                                                    for(i=0; i<data.length; i++){
+                                                        html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                                    }
+                                                    $('#almt_kel_kirim').html(html);
+                                                    $('#almt_kel_kirim').val($('#almt_kel_outlet option:selected').val());
+                                                    $('#almt_kel_kirim').trigger('change');
+                                                    $('#almt_kel_kirim').prop('disabled', 'disabled');
+                                                }
+                                            });
+                                        }
+                                    }else{
+                                        document.getElementById('almt_kirim').value = '';
+                                        document.getElementById('almt_kirim').disabled = false;
+                                        $('#provinsi').val(null).trigger('change');
+                                        document.getElementById('provinsi').disabled = false;
+                                        $('#almt_kt_kirim').val(null).trigger('change');
+                                        document.getElementById('almt_kt_kirim').disabled = false;
+                                        $('#almt_kec_kirim').val(null).trigger('change');
+                                        document.getElementById('almt_kec_kirim').disabled = false;
+                                        $('#almt_kel_kirim').val(null).trigger('change');
+                                        document.getElementById('almt_kel_kirim').disabled = false;
                                     }
                                 }
                             )
@@ -4686,7 +5030,7 @@
                                         var html = '';
                                         var i;
                                         for(i=0; i<data.length; i++){
-                                            html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
+                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
                                         }
                                         $('#almt_kt_kirim').html(html);
                                         
@@ -4695,50 +5039,48 @@
                             });
                         });
                         $(document).ready(function(){
-                            $('#cek1').change(
-                                function(){
-                                    if($(this).is(':checked')){
-                                        var almt = document.getElementById('almt_rmh').value;
-                                        document.getElementById('almt_kirim').value = almt;
-                                        document.getElementById('almt_kirim').disabled  = true;
-                                        $('#provinsi2').val($('#provinsi option:selected').val());
-                                        $('#provinsi2').prop('disabled', 'disabled');
-                                        if($('#provinsi option:selected').val() !== 0){
-                                            var id=$('#provinsi option:selected').val();
-                                            $.ajax({
-                                                url : "<?php echo base_url();?>monitor/get_kota",
-                                                method : "POST",
-                                                data : {id: id},
-                                                async : false,
-                                                dataType : 'json',
-                                                success: function(data){
-                                                    var html = '';
-                                                    var i;
-                                                    for(i=0; i<data.length; i++){
-                                                        html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
-                                                    }
-                                                    $('#almt_kt_outlet').html(html);
-                                                    $('#almt_kt_outlet').val($('#almt_kt_rmh option:selected').val());
-                                                    $('#almt_kt_outlet').prop('disabled', 'disabled');
-                                                }
-                                            });
+                            $('#almt_kt_kirim').change(function(){
+                                var id=$(this).val();
+                                $.ajax({
+                                    url : "<?php echo base_url();?>monitor/get_kec",
+                                    method : "POST",
+                                    data : {id: id},
+                                    async : false,
+                                    dataType : 'json',
+                                    success: function(data){
+                                        var html = '';
+                                        var i;
+                                        for(i=0; i<data.length; i++){
+                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
                                         }
+                                        $('#almt_kec_kirim').html(html);
+                                        
                                     }
-                                }
-                            )
-                        })
-                    //kirim
+                                });
+                            });
+                        });
                         $(document).ready(function(){
-                            $('#cek2').change(
-                                function(){
-                                    if($(this).is(':checked')){
-                                        var almt = document.getElementById('almt_outlet').value;
-                                        document.getElementById('almt_kirim').value = almt;
-                                        document.getElementById('almt_kirim').disabled  = true;
+                            $('#almt_kec_kirim').change(function(){
+                                var id=$(this).val();
+                                $.ajax({
+                                    url : "<?php echo base_url();?>monitor/get_kel",
+                                    method : "POST",
+                                    data : {id: id},
+                                    async : false,
+                                    dataType : 'json',
+                                    success: function(data){
+                                        var html = '';
+                                        var i;
+                                        for(i=0; i<data.length; i++){
+                                            html += '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                                        }
+                                        $('#almt_kel_kirim').html(html);
+                                        
                                     }
-                                }
-                            )
-                        })
+                                });
+                            });
+                        });
+                        
                 </script>
                 </div>
                     </div>

@@ -8,7 +8,7 @@
 
         
 	    function update($id, $data){
-            $this->db->where($this->id, $id);
+            $this->db->where('kd_mitra', $id);
             $this->db->update('adilaya_dt_mitra', $data);
         }
         

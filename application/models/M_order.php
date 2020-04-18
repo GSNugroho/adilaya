@@ -8,24 +8,24 @@ class M_order extends CI_Model{
 
     function get_total_dt(){
 		$query = $this->db->query("SELECT count(*) as allcount FROM adilaya_dt_mitra_order
-        JOIN kota ON almt_kt_kirim = id_kota
+        JOIN tb_kota ON almt_kt_kirim = tb_kota.id
         JOIN a_ekspedisi ON ekspedisi = kd_ekspedisi");
 		return $query->result();
     }
     
 	function get_total_fl($searchQuery){
 		$query = $this->db->query("SELECT count(*) as allcount FROM adilaya_dt_mitra_order
-        JOIN kota ON almt_kt_kirim = id_kota
+        JOIN tb_kota ON almt_kt_kirim = tb_kota.id
         JOIN adilaya_dt_mitra ON adilaya_dt_mitra_order.kd_mitra = adilaya_dt_mitra.kd_mitra
         JOIN a_ekspedisi ON adilaya_dt_mitra_order.ekspedisi = kd_ekspedisi WHERE 1=1".$searchQuery);
 		return $query->result();
     }
     
 	function get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
-		$query = $this->db->query("select TOP ".$rowperpage."
-        adilaya_dt_mitra_order.kd_mitra as kd_mitra, nm_mitra, kd_order, dt_trans, adilaya_dt_mitra_order.almt_kirim as almt_kirim, nama_kota, jml_transfer, adilaya_dt_mitra_order.nm_bank as nm_bank, adilaya_dt_mitra_order.ats_nm_rekening as ats_nm_rekening, 
+		$query = $this->db->query("SELECT TOP ".$rowperpage."
+        adilaya_dt_mitra_order.kd_mitra as kd_mitra, nm_mitra, kd_order, dt_trans, adilaya_dt_mitra_order.almt_kirim as almt_kirim, tb_kota.name as nama_kota, jml_transfer, adilaya_dt_mitra_order.nm_bank as nm_bank, adilaya_dt_mitra_order.ats_nm_rekening as ats_nm_rekening, 
         nama_ekspedisi, ket FROM adilaya_dt_mitra_order
-        JOIN kota ON almt_kt_kirim = id_kota
+        JOIN tb_kota ON almt_kt_kirim = tb_kota.id
         JOIN a_ekspedisi ON ekspedisi = kd_ekspedisi
         JOIN adilaya_dt_mitra ON adilaya_dt_mitra_order.kd_mitra = adilaya_dt_mitra.kd_mitra
 		WHERE 1=1 ".$searchQuery." and kd_order NOT IN (

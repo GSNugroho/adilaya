@@ -179,14 +179,11 @@ class M_monitor extends CI_Model{
 		return $query->result_array();
 	}
 	function get_dtmt_pel($id){
-		$query = $this->db->query("SELECT adilaya_dt_mitra.kd_mitra as kd_mitra, adilaya_dt_mitra.nm_mitra as nm_mitra, adilaya_dt_mitra.kt_lahir as kt_lahir, adilaya_dt_mitra.tgl_lahir as tgl_lahir,  
-		adilaya_dt_mitra.almt_rmh as almt_rmh, provinsi1.id_provinsi as provinsi1, adilaya_dt_mitra.almt_kt_rmh as kota1, adilaya_dt_mitra.no_hp1 as no_hp1, 
-		adilaya_dt_mitra.no_hp2 as no_hp2, adilaya_dt_mitra.almt_outlet as almt_outlet, provinsi2.id_provinsi as provinsi2, adilaya_dt_mitra.almt_kt_outlet as kota2, 
-		adilaya_dt_mitra.nm_produk as nm_produk, adilaya_dt_mitra.almt_kirim as almt_kirim, adilaya_dt_mitra.paket as paket, adilaya_dt_mitra.pembayaran as pembayaran FROM adilaya_dt_mitra
-		LEFT JOIN kota as kota1 ON adilaya_dt_mitra.almt_kt_rmh = kota1.id_kota AND adilaya_dt_mitra.almt_kt_outlet = kota1.id_kota
-		LEFT JOIN kota as kota2 ON adilaya_dt_mitra.almt_kt_outlet = kota2.id_kota AND adilaya_dt_mitra.almt_kt_rmh = kota2.id_kota
-		LEFT JOIN provinsi as provinsi1 ON kota1.id_provinsi_fk = provinsi1.id_provinsi AND kota2.id_provinsi_fk = provinsi1.id_provinsi
-		LEFT JOIN provinsi as provinsi2 ON kota2.id_provinsi_fk = provinsi2.id_provinsi AND kota1.id_provinsi_fk = provinsi2.id_provinsi
+		$query = $this->db->query("SELECT adilaya_dt_mitra.kd_mitra as kd_mitra, adilaya_dt_mitra.nm_mitra as nm_mitra, adilaya_dt_mitra.kt_lahir as kt_lahir, CONVERT(varchar, adilaya_dt_mitra.tgl_lahir, 105) as tgl_lahir,  
+		adilaya_dt_mitra.almt_rmh as almt_rmh, adilaya_dt_mitra.almt_prov_rmh as almt_prov_rmh, adilaya_dt_mitra.almt_kt_rmh as almt_kt_rmh, adilaya_dt_mitra.almt_kec_rmh as almt_kec_rmh, adilaya_dt_mitra.almt_kel_rmh as almt_kel_rmh, adilaya_dt_mitra.no_hp1 as no_hp1, 
+		adilaya_dt_mitra.no_hp2 as no_hp2, adilaya_dt_mitra.almt_outlet as almt_outlet, adilaya_dt_mitra.almt_prov_outlet as almt_prov_outlet, adilaya_dt_mitra.almt_kt_outlet as almt_kt_outlet, adilaya_dt_mitra.almt_kec_outlet as almt_kec_outlet, adilaya_dt_mitra.almt_kel_outlet as almt_kel_outlet, 
+		adilaya_dt_mitra.ats_nm_kirim as ats_nm_kirim, adilaya_dt_mitra.almt_kirim as almt_kirim, adilaya_dt_mitra.almt_prov_kirim as almt_prov_kirim, adilaya_dt_mitra.almt_kt_kirim as almt_kt_kirim, adilaya_dt_mitra.almt_kec_kirim as almt_kec_kirim, adilaya_dt_mitra.almt_kel_kirim as almt_kel_kirim,
+		adilaya_dt_mitra.nm_produk as nm_produk,  adilaya_dt_mitra.paket as paket, adilaya_dt_mitra.pembayaran as pembayaran FROM adilaya_dt_mitra
 		LEFT JOIN adilaya_paket ON adilaya_dt_mitra.paket = adilaya_paket.kd_paket
 		LEFT JOIN a_ekspedisi ON adilaya_dt_mitra.ekspedisi = a_ekspedisi.kd_ekspedisi
 		LEFT JOIN adilaya_produk ON adilaya_dt_mitra.nm_produk = adilaya_produk.kd_produk

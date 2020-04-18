@@ -753,7 +753,7 @@
                                                     <label for="tambahan">Tambahan</label>
                                                     <input class="form-control" type="text" name="in_tambahan" id="in_tambahan" style="width: 80%;">
                                                 </div>
-                                                <input type="hidden" name="in_kd_mitra" id="in_kd_mitra">
+                                                <input type="hidden" name="dt_kd_mitra" id="dt_kd_mitra">
                                                 
                                                 <button type="submit" class="btn btn-success" id="update_byr" style="color: white;" onclick="update_byr()">Simpan</button>
                                                 <button class="btn btn-danger" onclick="ttp()">Batal</button>
@@ -904,27 +904,27 @@
                         var almt_kt_rmh = $('#dt_almt_kt_rmh option:selected').val();
                         var almt_kec_rmh =$('#dt_almt_kec_rmh option:selected').val();
                         var almt_kel_rmh =$('#dt_almt_kel_rmh option:selected').val();
-                        var sts_pmby = $('#dt_sts_pmby option:selected').val();
-                        var nm_produk = $('#dt_nm_produk option:selected').val();
-                        var paket = $('#dt_paket option:selected').val();
-                        var ekspedisi =$('#dt_ekspedisi option:selected').val();
-                        var biaya_kirim = $('#dt_biaya_kirim').val();
-                        var tambahan = $('#dt_tambahan').val();
+                        var sts_pmby = $('#in_sts_pmby option:selected').val();
+                        var nm_produk = $('#in_nm_produk option:selected').val();
+                        var paket = $('#in_paket option:selected').val();
+                        var ekspedisi =$('#in_ekspedisi option:selected').val();
+                        var biaya_kirim = $('#in_biaya_kirim').val();
+                        var tambahan = $('#in_tambahan').val();
                         var pembayaran = $('#dt_kd_pmby').val();
-                        var jml_tarif = $('#dt_jml_tarif').val();
-                        var nm_bank = $('#dt_nm_bank option:selected').val();
-                        var rekening = $('#dt_rekening').val();
-                        var ats_nm_rekening = $('#dt_ats_nm_rekening').val();
+                        var jml_tarif = $('#in_jml_tarif').val();
+                        var nm_bank = $('#in_nm_bank option:selected').val();
+                        var rekening = $('#in_rekening').val();
+                        var ats_nm_rekening = $('#in_ats_nm_rekening').val();
 
-                        var dataString = 'kd_mitra='+kd_mitra+'&almt_rmh='+almt_rmh+'&almt_kt_rmh='+almt_kt_rmh+'&almt_kec_rmh='+almt_kec_rmh+'&almt_kel_rmh='+almt_kel_rmh+'&sts_pmby='+sts_pmby+'&nm_produk='+nm_produk+'&paket='+paket+'&ekspedisi='+ekspedisi+'&biaya_kirim='+biaya_kirim+
+                        var dataString = 'kd_mitra='+kd_mitra+'&almt_rmh='+almt_rmh+'&almt_prov_rmh='+almt_prov_rmh+'&almt_kt_rmh='+almt_kt_rmh+'&almt_kec_rmh='+almt_kec_rmh+'&almt_kel_rmh='+almt_kel_rmh+'&sts_pmby='+sts_pmby+'&nm_produk='+nm_produk+'&paket='+paket+'&ekspedisi='+ekspedisi+'&biaya_kirim='+biaya_kirim+
                         '&tambahan='+tambahan+'&pembayaran='+pembayaran+'&jml_tarif='+jml_tarif+'&nm_bank='+nm_bank+'&rekening='+rekening+'&ats_nm_rekening='+ats_nm_rekening;
-                        if($('#in_almt_outlet').val() !== ''){
+                        if($('#in_almt_outlet').val() !== undefined){
                             var almt_outlet = $('#in_almt_outlet').val();
                             var almt_prov_outlet = $('#in_provinsi2 option:selected').val();
                             var almt_kt_outlet = $('#in_almt_kt_outlet option:selected').val();
                             var almt_kec_outlet = $('#in_almt_kec_outlet option:selected').val();
                             var almt_kel_outlet = $('#in_almt_kel_outlet option:selected').val();
-                            dataString += '&almt_outlet='+almt_outlet+'&almt_prov_outlet'+almt_prov_outlet+'&almt_kt_outlet='+almt_kt_outlet+'&almt_kec_outlet='+almt_kec_outlet+'&almt_kel_outlet='+almt_kel_outlet;
+                            dataString += '&almt_outlet='+almt_outlet+'&almt_prov_outlet='+almt_prov_outlet+'&almt_kt_outlet='+almt_kt_outlet+'&almt_kec_outlet='+almt_kec_outlet+'&almt_kel_outlet='+almt_kel_outlet;
                         }else{
                             var almt_outlet = $('#dt_almt_outlet').val();
                             var almt_prov_outlet = $('#dt_provinsi2 option:selected').val();
@@ -933,7 +933,7 @@
                             var almt_kel_outlet = $('#dt_almt_kel_outlet option:selected').val();
                             dataString += '&almt_outlet='+almt_outlet+'&almt_prov_outlet'+almt_prov_outlet+'&almt_kt_outlet='+almt_kt_outlet+'&almt_kec_outlet='+almt_kec_outlet+'&almt_kel_outlet='+almt_kel_outlet;
                         }
-                        if($('#in_almt_kirim').val() !== ''){
+                        if($('#in_almt_kirim').val() !== undefined){
                             var almt_kirim = $('#in_almt_kirim').val();
                             var almt_prov_kirim = $('#in_provinsi3 option:selected').val();
                             var almt_kt_kirim = $('#in_almt_kt_kirim option:selected').val();
@@ -948,7 +948,7 @@
                             var almt_kel_kirim = $('#dt_almt_kel_kirim option:selected').val();
                             dataString += '&almt_kirim='+almt_kirim+'&almt_prov_kirim='+almt_prov_kirim+'&almt_kt_kirim='+almt_kt_kirim+'&almt_kec_kirim='+almt_kec_kirim+'&almt_kel_kirim='+almt_kel_kirim;
                         }
-                        if($('#in_almt_terusan').val() !== ''){
+                        if($('#in_almt_terusan').val() !== undefined){
                             var almt_terusan = $('#in_almt_terusan').val();
                             var almt_prov_terusan = $('#in_prov_terusan option:selected').val();
                             var almt_kt_terusan = $('#in_kt_terusan option:selected').val();
@@ -1238,6 +1238,32 @@
                                             }
                                         });
                                 }
+                                if($('#in_nm_produk').val() !== ''){
+                                    var id = $('#in_nm_produk').val();
+                                    $.get("<?php echo base_url();?>Monitor/get_rek_kantor", {id: id}, function(data){
+                                        var pilih = '<option value="0">Pilih</option>';
+                                        var i;
+                                        for(i=0; i<data.length; i++){
+                                            pilih += '<option value="'+data[i].kd_bank+'">'+data[i].nm_bank+'</option>';
+                                        }
+                                        $('#in_nm_bank').html(pilih);
+                                    }, "json");
+                                }
+
+                                $(document).ready(function(){
+                                    $('#in_nm_bank').change(function(){
+                                        var id = $('#in_nm_bank option:selected').val();
+                                        $.get("<?php echo base_url();?>Monitor/get_no_rek", {id: id}, function(data){
+                                            if(data[0] !== undefined){
+                                                $('#in_rekening').val(data[0].no_rek);
+                                            }else{
+                                                $('#in_rekening').val('');
+                                            }
+                                            
+                                        }, "json");
+                                    })
+                                })
+
                                 $('#in_paket').val(data[0]['paket']);
                                 $('#dt_kd_mitra').val(data[0]['kd_mitra']);
                                 $('#dt_kd_pmby').val(data[0]['pembayaran']);

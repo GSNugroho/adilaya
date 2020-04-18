@@ -486,39 +486,28 @@ class Monitor extends CI_Controller {
 				</a>
 				';
 			}elseif($this->session->userdata('level')=='3'){
-				$history = '<a href="monitor/history/'.$row->kd_mitra.'" class="btn btn-success" style="width: 100%;">
-				History
+				$history = '<a href="monitor/history/'.$row->kd_mitra.'" class="btn btn-light">
+				<i class="fa fa-history" title="History"></i>
 				</a>';
 				if($row->sts_pmby == 1 || $row->sts_pmby == 3){
 					$button = '
-					<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info" style="width: 100%;">
-					Info
+					<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+					<i class="fa fa-info-circle" title="Info"></i>
 					</a>
-					<button value="'.$row->kd_mitra.'" class="btn btn-warning" style="width: 100%;" data-toggle="modal" data-target="#exampleModal"  data-keyboard="false" data-backdrop="static" data-whatever="'.$row->kd_mitra.'" disabled>Order</button>
+					<button value="'.$row->kd_mitra.'" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"  data-keyboard="false" data-backdrop="static" data-whatever="'.$row->kd_mitra.'" disabled>
+					<i class="fa fa-shopping-cart" title="Order"></i>
+					</button>
 					';
 				}else{
 					$button = '
-					<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-info" style="width: 100%;">
-					Info
+					<a href="monitor/read/'.$row->kd_mitra.'" class="btn btn-light">
+					<i class="fa fa-info-circle" title="Info"></i>
 					</a>
-					<button value="'.$row->kd_mitra.'" class="btn btn-warning" style="width: 100%;" data-toggle="modal" data-target="#exampleModal"  data-keyboard="false" data-backdrop="static" data-whatever="'.$row->kd_mitra.'" onclick="load(this.value)">Order</button>
+					<button value="'.$row->kd_mitra.'" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"  data-keyboard="false" data-backdrop="static" data-whatever="'.$row->kd_mitra.'" onclick="load(this.value)">
+					<i class="fa fa-shopping-cart" title="Order"></i>
+					</button>
 					';
 				}				
-			}
-
-			
-			if($row->sts_vakum == 1){
-				$button .= '
-				<a href="monitor/vakum/'.$row->kd_mitra.'" class="btn btn-danger" style="width: 100%;">
-				OFF
-				</a>
-				';
-			}else{
-				$button .= '
-				<a href="monitor/vakum/'.$row->kd_mitra.'" class="btn btn-danger" style="width: 100%;">
-				Aktif
-				</a>
-				';
 			}
 			// onclick="load(this.value)"
 		$data[] = array( 
@@ -804,6 +793,7 @@ class Monitor extends CI_Controller {
 
 		echo json_encode($response);
 	}
+
 	function dt_cc(){
 		## Read value
 		$draw = $_POST['draw'];
@@ -1201,10 +1191,12 @@ class Monitor extends CI_Controller {
 				"kd_order" => $kd_o,
 				"total_order"=> $total,
 				"dt_trans"=> date('Y-m-d H:i:s'),
+				"ats_nm_kirim"=> $this->input->post('ats_nm_kirim', TRUE),
 				"almt_kirim"=> $this->input->post('almt_kirim', TRUE),
+				"almt_prov_kirim"=> $this->input->post('almt_prov_kirim', TRUE),
 				"almt_kt_kirim"=> $this->input->post('almt_kt_kirim', TRUE),
-				"almt_terusan"=> $this->input->post('almt_terusan', TRUE),
-				"almt_kt_terusan"=> $this->input->post('almt_kt_terusan', TRUE),
+				"almt_kec_kirim"=> $this->input->post('almt_kec_kirim', TRUE),
+				"almt_kel_kirim"=> $this->input->post('almt_kel_kirim', TRUE),
 				"jml_transfer"=> $this->input->post('jml_transfer', TRUE),
 				"nm_bank"=> $this->input->post('nm_bank', TRUE),
 				"rekening"=> $this->input->post('rekening', TRUE),
@@ -1213,9 +1205,21 @@ class Monitor extends CI_Controller {
 				"b_barang"=> $this->input->post('b_barang', TRUE),
 				"biaya_kirim"=> $this->input->post('biaya_kirim', TRUE),
 				"ket"=> $this->input->post('keterangan', TRUE),
-				"porsi"=>$this->input->post('jmlporsi', TRUE)
+				"porsi"=>$this->input->post('jmlporsi', TRUE),
+				"dt_create"=> date('Y-m-d H:i:s'),
+				"dt_aktif"=>1
 			);
 			$this->M_monitor->insert_order($data);
+
+			if($this->input->post('ats_nm_terusan') != ''){
+				$data = array(
+					"ats_nm_terusan"=> $this->input->post('ats_nm_terusan', TRUE),
+					"almt_terusan"=> $this->input->post('almt_terusan', TRUE),
+					"almt_kt_terusan"=> $this->input->post('almt_kt_terusan', TRUE),
+					"almt_kec_terusan"=> $this->input->post('almt_kec_terusan', TRUE),
+					"almt_kel_terusan"=> $this->input->post('almt_kel_terusan', TRUE),
+				);
+			}
 
 			if($this->input->post('jml_tarif2', true) != ''){
 				$data = array(
