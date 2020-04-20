@@ -177,5 +177,78 @@
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
+
+    function stok(){
+        $data = array(
+            'dd_pro' => $this->M_vendorbb->get_produk()
+        );
+        $this->load->view('vendorbb/stokbb', $data);
+    }
+
+    function dt_stok(){
+        ## Read value
+        $draw = $_POST['draw'];
+        $baris = $_POST['start'];
+        $rowperpage = $_POST['length']; // Rows display per page
+        $columnIndex = $_POST['order'][0]['column']; // Column index
+        $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
+        $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+        $searchValue = $_POST['search']['value']; // Search value
+
+        ## Search 
+        $searchQuery = " ";
+        $nm_produk = $this->input->post('nm_produk', TRUE);
+        if($nm_produk != ''){
+            $searchQuery .= "AND id_produk = '$nm_produk' ";
+        }
+        if($searchValue != ''){
+            $searchQuery .= " and (
+            nm_barang like '%".$searchValue."%'  ) ";
+            }
+
+        ## Total number of records without filtering
+        $sel = $this->M_vendorbb->get_total_dt();
+        // $records = sqlsrv_fetch_array($sel);
+        foreach($sel as $row){
+            $totalRecords = $row->allcount;
+        }
+        
+
+        ## Total number of record with filtering
+        $sel = $this->M_vendorbb->get_total_fl($searchQuery);
+        // $records = sqlsrv_fetch_assoc($sel);
+        foreach($sel as $row){
+            $totalRecordwithFilter = $row->allcount;
+        }
+        
+
+        ## Fetch records
+        $empQuery = $this->M_vendorbb->get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage);
+        $empRecords = $empQuery;
+        $data = array();
+
+        foreach($empRecords as $row){
+        $edit = '<button value="'.$row->kd_barang.'" type="button" class="btn btn-white" data-toggle="modal" data-target="#editStok" data-whatever="'.$row->kd_barang.'" data-keyboard="false" data-backdrop="static">Edit</button>';
+
+        $data[] = array( 
+            "nm_barang"=>$row->nm_barang,
+            "jml_stok"=>$row->jml_stok,
+            "satuan"=>$row->satuan,
+            "action"=>$edit,
+            // "action"=>$edit
+        );
+        }
+
+        ## Response
+        $response = array(
+        "draw" => intval($draw),
+        "iTotalRecords" => $totalRecords,
+        "iTotalDisplayRecords" => $totalRecordwithFilter,
+        "aaData" => $data
+        );
+
+        echo json_encode($response);
+    }
+
     }
 ?>

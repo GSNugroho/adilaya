@@ -8,197 +8,197 @@
     <tr>
         <td>BOOTH PUTIH</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_booth_putih" id="eattoa_booth_putih"></td>
+        <td><p id="eattoa_booth_putih"></p></td>
     </tr>
     <tr>
         <td>STICKER</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_sticker" id="eattoa_sticker"></td>
+        <td><p id="eattoa_sticker"></p></td>
     </tr>
     <tr>
         <td>NEON BOX</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_neon" id="eattoa_neon"></td>
+        <td><p id="eattoa_neon"></p></td>
     </tr>
     <tr>
         <td>ROLL BANNER</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_roll_ban" id="eattoa_roll_ban"></td>
+        <td><p id="eattoa_roll_ban"></p></td>
     </tr>
     <tr>
         <td>BAUT NEON LED</td>
         <td align="center">4</td>
-        <td><input type="checkbox" name="eattoa_neonbaut" id="eattoa_neonbaut"></td>
+        <td><p id="eattoa_neonbaut"></p></td>
     </tr>
     <tr>
         <td>NEON LED</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_neonled" id="eattoa_neonled"></td>
+        <td><p id="eattoa_neonled"></p></td>
     </tr>
     <tr>
         <td>PAN SANDWICH</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_pan" id="eattoa_pan"></td>
+        <td><p id="eattoa_pan"></p></td>
     </tr>
     <tr>
         <td>KOMPOR GAS</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_kom_gas" id="eattoa_kom_gas"></td>
+        <td><p id="eattoa_kom_gas"></p></td>
     </tr>
     <tr>
         <td>BOTOL SAUS PUTIH</td>
         <td align="center">4</td>
-        <td><input type="checkbox" name="eattoa_bosaus" id="eattoa_bosaus"></td>
+        <td><p id="eattoa_bosaus"></p></td>
     </tr>
     <tr>
         <td>BOX TOPLES</td>
         <td align="center">4</td>
-        <td><input type="checkbox" name="eattoa_boxtop" id="eattoa_boxtop"></td>
+        <td><p id="eattoa_boxtop"></p></td>
     </tr>
     <tr>
         <td>CELEMEK HITAM</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="eattoa_clemek" id="eattoa_clemek"></td>
+        <td><p id="eattoa_clemek"></p></td>
     </tr>
     <tr>
         <td>SERAGAM PUTIH SABLON HITAM</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="eattoa_seragam" id="eattoa_seragam"></td>
+        <td><p id="eattoa_seragam"></p></td>
     </tr>
     <tr>
         <td>TALENAN KAYU</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_telenan" id="eattoa_telenan"></td>
+        <td><p id="eattoa_telenan"></p></td>
     </tr>
     <tr>
         <td>SOLET PLASTIK</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="eattoa_sopla" id="eattoa_sopla"></td>
+        <td><p id="eattoa_sopla"></p></td>
     </tr>
     <tr>
         <td>PISAU BESAR ROTI</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_pisaub" id="eattoa_pisaub"></td>
+        <td><p id="eattoa_pisaub"></p></td>
     </tr>
     <tr>
         <td>SCRAB SANDWICH</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="eattoa_scrapsand" id="eattoa_scrapsand"></td>
+        <td><p id="eattoa_scrapsand"></p></td>
     </tr>
     <tr>
         <td>PARUTAN KEJU</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_parkej" id="eattoa_parkej"></td>
+        <td><p id="eattoa_parkej"></p></td>
     </tr>
     <tr>
         <td>KANEBO</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_kanebo" id="eattoa_kanebo"></td>
+        <td><p id="eattoa_kanebo"></p></td>
     </tr>
     <tr>
         <td>SERBET</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_serbet" id="eattoa_serbet"></td>
+        <td><p id="eattoa_serbet"></p></td>
     </tr>
     <tr>
         <td>MASKER</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_masker" id="eattoa_masker"></td>
+        <td><p id="eattoa_masker"></p></td>
     </tr>
     <tr>
         <td>HANDGLOVES</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_hand_glo" id="eattoa_hand_glo"></td>
+        <td><p id="eattoa_hand_glo"></p></td>
     </tr>
     <tr>
         <td>NAMPAN STAINLESS KOTAK 40x30</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_nmst" id="eattoa_nmst"></td>
+        <td><p id="eattoa_nmst"></p></td>
     </tr>
     <tr>
         <td>COOLING RACK 40x30</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_coll" id="eattoa_coll"></td>
+        <td><p id="eattoa_coll"></p></td>
     </tr>
     <tr>
         <td>CAPITAN/ PINSET</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="eattoa_capitan" id="eattoa_capitan"></td>
+        <td><p id="eattoa_capitan"></p></td>
     </tr>
     <tr>
         <td>KUAS</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_kuas" id="eattoa_kuas"></td>
+        <td><p id="eattoa_kuas"></p></td>
     </tr>
     <tr>
         <td>SELANG + REGULATOR</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_se_reg" id="eattoa_se_reg"></td>
+        <td><p id="eattoa_se_reg"></p></td>
     </tr>
     <tr>
         <td>ICE BOX</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_boxes" id="eattoa_boxes"></td>
+        <td><p id="eattoa_boxes"></p></td>
     </tr>
     <tr>
         <td>KONTAINER 40x40</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_kontainer" id="eattoa_kontainer"></td>
+        <td><p id="eattoa_kontainer"></p></td>
     </tr>
     <tr>
         <td>TOPLES TELUR</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_top_telur" id="eattoa_top_telur"></td>
+        <td><p id="eattoa_top_telur"></p></td>
     </tr>
     <tr>
         <td>CETAKAN TELUR</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_cet_telur" id="eattoa_cet_telur"></td>
+        <td><p id="eattoa_cet_telur"></p></td>
     </tr>
     <tr>
         <td>RAFIA LAKBAN</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_ra_la" id="eattoa_ra_la"></td>
+        <td><p id="eattoa_ra_la"></p></td>
     </tr>
     <tr>
         <td>KARDUS</td>
         <td align="center">4</td>
-        <td><input type="checkbox" name="eattoa_kardus" id="eattoa_kardus"></td>
+        <td><p id="eattoa_kardus"></p></td>
     </tr>
     <tr>
         <td>SURAT KONTRAK</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_sukon" id="eattoa_sukon"></td>
+        <td><p id="eattoa_sukon"></p></td>
     </tr>
     <tr>
         <td>ID CARD</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="eattoa_id_ca" id="eattoa_id_ca"></td>
+        <td><p id="eattoa_id_ca"></p></td>
     </tr>
     <tr>
         <td>TOPLES MARGARIN BULAT 1 WARNA</td>
         <td align="center">2</td>
-        <td><input type="checkbox" name="eattoa_top_mar" id="eattoa_top_mar"></td>
+        <td><p id="eattoa_top_mar"></p></td>
     </tr>
     <tr>
         <td>SENDOK</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_sendok" id="eattoa_sendok"></td>
+        <td><p id="eattoa_sendok"></p></td>
     </tr>
     <tr>
         <td>TEMPAT SENDOK</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_tsendok" id="eattoa_tsendok"></td>
+        <td><p id="eattoa_tsendok"></p></td>
     </tr>
     <tr>
         <td>PISAU SAYUR</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_pisausay" id="eattoa_pisausay"></td>
+        <td><p id="eattoa_pisausay"></p></td>
     </tr>
     <tr>
         <td>SCRAP KECIL</td>
         <td align="center">1</td>
-        <td><input type="checkbox" name="eattoa_scke" id="eattoa_scke"></td>
+        <td><p id="eattoa_scke"></p></td>
     </tr>
 </table>
 </form>

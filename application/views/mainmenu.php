@@ -210,6 +210,20 @@
                 </a>
                 </li>
                 <?php endif;?>
+                <?php if($this->session->userdata('level')=='8'):?>
+                <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('Vendorbb')?>">
+                    <img src="<?php echo base_url('assets/images/icons/002-test.png')?>" alt="">
+                    <span class="menu-title">Data Order</span>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('Vendorbb/stok')?>">
+                    <img src="<?php echo base_url('assets/images/icons/008-list.png')?>" alt="">
+                    <span class="menu-title">Stok Bahan Baku</span>
+                </a>
+                </li>
+                <?php endif;?>
                 <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('Login/logout')?>">
                     <img src="<?php echo base_url('assets/images/icons/020-locked.png')?>" alt="">
