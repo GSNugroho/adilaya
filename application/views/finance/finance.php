@@ -15,6 +15,7 @@
 <script src="<?php echo base_url('assets/datepicker/js/bootstrap-datetimepicker.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.js')?>"></script>
+<script src="<?php echo base_url('assets/js/autosize.min.js')?>"></script>
 <style>
     input[type=number] {
         -moz-appearance: textfield;
@@ -50,44 +51,94 @@
 						</tr>
                     </table>                    
                     <br>
-                    
+                    <button style="height: 36px" class="btn btn-dark" data-toggle="modal" data-target="#inputPengeluaran"  data-keyboard="false" data-backdrop="static">Input Pengeluaran</button>
                     <br>
                     <br>
                     <div id="dynamic-tabs">
                         <ul>
-                            <li class="tabs" data-source="<?php echo base_url('Vendorbb/dt_hri')?>" data-table="hri-table"><a href="#tab-hri">Hari ini (Transfer)</a>
+                            <li class="tabs" data-source="<?php echo base_url('Finance/trans_hri')?>" data-table="transhr-table"><a href="#tab-transhr">Hari ini (Transfer)</a>
                             </li>
-                            <li class="tabs" data-source="<?php echo base_url('Vendorbb/dt_hri')?>" data-table="hri-table"><a href="#tab-hri">Hari ini (Tunai)</a>
+                            <li class="tabs" data-source="<?php echo base_url('Finance/tunai_hri')?>" data-table="tunaihr-table"><a href="#tab-tunaihr">Hari ini (Tunai)</a>
                             </li>
-                            <li class="tabs" data-source="<?php echo base_url('Vendorbb/dt_sm')?>" data-table="sm-table"><a href="#tab-sm">Semua (Transfer)</a>
+                            <li class="tabs" data-source="<?php echo base_url('Finance/trans_sm')?>" data-table="transsm-table"><a href="#tab-transsm">Semua (Transfer)</a>
                             </li>
-                            <li class="tabs" data-source="<?php echo base_url('Vendorbb/dt_sm')?>" data-table="sm-table"><a href="#tab-sm">Semua (Tunai)</a>
+                            <li class="tabs" data-source="<?php echo base_url('Finance/tunai_sm')?>" data-table="tunaism-table"><a href="#tab-tunaism">Semua (Tunai)</a>
                             </li>
                         </ul>
-                        <div id="tab-hri" class="table-responsive">
-                            <table id="hri-table" class="table table-bordered" cellspacing="0" width="100%">
+                        <div id="tab-transhr" class="table-responsive">
+                            <table id="transhr-table" class="table table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Nama Mitra</th>
-                                        <th>Tanggal Order</th>
-                                        <th>Alamat Kirim</th>
-                                        <th>Kota</th>
+                                        <th>Jenis Pengeluaran</th>
+                                        <th>Keterangan</th>
+                                        <th>Jumlah</th>
                                         <th style="width:16%;">Action</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Total:</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
-                        <div id="tab-sm" class="table-responsive">
-                            <table id="sm-table" class="table table-bordered" cellspacing="0" width="100%">
+                        <div id="tab-tunaihr" class="table-responsive">
+                            <table id="tunaihr-table" class="table table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Nama Mitra</th>
-                                        <th>Tanggal Order</th>
-                                        <th>Alamat Kirim</th>
-                                        <th>Kota</th>
+                                        <th>Jenis Pengeluaran</th>
+                                        <th>Keterangan</th>
+                                        <th>Jumlah</th>
                                         <th style="width:16%;">Action</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Total:</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div id="tab-transsm" class="table-responsive">
+                            <table id="transsm-table" class="table table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Jenis Pengeluaran</th>
+                                        <th>Keterangan</th>
+                                        <th>Jumlah</th>
+                                        <th style="width:16%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Total:</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div id="tab-tunaism" class="table-responsive">
+                            <table id="tunaism-table" class="table table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Jenis Pengeluaran</th>
+                                        <th>Keterangan</th>
+                                        <th>Jumlah</th>
+                                        <th style="width:16%;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2" style="text-align:right">Total:</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -102,6 +153,41 @@
 
                                 function initiateTable(tableId, source) {
                                     var table = $("#" + tableId).DataTable({
+                                        "footerCallback": function(row, data, start, end, display) {
+                                            var api = this.api(),
+                                                data;
+                                            // Remove the formatting to get integer data for summation
+                                            var intVal = function(i) {
+                                                return typeof i === 'string' ?
+                                                    i.replace(/[\$,]/g, '') * 1 :
+                                                    typeof i === 'number' ?
+                                                    i : 0;
+                                            };
+                                            // Total over all pages
+                                            total = api
+                                                .column(2)
+                                                .data()
+                                                .reduce(function(a, b) {
+                                                    return intVal(a) + intVal(b);
+                                                }, 0);
+                                            // Total over this page
+                                            pageTotal = api
+                                                .column(2, {
+                                                    page: 'current'
+                                                })
+                                                .data()
+                                                .reduce(function(a, b) {
+                                                    return intVal(a) + intVal(b);
+                                                }, 0);
+                                            
+                                            // Update footer
+                                            var numformat = $.fn.dataTable.render.number('.', ',', 2, 'Rp ').display;
+                                            $('tr:eq(0) th:eq(1)', api.table().footer()).html(
+                                                numformat(pageTotal)
+                                            );
+                                        },
+                                        "bLengthChange": false,
+                                        "bFilter": false,
                                         language: {
                                             "sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
                                             "sProcessing":   "Sedang memproses...",
@@ -135,10 +221,9 @@
                                             }
                                         },
                                         'columns': [
-                                            { data: 'nm_mitra' },
-                                            { data: 'tgl_order'},
-                                            { data: 'almt_kirim' },
-                                            { data: 'kota' },
+                                            { data: 'jns_pengeluaran' },
+                                            { data: 'ket_pengeluaran'},
+                                            { data: 'jml_pengeluaran', render: $.fn.dataTable.render.number('.', ',', 2, 'Rp ') },
                                             { data: 'action'}
                                         ],
                                         "destroy": true,
@@ -150,7 +235,7 @@
                                         table.draw(true);
                                     });
                                 }
-                                initiateTable("hri-table", "<?php echo base_url('Vendorbb/dt_hri')?>");
+                                initiateTable("transhr-table", "<?php echo base_url('Finance/trans_hri')?>");
                                 $("#dynamic-tabs").tabs();
 
                             });
@@ -166,6 +251,190 @@
                         </script>
                 </div>
             </div>
+            <div class="modal fade" id="inputPengeluaran" tabindex="-1" role="dialog" aria-labelledby="inputPengeluaran" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="inputPengeluaranLabel">Input Data Pengeluaran</h5>
+                            <button type="button" onclick="ttp()" class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="inputJns">Jenis Pengeluaran</label>
+                                <select class="form-control" name="jns_pengeluaran" id="jns_pengeluaran" style="width: 80%;">
+                                <?php
+                                echo "<option></option>";
+                                foreach ($dd_jns as $row) {  
+                                    echo "<option value='".$row->kd_jns."' >".$row->nm_jns."</option>";
+                                    }
+                                    echo"
+                                </select>"
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <label for="ket_pengeluaran">Keterangan</label>
+                                <textarea class="form-control" name="ket_pengeluaran" id="ket_pengeluaran" style="width: 80%; height:50%"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="jml_pengeluaran">Jumlah Pengeluaran</label>
+                                <div class="input-group" style="width: 80%">
+                                    <span class="input-group-addon">Rp</span>
+                                    <input class="form-control" name="jml_pengeluaran" id="jml_pengeluaran">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="jns_pembayaran">Tipe Pembayaran</label>
+                                <select class="form-control" name="jns_pembayaran" id="jns_pembayaran" style="width: 80%">
+                                    <option></option>
+                                    <option value="0">Transfer</option>
+                                    <option value="1">Tunai</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success" id="simpanPengeluaran" style="color: white;">Simpan</button>
+                            <button type="button" id="close" class="btn btn-danger" onclick="tutup()">Batal</button>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                autosize(document.getElementById("ket_pengeluaran"));
+                function ttp(){
+                    $('#inputPengeluaran').modal('hide');
+                }
+                $('#simpanPengeluaran').click(function(event){
+                    var jns_pengeluaran = $('#jns_pengeluaran option:selected').val();
+                    var ket_pengeluaran = $('#ket_pengeluaran').val();
+                    var jns_pembayaran = $('#jns_pembayaran').val();
+                    var jml_pengeluaran = $('#jml_pengeluaran').val();
+                    
+                    var dataString = 'jns_pengeluaran='+jns_pengeluaran+'&ket_pengeluaran='+ket_pengeluaran+'&jns_pembayaran='+jns_pembayaran+'&jml_pengeluaran='+jml_pengeluaran;
+
+                    $.post("<?php echo base_url()?>Finance/simpanPengeluaran", dataString, function(data){
+                        $('#jns_pengeluaran option:selected').val('');
+                        $('#ket_pengeluaran').val('');
+                        $('#jns_pembayaran').val('');
+                        $('#jml_pengeluaran').val('');
+                        $('#inputPengeluaran').modal('hide');
+                        $('#tab-transhr').DataTable().ajax.reload();
+                        $('#tab-tunaihr').DataTable().ajax.reload();
+                        $('#tab-transsm').DataTable().ajax.reload();
+                        $('#tab-tunaism').DataTable().ajax.reload();
+                        Swal.fire({
+                                title: 'Sukses',
+                                text: "Data Berhasil Disimpan!",
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'OK'
+                                })
+                    })
+                })
+            </script>
+            <div class="modal fade" id="edinputPengeluaran" tabindex="-1" role="dialog" aria-labelledby="edPengeluaran" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="edPengeluaranLabel">Edit Data Pengeluaran</h5>
+                            <button type="button" onclick="ttp()" class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="inputJns">Jenis Pengeluaran</label>
+                                <select class="form-control" name="edjns_pengeluaran" id="edjns_pengeluaran" style="width: 80%;">
+                                <?php
+                                echo "<option></option>";
+                                foreach ($dd_jns as $row) {  
+                                    echo "<option value='".$row->kd_jns."' >".$row->nm_jns."</option>";
+                                    }
+                                    echo"
+                                </select>"
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <label for="ket_pengeluaran">Keterangan</label>
+                                <textarea class="form-control" name="edket_pengeluaran" id="edket_pengeluaran" style="width: 80%; height:50%"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="jml_pengeluaran">Jumlah Pengeluaran</label>
+                                <div class="input-group" style="width: 80%">
+                                    <span class="input-group-addon">Rp</span>
+                                    <input class="form-control" name="edjml_pengeluaran" id="edjml_pengeluaran">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="jns_pembayaran">Tipe Pembayaran</label>
+                                <select class="form-control" name="edjns_pembayaran" id="edjns_pembayaran" style="width: 80%">
+                                    <option></option>
+                                    <option value="0">Transfer</option>
+                                    <option value="1">Tunai</option>
+                                </select>
+                            </div>
+                            <input type="hidden" name="ed_kd_pengeluaran" id="ed_kd_pengeluaran">
+                            <button type="submit" class="btn btn-success" id="edsimpanPengeluaran" style="color: white;">Simpan</button>
+                            <button type="button" id="close" class="btn btn-danger" onclick="tutup()">Batal</button>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                autosize(document.getElementById("edket_pengeluaran"));
+                function tutup(){
+                    $('#edinputPengeluaran').modal('hide');
+                }
+
+                $('#edinputPengeluaran').on('show.bs.modal', function(event){
+                    var button = $(event.relatedTarget)
+                    var recipient = button.data('whatever')
+                    var modal = $(this);
+                    var dataString = 'id=' + recipient
+                    $.get("<?php echo base_url()?>Finance/get_data_pengeluaran", dataString, function(data){
+                        $('#edjns_pengeluaran').val(data[0].jns_pengeluaran);
+                        $('#edket_pengeluaran').val(data[0].ket_pengeluaran);
+                        $('#edjns_pembayaran').val(data[0].jns_pembayaran);
+                        $('#edjml_pengeluaran').val(data[0].jml_pengeluaran);
+                        $('#ed_kd_pengeluaran').val(data[0].kd_pengeluaran);
+                    }, "json")
+                })
+
+                $('#edsimpanPengeluaran').click(function(event){
+                    var jns_pengeluaran = $('#edjns_pengeluaran option:selected').val();
+                    var ket_pengeluaran = $('#edket_pengeluaran').val();
+                    var jns_pembayaran = $('#edjns_pembayaran').val();
+                    var jml_pengeluaran = $('#edjml_pengeluaran').val();
+                    
+                    var dataString = 'jns_pengeluaran='+jns_pengeluaran+'&ket_pengeluaran='+ket_pengeluaran+'&jns_pembayaran='+jns_pembayaran+'&jml_pengeluaran='+jml_pengeluaran;
+
+                    $.post("<?php echo base_url()?>Finance/simpanPengeluaran", dataString, function(data){
+                        $('#edjns_pengeluaran option:selected').val('');
+                        $('#edket_pengeluaran').val('');
+                        $('#edjns_pembayaran').val('');
+                        $('#edjml_pengeluaran').val('');
+                        $('#edinputPengeluaran').modal('hide');
+                        $('#tab-transhr').DataTable().ajax.reload();
+                        $('#tab-tunaihr').DataTable().ajax.reload();
+                        $('#tab-transsm').DataTable().ajax.reload();
+                        $('#tab-tunaism').DataTable().ajax.reload();
+                        Swal.fire({
+                                title: 'Sukses',
+                                text: "Data Berhasil Diubah!",
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'OK'
+                                })
+                    })
+                })
+            </script>
         </div>
     </div>
 </div>
