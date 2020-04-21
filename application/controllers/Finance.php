@@ -15,6 +15,13 @@
             $this->load->view('finance/finance', $data);
         }
 
+        public function anggaran(){
+            $data = array(
+                'dd_jns' => $this->M_finance->jns_pengeluaran()
+            );
+            $this->load->view('finance/anggaran', $data);
+        }
+
         function simpanPengeluaran(){
             $data = array(
                 'jns_pengeluaran' => $this->input->post('jns_pengeluaran', TRUE),
@@ -297,6 +304,85 @@
                 "jns_pengeluaran"=>$row->nm_jns,
                 "ket_pengeluaran"=>$row->ket_pengeluaran,
                 "jml_pengeluaran"=>$row->jml_pengeluaran,
+                "action"=>$cek
+            );
+            }
+    
+            ## Response
+            $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordwithFilter,
+            "aaData" => $data
+            );
+    
+            echo json_encode($response);
+        }
+
+        function dt_anggaran(){
+            ## Read value
+            $draw = $_POST['draw'];
+            $baris = $_POST['start'];
+            $rowperpage = $_POST['length']; // Rows display per page
+            $columnIndex = $_POST['order'][0]['column']; // Column index
+            $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
+            $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+            $searchValue = $_POST['search']['value']; // Search value
+    
+            ## Search 
+            $searchQuery = " ";
+            $nm_anggaran = $this->input->post('nm_anggaran', TRUE);
+            if($nm_anggaran != ''){
+                $searchQuery .= "AND nm_anggaran = '$nm_anggaran' ";
+            }else{
+                $searchQuery .= "AND nm_anggaran = '' ";
+            }
+            // $searchQuery .= " AND adilaya_finance_out.jns_pembayaran = 1";
+            // $searchQuery .= " and DAY(dt_create) = DAY(GETDATE()) and MONTH(dt_create) = MONTH(GETDATE()) and YEAR(dt_create) = YEAR(GETDATE()) ";
+             
+            if($searchValue != ''){
+            $searchQuery .= " and (
+                nm_jns like '%".$searchValue."%'  ) ";
+            }
+    
+            ## Total number of records without filtering
+            $sel = $this->M_finance->get_total_dta();
+            // $records = sqlsrv_fetch_array($sel);
+            foreach($sel as $row){
+                $totalRecords = $row->allcount;
+            }
+            
+    
+            ## Total number of record with filtering
+            $sel = $this->M_finance->get_total_fla($searchQuery);
+            // $records = sqlsrv_fetch_assoc($sel);
+            foreach($sel as $row){
+                $totalRecordwithFilter = $row->allcount;
+            }
+            
+    
+            ## Fetch records
+            $empQuery = $this->M_finance->get_total_fta($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage);
+            $empRecords = $empQuery;
+            $data = array();
+    
+            foreach($empRecords as $row){
+                $cek = '
+                <button value="'.$row->kd_anggaran.'" type="button" class="btn btn-light" data-toggle="modal" data-target="#inputValidasi" data-whatever="'.$row->kd_anggaran.'" data-keyboard="false" data-backdrop="static">
+                <i class="fa fa-flag-checkered"></i>
+                </button>
+                ';
+                if($row->dt_status == 0){
+                    $status = 'Belum Disetujui';
+                }else if($row->dt_status == 1){
+                    $status = 'Sudah Disetujui';
+                }
+            $data[] = array( 
+                "nm_anggaran"=>$row->nm_jns,
+                "dt_create"=>date('d-m-Y', strtotime($row->dt_create)),
+                "ket_anggaran"=>$row->ket_anggaran,
+                "jml_anggaran"=>$row->jml_anggaran,
+                "sts_anggaran"=>$status,
                 "action"=>$cek
             );
             }

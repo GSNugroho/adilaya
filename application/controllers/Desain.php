@@ -4,6 +4,8 @@
         {
             parent::__construct();
             $this->load->model('M_desain');
+            $this->load->model('M_finance');
+            $this->load->model('M_rnd');
             $this->load->library('form_validation');
             $this->load->helper(array('url', 'file', 'form'));
         }
@@ -18,6 +20,39 @@
          public function tim_sosmed(){
             $this->load->view('desain/tim_sosmed');
          }
+
+         
+        public function anggaran(){
+            $this->load->view('desain/anggaran');
+        }
+
+        function simpanAnggaran(){
+            $data = array(
+                'nm_anggaran' => $this->input->post('jns_pengeluaran', TRUE),
+                'ket_anggaran' => $this->input->post('ket_pengeluaran', TRUE),
+                'jns_pembayaran' => $this->input->post('jns_pembayaran', TRUE),
+                'jml_anggaran' => $this->input->post('jml_pengeluaran', TRUE),
+                'kd_anggaran' => $this->get_kode(),
+                'dt_status' => 0,
+                'dt_create' => date('Y-m-d'),
+                'dt_aktif' => 1
+            );
+            $this->M_rnd->insert_anggaran($data);
+        }
+
+        function get_kode(){
+            $kode = $this->M_rnd->get_kode_anggaran();
+            foreach($kode as $row){
+                $data = $row->maxkode;
+            }
+
+            $kodeinv = $data;
+            $noUrut = (int) substr($kodeinv, 3, 6);
+            $noUrut++;
+            $char = "AG";
+            $kodebaru = $char.sprintf("%06s", $noUrut);
+            return $kodebaru;
+        }
 
          function dt_tgl(){
             $list=array();
@@ -319,6 +354,83 @@
             "aaData" => $data
             );
 
+            echo json_encode($response);
+        }
+
+        function dt_anggaran(){
+            ## Read value
+            $draw = $_POST['draw'];
+            $baris = $_POST['start'];
+            $rowperpage = $_POST['length']; // Rows display per page
+            $columnIndex = $_POST['order'][0]['column']; // Column index
+            $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
+            $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+            $searchValue = $_POST['search']['value']; // Search value
+    
+            ## Search 
+            $searchQuery = " ";
+            $nm_anggaran = $this->input->post('in_nm_pengajuan', TRUE);
+            
+                $searchQuery .= "AND nm_jns LIKE '%medsos%' ";
+            
+            // $searchQuery .= " AND adilaya_finance_out.jns_pembayaran = 1";
+            // $searchQuery .= " and DAY(dt_create) = DAY(GETDATE()) and MONTH(dt_create) = MONTH(GETDATE()) and YEAR(dt_create) = YEAR(GETDATE()) ";
+             
+            if($searchValue != ''){
+            $searchQuery .= " and (
+                nm_jns like '%".$searchValue."%'  ) ";
+            }
+    
+            ## Total number of records without filtering
+            $sel = $this->M_finance->get_total_dta();
+            // $records = sqlsrv_fetch_array($sel);
+            foreach($sel as $row){
+                $totalRecords = $row->allcount;
+            }
+            
+    
+            ## Total number of record with filtering
+            $sel = $this->M_finance->get_total_fla($searchQuery);
+            // $records = sqlsrv_fetch_assoc($sel);
+            foreach($sel as $row){
+                $totalRecordwithFilter = $row->allcount;
+            }
+            
+    
+            ## Fetch records
+            $empQuery = $this->M_finance->get_total_fta($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage);
+            $empRecords = $empQuery;
+            $data = array();
+    
+            foreach($empRecords as $row){
+                $cek = '
+                <button value="'.$row->kd_anggaran.'" type="button" class="btn btn-light" data-toggle="modal" data-target="#edinputPengeluaran" data-whatever="'.$row->kd_anggaran.'" data-keyboard="false" data-backdrop="static">
+                <i class="fa fa-flag-checkered"></i>
+                </button>
+                ';
+                if($row->dt_status == 0){
+                    $status = 'Belum Disetujui';
+                }else if($row->dt_status == 1){
+                    $status = 'Sudah Disetujui';
+                }
+            $data[] = array( 
+                "nm_anggaran"=>$row->nm_jns,
+                "dt_create"=>date('d-m-Y', strtotime($row->dt_create)),
+                "ket_anggaran"=>$row->ket_anggaran,
+                "jml_anggaran"=>$row->jml_anggaran,
+                "sts_anggaran"=>$status,
+                "action"=>$cek
+            );
+            }
+    
+            ## Response
+            $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordwithFilter,
+            "aaData" => $data
+            );
+    
             echo json_encode($response);
         }
     }

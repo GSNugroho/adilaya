@@ -159,7 +159,7 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?php echo base_url('Rnd/anggaran')?>">
                           Anggaran
                         </a>
                       </li>
@@ -186,7 +186,7 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?php echo base_url('Desain/anggaran')?>">
                           Anggaran
                         </a>
                       </li>
@@ -221,6 +221,20 @@
                 <a class="nav-link" href="<?php echo base_url('Vendorbb/stok')?>">
                     <img src="<?php echo base_url('assets/images/icons/008-list.png')?>" alt="">
                     <span class="menu-title">Stok Bahan Baku</span>
+                </a>
+                </li>
+                <?php endif;?>
+                <?php if($this->session->userdata('level')=='10'):?>
+                <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('Finance')?>">
+                    <img src="<?php echo base_url('assets/images/icons/002-test.png')?>" alt="">
+                    <span class="menu-title">Data Keluar</span>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('Finance/anggaran')?>">
+                    <img src="<?php echo base_url('assets/images/icons/004-sheet.png')?>" alt="">
+                    <span class="menu-title">Data Anggaran</span>
                 </a>
                 </li>
                 <?php endif;?>

@@ -113,5 +113,14 @@
             return $query->result();
         }
 
+        function get_kode_anggaran(){
+            $query = $this->db->query('SELECT MAX(kd_anggaran) AS maxkode FROM adilaya_anggaran');
+		    return $query->result();
+        }
+
+        function insert_anggaran($data){
+            $this->db->insert('adilaya_anggaran', $data);
+        }
+
     }
 ?>

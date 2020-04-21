@@ -30,6 +30,30 @@
             return $query->result();
         }
 
+        function get_total_dta(){
+            $query = $this->db->query("SELECT count(*) as allcount FROM adilaya_anggaran
+            JOIN adilaya_finance_jns ON adilaya_anggaran.nm_anggaran = adilaya_finance_jns.kd_jns WHERE 1=1 ");
+            return $query->result();
+        }
+    
+        function get_total_fla($searchQuery){
+            $query = $this->db->query("SELECT count(*) as allcount FROM adilaya_anggaran
+            JOIN adilaya_finance_jns ON adilaya_anggaran.nm_anggaran = adilaya_finance_jns.kd_jns WHERE 1=1 ".$searchQuery);
+            return $query->result();
+        }
+    
+        function get_total_fta($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
+            $query = $this->db->query("SELECT TOP ".$rowperpage."
+            kd_anggaran, ket_anggaran, jml_anggaran, nm_jns, nm_anggaran, dt_create, dt_status
+            FROM adilaya_anggaran
+            JOIN adilaya_finance_jns ON adilaya_anggaran.nm_anggaran = adilaya_finance_jns.kd_jns
+            WHERE 1=1 ".$searchQuery." and kd_anggaran NOT IN (
+                SELECT TOP ".$baris." kd_anggaran FROM adilaya_anggaran 
+                WHERE 1=1 ".$searchQuery." order by ".$columnName." ".$columnSortOrder.") 
+            order by ".$columnName." ".$columnSortOrder);
+            return $query->result();
+        }
+
         function jns_pengeluaran(){
             $query = $this->db->query("SELECT * FROM adilaya_finance_jns ORDER BY kd_jns asc");
 		    return $query->result();
