@@ -133,7 +133,7 @@
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="inputValidasiLabel">Input Data Pengeluaran</h5>
+                                <h5 class="modal-title" id="inputValidasiLabel">Persetujuan Pengajuan</h5>
                                     <button type="button" onclick="ttp()" class="close" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -141,7 +141,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="inputJns">Jenis Pengeluaran</label>
-                                        <select class="form-control" name="jns_pengeluaran" id="jns_pengeluaran" style="width: 80%;">
+                                        <select class="form-control" name="jns_anggaran" id="jns_anggaran" style="width: 80%;" disabled>
                                         <?php
                                         echo "<option></option>";
                                         foreach ($dd_jns as $row) {  
@@ -153,25 +153,26 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="ket_pengeluaran">Keterangan</label>
-                                        <textarea class="form-control" name="ket_pengeluaran" id="ket_pengeluaran" style="width: 80%; height:50%"></textarea>
+                                        <textarea class="form-control" name="ket_anggaran" id="ket_anggaran" style="width: 80%; height:50%" disabled></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="jml_pengeluaran">Jumlah Pengeluaran</label>
                                         <div class="input-group" style="width: 80%">
                                             <span class="input-group-addon">Rp</span>
-                                            <input class="form-control" name="jml_pengeluaran" id="jml_pengeluaran">
+                                            <input class="form-control" name="jml_anggaran" id="jml_anggaran" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="jns_pembayaran">Tipe Pembayaran</label>
-                                        <select class="form-control" name="jns_pembayaran" id="jns_pembayaran" style="width: 80%">
+                                        <select class="form-control" name="tipe_anggaran" id="tipe_anggaran" style="width: 80%" disabled>
                                             <option></option>
                                             <option value="0">Transfer</option>
                                             <option value="1">Tunai</option>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-success" id="simpanPengeluaran" style="color: white;">Simpan</button>
-                                    <button type="button" id="close" class="btn btn-danger" onclick="ttp()">Batal</button>
+                                    <input type="hidden" name="kd_anggaran" id="kd_anggaran">
+                                    <button type="submit" class="btn btn-success" id="Validanggaran" style="color: white;">Setuju</button>
+                                    <button type="button" id="Tvalidanggaran" class="btn btn-danger" >Tidak Setuju</button>
                                 </div>
                                 <div class="modal-footer">
                                 </div>
@@ -182,6 +183,56 @@
                         function ttp(){
                             $('#inputValidasi').modal('hide');
                         }
+
+                        $('#inputValidasi').on('show.bs.modal', function(event){
+                            var button = $(event.relatedTarget)
+                            var recipient = button.data('whatever')
+                            var modal = $(this);
+                            var dataString = 'id=' + recipient
+                            $.get("<?php echo base_url()?>Finance/get_dt_pengajuan", dataString, function(data){
+                                $('#jns_anggaran').val(data[0].nm_anggaran);
+                                $('#ket_anggaran').val(data[0].ket_anggaran);
+                                $('#jml_anggaran').val(data[0].jml_anggaran);
+                                $('#tipe_anggaran').val(data[0].jns_pembayaran);
+                                $('#kd_anggaran').val(data[0].kd_anggaran);
+                            }, "json")
+                        })
+
+                        $('#Validanggaran').on('click', function(data){
+                            var id = $('#kd_anggaran').val();
+                            dataString = 'id='+id;
+                            $.post("<?php echo base_url()?>Finance/anggaranok", dataString, function(data){
+                                $('#inputValidasi').modal('hide');
+                                $('#dt_anggaran').DataTable().ajax.reload();
+                                Swal.fire({
+                                title: 'Sukses',
+                                text: "Anggaran Berhasil Disetujui",
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'OK'
+                                })
+                            })
+                        })
+
+                        $('#Tvalidanggaran').on('click', function(data){
+                            var id = $('#kd_anggaran').val();
+                            dataString = 'id='+id;
+                            $.post("<?php echo base_url()?>Finance/anggaranno", dataString, function(data){
+                                $('#inputValidasi').modal('hide');
+                                $('#dt_anggaran').DataTable().ajax.reload();
+                                Swal.fire({
+                                title: 'Sukses',
+                                text: "Anggaran Berhasil Ditolak",
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'OK'
+                                })
+                            })
+                        })
                     </script>
             </div>
         </div>

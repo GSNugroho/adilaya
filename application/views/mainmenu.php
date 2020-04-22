@@ -129,7 +129,7 @@
                     <span class="menu-title">Dashboard</span>
                 </a>
                 </li>
-                <?php if($this->session->userdata('level')=='3' || $this->session->userdata('level')=='2'):?>
+                <?php if($this->session->userdata('level')=='3' || $this->session->userdata('level')=='2' || $this->session->userdata('level')=='11' || $this->session->userdata('level')=='12'):?>
                 <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('Monitor')?>">
                     <img src="<?php echo base_url('assets/images/icons/2.png')?>" alt="">
@@ -137,7 +137,7 @@
                 </a>
                 </li>
                 <?php endif;?>
-                <?php if($this->session->userdata('level')=='3'):?>
+                <?php if($this->session->userdata('level')=='3' || $this->session->userdata('level')=='12'):?>
                 <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('Order')?>">
                     <img src="<?php echo base_url('assets/images/icons/005-forms.png')?>" alt="">

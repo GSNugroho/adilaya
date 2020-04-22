@@ -72,6 +72,29 @@
             $query = $this->db->query("SELECT * FROM adilaya_finance_out WHERE kd_pengeluaran = '$id'");
             return $query->result();
         }
+
+        function get_dt_pengajuan($id){
+            $query = $this->db->query("SELECT * FROM adilaya_anggaran WHERE kd_anggaran = '$id'");
+            return $query->result();
+        }
+
+        function get_dt_anggaranp($id){
+            $query = $this->db->query("SELECT * FROM adilaya_anggaran WHERE kd_anggaran = '$id'");
+            return $query->row();
+        }
+
+        function anggaranout($id, $data, $data_anggaran){
+            $this->db->trans_start();
+            $this->db->where('kd_anggaran', $id);
+		    $this->db->update('adilaya_anggaran', $data);
+            $this->db->insert('adilaya_finance_out', $data_anggaran);
+            $this->db->trans_complete();
+        }
+
+        function anggaranno($id, $data){
+            $this->db->where('kd_anggaran', $id);
+		    $this->db->update('adilaya_anggaran', $data);
+        }
     }
 
     

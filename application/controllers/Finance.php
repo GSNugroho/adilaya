@@ -376,6 +376,8 @@
                     $status = 'Belum Disetujui';
                 }else if($row->dt_status == 1){
                     $status = 'Sudah Disetujui';
+                }else if($row->dt_status == 2){
+                    $status = 'Tidak Disetujui';
                 }
             $data[] = array( 
                 "nm_anggaran"=>$row->nm_jns,
@@ -396,6 +398,45 @@
             );
     
             echo json_encode($response);
+        }
+
+        function get_dt_pengajuan(){
+            $id = $this->input->get('id', TRUE);
+            $data = $this->M_finance->get_dt_pengajuan($id);
+            echo json_encode($data);
+        }
+
+        function anggaranok(){
+            $id = $this->input->post('id', TRUE);
+            $status = 1;
+            $data = array(
+                'dt_status' => $status
+            );
+
+            $get_anggaran = $this->M_finance->get_dt_anggaranp($id);
+            if($get_anggaran){
+                $data_anggaran = array(
+                    'kd_pengeluaran' => $this->get_kode(),
+                    'jns_pengeluaran' => $get_anggaran->nm_anggaran,
+                    'ket_pengeluaran' => $get_anggaran->ket_anggaran,
+                    'jml_pengeluaran' => $get_anggaran->jml_anggaran,
+                    'dt_create' => date('Y-m-d'),
+                    'dt_aktif' => 1,
+                    'jns_pembayaran' => $get_anggaran->jns_pembayaran
+                );
+            }
+
+            $this->M_finance->anggaranout($id, $data, $data_anggaran);
+        }
+
+        function anggaranno(){
+            $id = $this->input->post('id', TRUE);
+            $status = 2;
+            $data = array(
+                'dt_status' => $status
+            );
+
+            $this->M_finance->anggaranno($id, $data);
         }
     }
 ?>
